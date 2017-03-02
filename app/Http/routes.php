@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::controller('/admin/user','AdminUserController');
-Route::controller('/admin/goods','AdminGoodsController');
+// Route::controller('/admin/user','AdminUserController');
+// Route::controller('/admin/goods','AdminGoodsController');
 Route::controller('/admin/order','AdminOrderController');
-Route::controller('/admin/login','AdminLoginController');
-Route::controller('/admin/webconfig','AdminWebConfigController');
+// Route::controller('/admin/login','AdminLoginController');
+// Route::controller('/admin/webconfig','AdminWebConfigController');
