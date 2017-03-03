@@ -48,4 +48,9 @@ class AdminOrderController extends Controller
     {
         return view('admins.order_goship',['id'=>$id]);
     }
+
+    public function postGoship($id)
+    {
+        
+    }
 }
