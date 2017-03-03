@@ -11,12 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+    	
+    	
+
+
+
+// 测试路由中间件
+Route::get('login',function(){
+	
+	return view('admins/login');
 });
+
+Route::get('logins',['middleware'=>'Login',function(){
+	echo '这是后台首页';
+}]);
 
 // Route::controller('/admin/user','AdminUserController');
 // Route::controller('/admin/goods','AdminGoodsController');
-Route::controller('/admin/order','AdminOrderController');
-// Route::controller('/admin/login','AdminLoginController');
+// Route::controller('/admin/order','AdminOrderController');
+Route::controller('/admin/login','AdminLoginController');
 // Route::controller('/admin/webconfig','AdminWebConfigController');
