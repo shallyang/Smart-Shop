@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::controller('/admin/user','AdminUserController');
 Route::controller('/admin/user_list','AdminUserListController');
-// Route::controller('/admin/goods','AdminGoodsController');
+Route::controller('/admin/goods','GoodsController');
 Route::controller('/admin/order','AdminOrderController');
 // Route::controller('/admin/login','AdminLoginController');
 // Route::controller('/admin/webconfig','AdminWebConfigController');
