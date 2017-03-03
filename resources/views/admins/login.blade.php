@@ -79,21 +79,7 @@
                             </script>
                         </div>
                     </div>
-                    <div id="mws-login-remember" class="mws-form-row mws-inset">
-                        <ul class="mws-form-list inline">
-
-                            <li>
-                                <!-- <td width="250px" height="30px" ><span class="login_txt">验证码：</span>
-                                </td>
-                                <td height="35" colspan="2"><input name="yz" type=text value="" maxLength=4 size=10>
-                                <a><img src="/public/yz.php" width="60px" height="100%"/></a>
-                                </td> -->
-                            </li>
-
-
-
-                        </ul>
-                    </div>
+                   
                     <div class="mws-form-row">
                         <input type="submit" value="登录" class="btn btn-success mws-login-button">
                     
