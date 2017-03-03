@@ -12,11 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('/admins/index');
 });
 
-// Route::controller('/admin/user','AdminUserController');
+Route::controller('/admin/user','AdminUserController');
+Route::controller('/admin/user_list','AdminUserListController');
 // Route::controller('/admin/goods','AdminGoodsController');
-Route::controller('/admin/order','AdminOrderController');
+//Route::controller('/admin/order','AdminOrderController');
 // Route::controller('/admin/login','AdminLoginController');
 // Route::controller('/admin/webconfig','AdminWebConfigController');
