@@ -25,13 +25,11 @@ class AdminOrderController extends Controller
     {   
         // dd($id);
         $res = DB::table('order_table')->where('orderid',$id)->update(['passstatus'=>4]);
-
-        // if ($res) {
-            
-        // } else {
-
-        // }
-        return back();
+        if ($res) {
+            return back()->with('info','订单关闭成功');
+        } else {
+            return back()->with('info','订单关闭失败,请重试');
+        }
     }
 
     public function getDelete($id)
@@ -39,14 +37,15 @@ class AdminOrderController extends Controller
         // dd($id);
         $res = DB::table('order_table')->where('orderid','=',$id)->delete();
 
-        // if ($res) {
-            
-        // } else {
-            
-        // }
-        
-        return back();
+        if ($res) {
+            return back()->with('info','订单删除成功');
+        } else {
+            return back()->with('info','订单删除失败,请重试');
+        }
     }
 
-    
+    public function getGoship($id)
+    {
+        return view('admins.order_goship',['id'=>$id]);
+    }
 }
