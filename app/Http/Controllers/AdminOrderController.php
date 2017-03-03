@@ -81,9 +81,39 @@ class AdminOrderController extends Controller
         $res = DB::table('order_table')->where('orderid','=',$orderid)->update($res);
 
         if ($res) {
-            return redirect('/admin/order')->with('info','发货成功');
+            return redirect('/admin/order')->with('info','发货成功!');
         } else {
-            return redirect('/admin/order_goship',['$id'=>$orderid])->with('info','发货失败,请重试');
+            return redirect('/admin/order_goship',['$id'=>$orderid])->with('info','发货失败,请重试!');
         }
+    }
+
+    public function getChangeget($id)
+    {
+        $res = DB::table('order_table')->where('orderid',$id)->select()->first();
+
+        // dd($res);
+        return view('admins.order_changeget',['res'=>$res]);
+    }
+
+    public function postChangeget(Request $request)
+    {
+        //删除token 和订单号
+        $res = $request->except('_token','orderid');
+        //获取订单号
+        $orderid = $request->orderid;
+        // echo $orderid;
+        // dd($res);
+        //修改数据
+        $res = DB::table('order_table')->where('orderid',$orderid)->update($res);
+
+        if ($res) {
+            return redirect('/admin/order')->with('info','修改成功!');
+        } else {
+            //修改失败将id放回res并跳转到修改页面
+            // $res['orderid'] = $orderid;
+            // return redirect('/admin/order_changeget',['res'=>$res])->with('info','修改失败,请重试!');
+            return redirect('/admin/order')->with('info','修改失败!');
+        }
+
     }
 }

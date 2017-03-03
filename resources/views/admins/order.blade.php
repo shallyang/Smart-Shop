@@ -106,9 +106,12 @@
                         <td class=" ">
                             <font>
                                 <font>
-                                    <span>收件人:{{$v->getman}}</span><br />
-                                    <span>电话:{{$v->getphone}}</span><br />
-                                    <span>收货地址:{{$v->getaddress}}</span>
+                                    <form action="/admin/order/changeget/{{ $v -> orderid }}" method="get">
+                                        <span>收件人:{{$v->getman}}</span><br />
+                                        <span>电话:{{$v->getphone}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-info">修改地址</button><br />
+                                        <span>收货地址:{{$v->getaddress}}</span>
+                                    </form>
 
                                 </font>
                             </font>
@@ -120,7 +123,7 @@
                                         <form action="/admin/order/goship/{{$v ->orderid }}" method="get">
 
                                             未发货&nbsp;&nbsp;
-                                            <button class="btn btn-info" class="btgoship">发货</button>
+                                            <button class="btn btn-info">发货</button>
                                         </form>
                                     @elseif($v -> passstatus == 1)
                                         已发货<br/>
