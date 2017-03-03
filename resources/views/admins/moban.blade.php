@@ -276,7 +276,7 @@
                             <li><a href="/admin/user/add"><i class="icon-add-contact"></i>　用户添加</a></li>
                             <li><a href="/admin/user_list/index"><i class="icon-user"></i>　用户列表</a></li>
                         </ul>
-                        <a href="#"><i class="icol32-package"></i>&nbsp;&nbsp;订单管理</a>
+                        <a href="/admin/order"><i class="icol32-package"></i>&nbsp;&nbsp;订单管理</a>
 
                     </li>
                 </ul>
