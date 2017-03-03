@@ -34,9 +34,45 @@
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/get.css" media="screen">
 
-<title>用户管理</title>
+<title>@yield('title')</title>
 <style type="text/css">
-     .sp{font-size:25px;color:lightblue;}
+    .sp{font-size:25px;color:lightblue;}
+    .pagination li{
+        margin:0px;
+        float: left;
+        height: 20px;
+        padding: 0 10px;
+        display: block;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        background-color: #444444;
+        color: #fff;
+        text-decoration: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+    }
+    .pagination li a{
+        color:#ffffff;
+    }
+    .pagination
+    {
+        margin:0px;
+    }
+
+    .pagination .active
+    {
+        background-color: #88a9eb;
+    }
+
+    .pagination .disabled
+    {
+        color: #666666;
+    }
+
 </style>
 </head>
 
@@ -240,6 +276,8 @@
                             <li><a href="/admin/user/add"><i class="icon-add-contact"></i>　用户添加</a></li>
                             <li><a href="/admin/user_list/index"><i class="icon-user"></i>　用户列表</a></li>
                         </ul>
+                        <a href="#"><i class="icol32-package"></i>&nbsp;&nbsp;订单管理</a>
+
                     </li>
                 </ul>
             </div>         
@@ -248,9 +286,9 @@
         <!-- Main Container Start -->
         <div id="mws-container" class="clearfix">
         	<!-- Inner Container Start -->
-                
+            @section('content')    
 
-
+            @show
             <!-- Inner Container End -->
             
             <!-- Footer -->
