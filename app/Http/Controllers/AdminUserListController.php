@@ -11,7 +11,9 @@ class AdminUserListController extends Controller
 {
     public function getIndex()
     {
-       $res = DB::table('user_table')->simplePaginate(10);
+        //获取所要显示的数量
+        $num = 
+       $res = DB::table('user_table')->Paginate(10);
 
         return view('/admins/user_list',['row'=>$res]);
     }

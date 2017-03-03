@@ -32,56 +32,14 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/get.css" media="screen">
 
-<title>@yield('title')</title>
-<style type="text/css">
-    .sp{font-size:25px;color:lightblue;}
-    .pagination li{
-        margin:0px;
-        float: left;
-        height: 20px;
-        padding: 0 10px;
-        display: block;
-        font-size: 12px;
-        line-height: 20px;
-        text-align: center;
-        cursor: pointer;
-        outline: none;
-        background-color: #444444;
-        color: #fff;
-        text-decoration: none;
-        border-right: 1px solid rgba(0, 0, 0, 0.5);
-        border-left: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
-    }
-    .pagination li a{
-        color:#ffffff;
-    }
-    .pagination
-    {
-        margin:0px;
-    }
+<link rel="stylesheet" type="text/css" href="/admins/css/style.css" media="screen">
 
-    .pagination .active
-    {
-        background-color: #88a9eb;
-    }
+<title>商品管理</title>
 
-    .pagination .disabled
-    {
-        color: #666666;
-    }
-
-</style>
 </head>
 
 <body>
-
-	<!-- Themer (Remove if not needed) -->  
-	
-    <!-- Themer End -->
-
 	<!-- Header -->
 	<div id="mws-header" class="clearfix">
     
@@ -90,7 +48,8 @@
         
         	<!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         	<div id="mws-logo-wrap">
-            	<span class='sp'>后台管理系统</span>
+            	<!-- <img src="/admins/images/mws-logo.png" alt="mws admin"> -->
+                <span id='logo'>商品</span>
 			</div>
         </div>
         
@@ -230,12 +189,12 @@
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        你好!张不骄傲
+                        Hello, John Doe
                     </div>
                     <ul>
-                    	<li><a href="#">头像</a></li>
-                        <li><a href="#">修改密码</a></li>
-                        <li><a href="index.html">注销</a></li>
+                    	<li><a href="#">Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="index.html">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -266,37 +225,77 @@
                     <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
                 </form>
             </div>
-            
             <!-- Main Navigation -->
             <div id="mws-navigation">
-                <ul>
+                <ul>            
                     <li>
-                        <a href="#"><i class="icon-users"></i> 用户管理</a>
-                        <ul class="closed">
-                            <li><a href="/admin/user/add"><i class="icon-add-contact"></i>　用户添加</a></li>
-                            <li><a href="/admin/user_list/index"><i class="icon-user"></i>　用户列表</a></li>
+                        <a href="#"><i class="icol32-building"></i>商品管理</a>
+                        <ul class='closed'>
+                            <li><a href="/goods/goodstypeadd"><i class="icol32-calendar-add"></i>商品类型添加</a></li>
+                            <li><a href="/goods/goodstypeindex"><i class="icol32-calendar-link"></i>商品类型列表页</a></li>  
+                            <li><a href="/goods/goodstypeindex"><i class="icol32-calendar-link"></i>子商品列表页</a></li>              
                         </ul>
-                        <a href="/admin/order"><i class="icol32-package"></i>&nbsp;&nbsp;订单管理</a>
-
-                    </li>
+                    </li>                 
                 </ul>
-            </div>         
+            </div>       
         </div>
         
         <!-- Main Container Start -->
-        <div id="mws-container" class="clearfix">
-        	<!-- Inner Container Start -->
-            @section('content')    
-
-            @show
-            <!-- Inner Container End -->
+        <div id="mws-container" class="clearfix">        
+        	<!-- Inner Container Start -->            
             
+            <div class="container">  
+                <!-- 网页中心 -->
+                  
+                        <form class="mws-form" action="/goods/goodskindinsert" method='post'>
+                            <div class="mws-form-inline">
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label">添加商品类型：</label>
+                                    <div class="mws-form-item">
+                                        <input class="small" type="text" name='name'>
+                                    </div>
+                                </div>                                      
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label">选择父级商品类型：</label>
+                                    <div class="mws-form-item">
+                                        <select class="small" name='pid'>
+                                            <option value='0'>请选择</option>
+                                            @foreach ($res as $k=>$v)
+                                            <option value='{{$v->id}}'>{{$v->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label">Radio Buttons</label>
+                                    <div class="mws-form-item clearfix">
+                                        <ul class="mws-form-list inline">
+                                            <li><input type="radio" name='status' value='0'> <label>禁止</label></li>
+                                            <li><input type="radio" name='status' value='1'> <label>启用</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mws-button-row">
+                                <input value="提交" class="btn btn-danger" type="submit">
+                                <input value="重置" class="btn " type="reset">
+                            </div>
+                            {{csrf_field()}}
+                        </form>
+                    
+
+
+            </div>
+            <!-- Inner Container End -->
+                  
             <!-- Footer -->
             <div id="mws-footer">
             	Copyright Your Website 2012. All Rights Reserved.
             </div>
-            
+             
         </div>
+       
         <!-- Main Container End -->
         
     </div>

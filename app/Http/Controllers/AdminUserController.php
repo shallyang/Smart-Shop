@@ -71,7 +71,7 @@ class AdminUserController extends Controller
         $row = DB::table('user_table')->insert($res);
         if($row){
 
-            return redirect('/admin/user/index')->with('info','恭喜你添加成功');
+            return redirect('/admin/user_list/index')->with('info','恭喜你添加成功');
 
         }else{
 
