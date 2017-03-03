@@ -17,7 +17,13 @@ class GoodsController extends Controller
         select(DB::raw('*,concat(pathid,",",id) as paths'))->
         orderBy('paths')->
         get();
-        return view('goods.goodsAdd',['res'=>$res]);
+        foreach($res as $k => $v) {
+            ///获取path信息
+            $into = explode(',',$v->pathid);
+            $level = count($into)-1;
+            $v->name = str_repeat('|--',$level).$v->name;
+        }
+        return view('admins.goodsAdd',['res'=>$res]);
     }
 
     public function postGoodskindinsert(Request $request)
@@ -27,59 +33,68 @@ class GoodsController extends Controller
             $res['pathid'] = '0';
         }else{
             $data = DB::table('goods_type')->where('id',$request->pid)->first();
-            // var_dump($data);die;
             $res['pathid'] = $data->pathid.','.$data->id;
         }
-        // var_dump($res);die;
         $pro = DB::table('goods_type')->insert($res);
-        // if($pro){
-        //     return redirect();
-        // }
+        if($pro){
+            return redirect('/admin/goods/goodskindindex')->with('info','添加成功!');
+        }
 
     }
-    //商品类型添加插入
-    // public function postGoodstypeinsert(Request $request)
-    // {
-    //     $res = $request->except('_token');
+    public function getGoodskindindex()
+    {
+       $res = DB::table('goods_type')->
+        select(DB::raw('*,concat(pathid,",",id) as paths'))->
+        orderBy('paths')->
+        get();
+         foreach($res as $k => $v) {
+            ///获取path信息
+            $into = explode(',',$v->pathid);
+            $v->num = count($into)-1; 
+        }
+        return view('admins/goodsindex',['res'=>$res]);
+    }
+    // 转到修改页
+    public function getGoodskindedit($id)
+    {
+        $parname = '';
+        $res = DB::table('goods_type')->where('id',$id)->first();
+        $info = DB::table('goods_type')->where('id',$res->pid)->first();
+        if($res->pid == '0'){
+            $parname = '顶级';
+        }else{
+            $parname = $info->name;
+        }
 
-    //      if($request->hasFile('goods_typepic')) {
-    //         //自定义上传文件的名字
-    //         $names = rand(1111,9999).time();
-    //         //获取上传文件的后缀
-    //         $suffix = $request->file('goods_typepic')->getClientOriginalExtension();
+        return view('admins.goodsedit',['res'=>$res,'parname'=>$parname]);
+    }
+    // 修改数据到数据库
+    public function postGoodskindupdate(Request $request)
+    {
+        // 获取属性值
+        $res = $request->except('_token','id');
+        $pro = DB::table('goods_type')->where('id',$request->id)->update($res);
+        if($pro) {
 
-    //         $request->file('goods_typepic')->move('./images/',$names.'.'.$suffix);
-    //     }
-    //     //把上传的图片存储到数据库中
-    //     $res['goods_typepic'] = '/images/'.$names.'.'.$suffix;
+            return redirect('/admin/goods/goodskindindex')->with('info','修改成功');
+        } else {
 
-    //     $pro = DB::table('goods_type')->insert($res);
+            return back()->with('info','修改失败');
+        }
+    }
 
-    //     if($pro)
-    //     {
-    //         return redirect('goods/goodstypeindex');
-    //     }
-    // }
-    // //类型列表
-    // public function getGoodstypeindex()
-    // {        
-    //     $res = DB::table('goods_type')->get();
-    //     return view('goods.goodsTypeIndex',['res'=>$res]);
-    // }
-    // //添加子商品页面
-    // public function getGoodschildadd($id)
-    // {
-    //     return view('goods.goodsChildAdd',['id'=>$id]);
-    // }
-    // //添加子商品
-    // public function postGoodschildinsert(Request $request)
-    // {
-       
-    //    $res =  $request->except('_token');
-    //    $pro = DB::table('goods_child')->insert($res);
-    //    if($pro){
-    //         return redirect('goods/goodstypeindex');
-    //    }
-    // }
-        // }
+    public function getGoodskinddelete($id)
+    {
+        $res = DB::table('goods_type')->where('id',$id)->first();
+        $path = $res->pathid.','.$res->id;
+        //删除该商品类型下的所有子级
+        DB::table('goods_type')->where('pathid','like',$path.'%')->delete();
+        //删除该商品类型
+        $pro = DB::table('goods_type')->where('id',$id)->delete();
+        if($pro){
+            return redirect('admin/goods/goodskindindex')->with('info','删除成功!');
+        }else{
+            return back()->with('info','删除失败!');
+        }
+    }
 }
