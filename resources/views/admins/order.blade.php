@@ -117,7 +117,7 @@
                             <font>
                                 <font>
                                     @if($v -> passstatus == 0)
-                                        <form action="/admin/order/goship/{{$v->orderid}}" method="get">
+                                        <form action="/admin/order/goship/{{$v ->orderid }}" method="get">
 
                                             未发货&nbsp;&nbsp;
                                             <button class="btn btn-info" class="btgoship">发货</button>

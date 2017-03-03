@@ -51,6 +51,7 @@ class AdminOrderController extends Controller
 
     public function postGoship($id)
     {
-        
+        // echo '1234';
+        // return view('admins.order_goship',[])
     }
 }
