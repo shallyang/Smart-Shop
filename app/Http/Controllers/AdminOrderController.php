@@ -6,81 +6,47 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class AdminOrderController extends Controller
 {
     /**
      * 订单显示页面,显示所有的订单 
      */
-    public function index()
+    public function getIndex(Request $request)
     {
-        //
-        return view('order');
+        //遍历数据库,取出订单列表
+        $res = DB::table('order_table')->where('orderid','like','%'.$request->input('orderid').'%')->paginate($request->input('limit',10));
+        //打开所有订单列表
+        return view('admins.order',['res'=>$res,'request'=>$request]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getClose($id)
+    {   
+        // dd($id);
+        $res = DB::table('order_table')->where('orderid',$id)->update(['passstatus'=>4]);
+
+        // if ($res) {
+            
+        // } else {
+
+        // }
+        return back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function getDelete($id)
+    {   
+        // dd($id);
+        $res = DB::table('order_table')->where('orderid','=',$id)->delete();
+
+        // if ($res) {
+            
+        // } else {
+            
+        // }
+        
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
