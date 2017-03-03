@@ -1,13 +1,18 @@
 @extends('admins.moban')
 @section('title','订单管理')
 @section('content')
+@if(session('info'))
+    <div class="mws-form-message danger">
+        {{session('info')}}
+    </div>
+@endif
 <div class="grid_8">
     <div class="mws-panel">
         <div class="mws-panel-header">
             <span>发货页面</span>
         </div>
         <div class="mws-panel-body no-padding">
-            <form class="mws-form" action="/admin/admin/order/goship" method="post">
+            <form class="mws-form" action="/admin/order/goship" method="post">
                 <div class="mws-form-inline">
                 	<div class="mws-form-row">
         				<label class="mws-form-label">订单号</label>
@@ -18,7 +23,7 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">合作快递</label>
                         <div class="mws-form-item">
-                            <select class="large">
+                            <select class="large" name='shippost'>
                                 <option value="0">顺丰快递</option>
                                 <option value="1">联邦快递</option>
                                 <option value="2">京东快递</option>
@@ -29,7 +34,8 @@
 					<div class="mws-form-row">
         				<label class="mws-form-label">快递单号</label>
         				<div class="mws-form-item">
-        					<input type="text" class="large">
+        					<input type="text" class="large" name="passnum">
+        					<input type="hidden" class="large" name="orderid" value="{{$id}}">
         				</div>
         			</div>
                 </div>

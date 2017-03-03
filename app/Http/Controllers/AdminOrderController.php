@@ -49,9 +49,41 @@ class AdminOrderController extends Controller
         return view('admins.order_goship',['id'=>$id]);
     }
 
-    public function postGoship($id)
+    public function postGoship(Request $request)
     {
         // echo '1234';
         // return view('admins.order_goship',[])
+        // dd($request);
+        //获取订单号和快递代码.
+        $orderid = $request->orderid;
+        // echo $orderid;
+        $shippost = $request->shippost;
+
+        $res = $request->except('_token','orderid','shippost');
+        //将快递代码改成具体的快递公司
+        switch($shippost)
+        {
+            case 0:
+                $res['shippost'] = '顺丰快递';
+                break;
+            case 1:
+                $res['shippost'] = '联邦快递';
+                break;
+            case 2:
+                $res['shippost'] = '京东快递';
+                break;
+            case 3:
+                $res['shippost'] = '邮政快递';
+                break;    
+        }
+        $res['passstatus'] = 1;
+        // dd($res);
+        $res = DB::table('order_table')->where('orderid','=',$orderid)->update($res);
+
+        if ($res) {
+            return redirect('/admin/order')->with('info','发货成功');
+        } else {
+            return redirect('/admin/order_goship',['$id'=>$orderid])->with('info','发货失败,请重试');
+        }
     }
 }

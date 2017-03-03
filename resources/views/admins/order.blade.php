@@ -4,7 +4,7 @@
 <div class="container">
 <!-- 网页显示页面 -->
 @if(session('info'))
-    <div class="mws-form-message success"           >
+    <div class="mws-form-message success">
         {{session('info')}}
     </div>
 @endif
@@ -124,6 +124,7 @@
                                         </form>
                                     @elseif($v -> passstatus == 1)
                                         已发货<br/>
+                                        物流公司:<span>{{$v->shippost}}</span><br />
                                         物流单号:<a href="" class="passnum">{{$v->passnum}}</a>
                                     @elseif($v -> passstatus == 2)
                                         已签收
