@@ -276,8 +276,12 @@
                             <li><a href="/admin/user/add"><i class="icon-add-contact"></i>　用户添加</a></li>
                             <li><a href="/admin/user_list/index"><i class="icon-user"></i>　用户列表</a></li>
                         </ul>
-                        <a href="/admin/order"><i class="icon-list-2"></i>&nbsp;&nbsp;订单管理</a>
-
+                        <a href="/admin/order"><i class="icon-list-2"></i> 订单管理</a>
+                        <a href="#"><i class="icon-th"></i> 商品管理</a>
+                        <ul class="closed">
+                            <li><a href="/admin/goods/goodskindindex"><i class="icon-th-list"></i>　商品列表</a></li>
+                            <li><a href="/admin/goods/goodskindadd"><i class="icon-plus"></i>　商品添加</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>         

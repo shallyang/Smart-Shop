@@ -72,10 +72,10 @@
                                 </td>
                                 <td class="  sorting_1">
                                     @if($v->pathid == '0')
-                                    <img src="/images/dirfirst.gif" alt="">
+                                    <img src="/images/admin/dirfirst.gif" alt="">
                                     @else
                                         @for($i = $v->num;$i > 0;$i--)
-                                            <img src="/images/dirsecond.gif" alt="">
+                                            <img src="/images/admin/dirsecond.gif" alt="">
                                         @endfor
                                     @endif
                                 </td>

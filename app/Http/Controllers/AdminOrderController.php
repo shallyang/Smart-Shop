@@ -17,8 +17,11 @@ class AdminOrderController extends Controller
     {
         //遍历数据库,取出订单列表
         $res = DB::table('order_table')->where('orderid','like','%'.$request->input('orderid').'%')->paginate($request->input('limit',10));
+        // $goodsid = $res->goodsid;
+
+        // dd($res);
         //打开所有订单列表
-        return view('admins.order',['res'=>$res,'request'=>$request]);
+        return view('admins.order',['res'=>$res, 'request'=>$request]);
     }
 
     public function getClose($id)

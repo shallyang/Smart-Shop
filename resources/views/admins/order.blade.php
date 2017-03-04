@@ -94,8 +94,14 @@
                         <td class=" ">
                             <font>
                                 <font>
-                                    <img src="/images/0.jpg" alt="" width="50">
-                                    <img src="/images/0.jpg" alt="" width="50">
+                                @foreach(explode(',',$v->goodsid) as $key => $val)
+                                    @if($key < 3)
+                                    <img src="/images/admin/0.jpg" alt="" width="50">
+                                    @endif
+                                @endforeach
+                                @if(count($v->goodsid)>3)
+                                <span>...</span>
+                                @endif
                                 </font>
                             </font>
                         </td>
