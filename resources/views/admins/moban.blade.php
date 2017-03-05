@@ -281,8 +281,8 @@
                         <ul class="closed">
                             <li><a href="/admin/goods/goodskindindex"><i class="icon-th-list"></i>　分类列表</a></li>
                             <li><a href="/admin/goods/goodskindadd"><i class="icon-plus"></i>　分类添加</a></li>
-                            <li><a href="/admin/goods/goodskindadd"><i class="icon-inbox"></i>　商品添加</a></li>
-                            <li><a href="/admin/goods/goodskindadd"><i class="icon-indent-left"></i>　商品列表</a></li>
+                            <li><a href="/admin/goods/goodsadd"><i class="icon-inbox"></i>　商品添加</a></li>
+                            <li><a href="/admin/goods/goodslist"><i class="icon-indent-left"></i>　商品列表</a></li>
                         </ul>
                     </li>
                 </ul>
