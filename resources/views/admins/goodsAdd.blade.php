@@ -1,7 +1,24 @@
 @extends('admins.moban')
 @section('title','商品管理')
 @section('content')
-	 <div class="container">  
+     <div class="container"> 
+     <!-- 表单验证  -->
+    @if (count($errors) > 0)
+        <div class="mws-form-message error" id="dvs">
+        <ul>                     
+            @foreach ($errors->all() as $error)
+                <li style="font-size:20px;list-style:none">{{ $error }}</li>
+            @endforeach
+        </ul>
+        </div>
+    @endif   
+    <!-- 提示信息 -->
+    <script type="text/javascript">
+        setTimeout(function()
+        {
+            $('#mess').slideUp(1000);
+        },2000)
+    </script>
                 <!-- 网页中心 -->                  
                 <form class="mws-form" action="/admin/goods/goodskindinsert" method='post'>
                     <div class="mws-form-inline">

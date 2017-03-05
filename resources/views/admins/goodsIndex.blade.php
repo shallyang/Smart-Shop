@@ -7,7 +7,9 @@
                     
         <div class="mws-panel grid_8">
             @if (session('info'))
-            <div class="alert alert-success">
+            <!-- <div class="alert alert-success"> -->
+            <div class="mws-form-message success">
+
                 {{ session('info') }}
             </div>
             @endif

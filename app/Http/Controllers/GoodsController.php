@@ -15,7 +15,7 @@ class GoodsController extends Controller
     {
         $res = DB::table('goods_type')->
         select(DB::raw('*,concat(pathid,",",id) as paths'))->
-        orderBy('paths')->
+        orderBy('paths')->  
         get();
         foreach($res as $k => $v) {
             ///获取path信息
@@ -28,6 +28,15 @@ class GoodsController extends Controller
 
     public function postGoodskindinsert(Request $request)
     {
+
+        // 表单验证
+        $this->validate($request, [
+                'name' => 'required',             
+            ],[
+                //自定义错误消息
+                'name.required'=>'商品名不能为空',                
+            ]);
+
         $res = $request->except('_token');
         if($request->pid == '0'){
             $res['pathid'] = '0';
@@ -75,15 +84,23 @@ class GoodsController extends Controller
     // 修改数据到数据库
     public function postGoodskindupdate(Request $request)
     {
+
+        $this->validate($request, [
+                'name' => 'required',             
+            ],[
+                //自定义错误消息
+                'name.required'=>'商品名不能为空',                
+            ]);
+
         // 获取属性值
         $res = $request->except('_token','id');
         $pro = DB::table('goods_type')->where('id',$request->id)->update($res);
         if($pro) {
 
-            return redirect('/admin/goods/goodskindindex')->with('info','修改成功');
+            return redirect('/admin/goods/goodskindindex')->with('info','修改成功!');
         } else {
 
-            return back()->with('info','修改失败');
+            return back()->with('info','修改失败!');
         }
     }
 
@@ -102,10 +119,35 @@ class GoodsController extends Controller
         }
     }
 
+        //商品添加页 
     public function getGoodsadd()
-    {
-        //商品添加
+    {       
+        $res = DB::table('goods_type')->
+        select(DB::raw('*,concat(pathid,",",id) as paths'))->
+        orderBy('paths')->
+        get();
+        foreach($res as $k => $v) {
+            ///获取path信息
+            $into = explode(',',$v->pathid);
+            $level = count($into)-1;
+            $v->name = str_repeat('|--',$level).$v->name;
+        }
+        // dd($res);
+        return view('admins.add_childgoods',['res'=>$res]);
     }
+    // 商品添加数据处理
+    public function postGoodsinsert(Request $request)
+    {
+        $res = $request->except('_token');
+        $pro = DB::table('goods_table')->insert($res);
+        if($pro){
+            return redirect('admin/goods/goodslist')->with('info','添加成功!');
+        }else{
+            return back()->with('info','添加失败!');
+        }
+
+    }
+
 
     public function getGoodslist()
     {
