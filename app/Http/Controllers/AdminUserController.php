@@ -23,7 +23,7 @@ class AdminUserController extends Controller
     public function postInsert(Request $request)
     {
         //表单验证
-         $this->validate($request, [
+        $this->validate($request, [
 
                 'username' => 'required|regex:/^\S{6,12}$/|unique:user_table',
                 'userpassword' => 'required|regex:/^\w{8,12}$/',
@@ -49,7 +49,7 @@ class AdminUserController extends Controller
                 'userqq.required'=>'用户QQ不能为空',
                 'userqq.regex'=>'QQ格式输入不正确',
                 'userhead.required'=>'上传图片不能为空'
-            ]);
+        ]);
         //获取所得到的值 
         $res = $request->except('_token','repassword','userhead');
         

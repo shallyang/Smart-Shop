@@ -18,7 +18,7 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-            <form>
+            <form action="/admin/goods/goodslist" method="get" >
                 <div id="DataTables_Table_1_length" class="dataTables_length">
                     <label>
                         <font>
@@ -62,21 +62,17 @@
                             <font>
                                 <font>商品名称</font></font>
                         </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 194px;">
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 124px;">
                             <font>
-                                <font>商品规格(颜色+型号)</font></font>
+                                <font>商品规格<br />(型号+颜色)</font></font>
                         </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 66px;">
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 116px;">
                             <font>
                                 <font>商品库存</font></font>
                         </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 221px;">
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 101px;">
                             <font>
                                 <font>商品价格</font></font>
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 151px;">
-                            <font>
-                                <font>商品状态</font></font>
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 151px;">
                             <font>
@@ -86,50 +82,100 @@
                             <font>
                                 <font>商品状态(上下架)</font></font>
                         </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 151px;">
+                            <font>
+                                <font>商品设置</font>
+                            </font>
+                        </th>
                     </tr>
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
+                @foreach($res as $k => $v)
                 <tr class="odd">
                         <td class="sorting_1">
                             <font>
-                                <font></font></font>
+                                <font>{{$v->goodsid}}</font>
+                            </font>
                         </td>
                         <td class=" ">
                             <font>
-                                <font></font></font>
+                                <font>{{$v->goodsname}}</font>
+                            </font>
                         </td>
                         <td class=" ">
                             <font>
                                 <font>
-                                    <img src="/images/admin/0.jpg" alt="" width="50">
+                                    {{$v->goodssize}}
+                                    {{$v->goodscolor}}
                                 </font>
                             </font>
                         </td>
                         <td class=" ">
                             <font>
                                 <font>
-                                    
+                                    {{$v->goodsnum}}
                                 </font>
                             </font>
                         </td>
                         <td class=" ">
                             <font>
                                 <font>
-                                    
+                                    {{$v->goodsprice}}
                                 </font>
                             </font>
                         </td>
                         <td class=" ">
                             <font>
                                 <font>
-                                    
+                                    {{$v->goodsdescribe}}
+                                </font>
+                            </font>
+                        </td>
+                        <td class=" ">
+                            <font>
+                                <font>
+                                    @if($v->goodsstatus == 0)
+                                        <form action="/admin/goods/changestatus" method="get">
+                                            已上架&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="hidden" name="goodsstatus" value="{{ $v -> goodsstatus }}">
+                                            <input type="hidden" name="goodsid" value="{{ $v -> goodsid }}">
+                                            <button class="btn btn-warning" type="submit">下架</button>
+                                            
+                                        </form>
+                                    @else
+                                        <form action="/admin/goods/changestatus" method="get">
+                                            已下架&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="hidden" name="goodsstatus" value="{{ $v -> goodsstatus }}">
+                                            <input type="hidden" name="goodsid" value="{{ $v -> goodsid }}">
+                                            <button class="btn btn-warning" type="submit">上架</button>
+                                            
+                                        </form>
+                                    @endif    
+                                </font>
+                            </font>
+                        </td>
+
+                        <td class=" ">
+                            <font>
+                                <font>
+                                    <div class="mws-button-row">
+                                        <form action="/admin/goods/update/{{$v->goodsid}}" method="get">
+                                            <button type="submit" class="btn btn-info">编辑</button>
+                                        </form>
+                                        <br />
+                                        <form action="/admin/goods/delete/{{$v->goodsid}}" method="get">
+                                            <button type="submit" class="btn btn-danger">删除</button>
+                                        </form>
+                                    </div>
                                 </font>
                             </font>
                         </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
             <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+                {!! $res->appends($request->all())->render() !!}
             </div>
         </div>
     </div>

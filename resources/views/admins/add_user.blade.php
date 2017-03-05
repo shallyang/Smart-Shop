@@ -14,8 +14,8 @@
                 <div class="mws-panel-header">
                     <span><i class="icon-add-contact"></i>用户添加</span>
                 </div>
-                    @if (count($errors) > 0)
-                         <div class="mws-form-message error" id="dvs">
+                @if (count($errors) > 0)
+                    <div class="mws-form-message error" id="dvs">
                          <ul>                     
                             @foreach ($errors->all() as $error)
                                 <li style="font-size:20px;list-style:none">{{ $error }}</li>

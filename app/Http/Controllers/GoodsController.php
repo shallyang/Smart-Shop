@@ -149,9 +149,91 @@ class GoodsController extends Controller
     }
 
 
-    public function getGoodslist()
+    public function getGoodslist(Request $request)
     {
 
+        $res = DB::table('goods_table')->where('goodsname','like','%'.$request->input('goodsname').'%')->paginate($request->input('limit',10));
+        // dd($res);
         //商品列表
+        return view('admins.goodslist',['res'=>$res,'request'=>$request]);
+    }
+
+    public function getChangestatus(Request $request)
+    {
+        //修改上下架
+        $goodsstatus = $request->input('goodsstatus') ? 0 : 1 ;
+
+        $res =  DB::table('goods_table')->where('goodsid', $request->input('goodsid'))->update(['goodsstatus'=>$goodsstatus]);
+        // dd($res);
+        if ($res) {
+            return redirect('/admin/goods/goodslist')->with('info','修改成功!');
+        } else {
+            return redirect('/admin/goods/goodslist')->with('info','修改失败!');
+        }
+    }
+
+
+    public function getUpdate($goodsid)
+    {
+        //跳转商品修改页面
+        $res =  DB::table('goods_table')->select()->where('goodsid', $goodsid)->first();
+        $typeName = DB::table('goods_type')->select('name')->where('id',$res->typeid)->first();
+        $type = DB::table('goods_type')->select()->get();
+        // dd($type);
+        // dd($res->typeid);
+        return view('admins.goodsupdate',['res'=>$res,'typeName'=>$typeName,'type'=>$type]);
+
+    }
+
+    public function getDelete($goodsid)
+    {
+        //商品删除功能
+        // dd($goodsid);
+        $res =  DB::table('goods_table')->where('goodsid', $goodsid)->delete();
+
+        if ($res) {
+            return redirect('/admin/goods/goodslist')->with('info','删除成功!');
+        } else {
+            return redirect('/admin/goods/goodslist')->with('info','删除失败!');
+        }
+
+    }
+
+    public function postUpdate(Request $request)
+    {
+
+        //表单验证
+        $this->validate($request, [
+
+                'goodsname' => 'required',
+                'goodsnum' => 'required',
+                'goodssize'=>'required',
+                'goodsprice'=>'required',
+                'goodscolor'=>'required',
+                'goodsdescribe'=>'required'
+
+            ],[
+                //自定义错误消息
+                'goodsname.required'=>'商品名不能为空',
+                'goodsnum.required'=>'商品数量不能为空',
+                'goodssize.required'=>'商品规格不能为空',
+                'goodsprice.required'=>'商品价格不能为空',
+                'goodscolor.required'=>'商品颜色不能为空',
+                'goodsdescribe.required'=>'商品描述不能为空',
+        ]);
+
+        //商品修改功能
+        $goodsid = $request->input('goodsid');
+        $infoArr = $request->except('_token','goodsid');
+        // dd($goodsid);
+
+        $res =  DB::table('goods_table')->where('goodsid', $goodsid)->update($infoArr);
+
+        if ($res) {
+            return redirect('/admin/goods/goodslist')->with('info','修改成功!');
+        } else {
+            return redirect('/admin/goods/goodslist')->with('info','修改失败!');
+        }
+
     }
 }
