@@ -279,8 +279,8 @@
                         <a href="/admin/order"><i class="icon-list-2"></i> 订单管理</a>
                         <a href="#"><i class="icon-th"></i> 商品管理</a>
                         <ul class="closed">
-                            <li><a href="/admin/goods/goodskindindex"><i class="icon-th-list"></i>　商品列表</a></li>
-                            <li><a href="/admin/goods/goodskindadd"><i class="icon-plus"></i>　商品添加</a></li>
+                            <li><a href="/admin/goods/goodskindindex"><i class="icon-th-list"></i>　分类列表</a></li>
+                            <li><a href="/admin/goods/goodskindadd"><i class="icon-plus"></i>　分类添加</a></li>
                         </ul>
                     </li>
                 </ul>
