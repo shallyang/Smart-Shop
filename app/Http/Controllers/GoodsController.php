@@ -16,6 +16,7 @@ class GoodsController extends Controller
         $res = DB::table('goods_type')->
         select(DB::raw('*,concat(pathid,",",id) as paths'))->
         orderBy('paths')->
+        // paginate(6)->
         get();
         foreach($res as $k => $v) {
             ///获取path信息
@@ -41,18 +42,22 @@ class GoodsController extends Controller
         }
 
     }
-    public function getGoodskindindex()
+    public function getGoodskindindex(Request $request)
     {
        $res = DB::table('goods_type')->
         select(DB::raw('*,concat(pathid,",",id) as paths'))->
+        where('name', 'like', '%'.$request->input('name').'%')->
         orderBy('paths')->
-        get();
+        paginate(6);
+        // all();
+
+        // dd($res);
          foreach($res as $k => $v) {
             ///获取path信息
             $into = explode(',',$v->pathid);
             $v->num = count($into)-1; 
         }
-        return view('admins/goodsindex',['res'=>$res]);
+        return view('admins/goodsindex',['res'=>$res,'request'=>$request]);
     }
     // 转到修改页
     public function getGoodskindedit($id)

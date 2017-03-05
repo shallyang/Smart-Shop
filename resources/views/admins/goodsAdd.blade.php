@@ -27,8 +27,8 @@
                             <label class="mws-form-label">状态</label>
                             <div class="mws-form-item clearfix">
                                 <ul class="mws-form-list inline">
-                                    <li><input type="radio" name='status' value='0' > <label>上架</label></li>
-                                    <li><input type="radio" name='status' value='1'> <label>下架</label></li>
+                                    <li><label><input type="radio" name='status' value='0' > 上架</label></li>
+                                    <li><label><input type="radio" name='status' value='1'> 下架</label></li>
                                 </ul>
                             </div>
                         </div>

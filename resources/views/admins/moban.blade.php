@@ -273,8 +273,8 @@
                     <li>
                         <a href="#"><i class="icon-users"></i> 用户管理</a>
                         <ul class="closed">
-                            <li><a href="/admin/user/add"><i class="icon-add-contact"></i>　用户添加</a></li>
                             <li><a href="/admin/user_list/index"><i class="icon-user"></i>　用户列表</a></li>
+                            <li><a href="/admin/user/add"><i class="icon-add-contact"></i>　用户添加</a></li>
                         </ul>
                         <a href="/admin/order"><i class="icon-list-2"></i> 订单管理</a>
                         <a href="#"><i class="icon-th"></i> 商品管理</a>
