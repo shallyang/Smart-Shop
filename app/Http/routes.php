@@ -27,19 +27,20 @@ Route::get('login',function(){
 	return view('admins/login');
 });
 
-Route::get('logins',['middleware'=>'Login',function(){
-	echo '这是后台首页';
+Route::get('/admin',['middleware'=>'Login',function(){
+	return view('/admins.index');
 }]);
 
 
 
-Route::get('/', function () {
-    return view('/admins/index');
-});
-
-Route::controller('/admin/login','AdminLoginController');
-Route::controller('/admin/user','AdminUserController');
-Route::controller('/admin/user_list','AdminUserListController');
-Route::controller('/admin/goods','GoodsController');
-Route::controller('/admin/order','AdminOrderController');
-Route::controller('/admin/webconfig','AdminWebConfigController');
+// Route::get('/', function () {
+//     return view('/admins/index');
+// });
+// Route::group(['middleware'=>'Login'],function(){
+	Route::controller('/admin/login','AdminLoginController');
+	Route::controller('/admin/user','AdminUserController');
+	Route::controller('/admin/user_list','AdminUserListController');
+	Route::controller('/admin/goods','GoodsController');
+	Route::controller('/admin/order','AdminOrderController');
+	Route::controller('/admin/webconfig','AdminWebConfigController');
+// });

@@ -19,21 +19,23 @@ class AdminLoginController extends Controller
 
 
 		//获取数据库的用户信息
-		$userpassword = DB::table('user_table')->where('username',$username)->value('userpassword');
+		$userstatus = DB::table('user_table')->where('username',$username)->value('userstatus');
+		if ($userstatus == 0) {
+			$userpassword = DB::table('user_table')->where('username',$username)->value('userpassword');
 		
-
-
-		if($password == $userpassword){
-			echo '这是后台首页';
-			session(['name'=>'username']);
-		}else{
-			// echo '密码输入不正确';
-			return view('admins/login');
-		}
+			if($password == $userpassword){
+				//session 内容
+				// 设置过期时间 单位：分钟
+				// 设置浏览器关闭是是否清空session
+				//并不能用,如何设置session有效时间,以及如何让其他界面也关联login
+				session(['name'=>$username,'lifetime' => '5','expire_on_close' => true]);
+				return redirect('/');
+			}else{
+				// echo '密码输入不正确';
+				return view('admins/login');
+			}
 					
-
-
-
+		}
 
     }
 }
