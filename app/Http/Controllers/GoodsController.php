@@ -16,7 +16,6 @@ class GoodsController extends Controller
         $res = DB::table('goods_type')->
         select(DB::raw('*,concat(pathid,",",id) as paths'))->
         orderBy('paths')->
-        // paginate(6)->
         get();
         foreach($res as $k => $v) {
             ///获取path信息
@@ -101,5 +100,16 @@ class GoodsController extends Controller
         }else{
             return back()->with('info','删除失败!');
         }
+    }
+
+    public function getGoodsadd()
+    {
+        //商品添加
+    }
+
+    public function getGoodslist()
+    {
+
+        //商品列表
     }
 }
