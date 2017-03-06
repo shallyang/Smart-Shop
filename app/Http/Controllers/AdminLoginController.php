@@ -28,7 +28,7 @@ class AdminLoginController extends Controller
 				// 设置过期时间 单位：分钟
 				// 设置浏览器关闭是是否清空session
 				session(['name'=>$username]);
-				return redirect('/');
+				return redirect('/admin');
 			}else{
 				// echo '密码输入不正确';
 				return view('admins/login');

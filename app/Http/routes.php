@@ -24,7 +24,7 @@
 // 测试路由中间件
 Route::get('login',function(){
 	
-	return view('admins/login');
+	return view('admins.login');
 });
 
 Route::get('/admin',['middleware'=>'Login',function(){
