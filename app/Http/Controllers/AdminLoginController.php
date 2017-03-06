@@ -24,10 +24,11 @@ class AdminLoginController extends Controller
 			$userpassword = DB::table('user_table')->where('username',$username)->value('userpassword');
 		
 			if($password == $userpassword){
+				$userhead = DB::table('user_table')->where('username',$username)->value('userhead');
 				//session 内容
 				// 设置过期时间 单位：分钟
 				// 设置浏览器关闭是是否清空session
-				session(['name'=>$username]);
+				session(['name'=>$username,'userhead'=>$userhead]);
 				return redirect('/admin');
 			}else{
 				// echo '密码输入不正确';
