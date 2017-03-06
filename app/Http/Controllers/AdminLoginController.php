@@ -34,6 +34,9 @@ class AdminLoginController extends Controller
 				return view('admins/login');
 			}
 					
+		} else {
+			//退会到登录页			
+			return view('admins/login');
 		}
 
     }
