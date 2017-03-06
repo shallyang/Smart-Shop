@@ -27,8 +27,7 @@ class AdminLoginController extends Controller
 				//session 内容
 				// 设置过期时间 单位：分钟
 				// 设置浏览器关闭是是否清空session
-				//并不能用,如何设置session有效时间,以及如何让其他界面也关联login
-				session(['name'=>$username,'lifetime' => '5','expire_on_close' => true]);
+				session(['name'=>$username]);
 				return redirect('/');
 			}else{
 				// echo '密码输入不正确';

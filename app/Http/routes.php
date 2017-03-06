@@ -36,11 +36,12 @@ Route::get('/admin',['middleware'=>'Login',function(){
 // Route::get('/', function () {
 //     return view('/admins/index');
 // });
-// Route::group(['middleware'=>'Login'],function(){
-	Route::controller('/admin/login','AdminLoginController');
+Route::controller('/admin/login','AdminLoginController');
+
+Route::group(['middleware'=>'Login'],function(){
 	Route::controller('/admin/user','AdminUserController');
 	Route::controller('/admin/user_list','AdminUserListController');
 	Route::controller('/admin/goods','GoodsController');
 	Route::controller('/admin/order','AdminOrderController');
 	Route::controller('/admin/webconfig','AdminWebConfigController');
-// });
+});
