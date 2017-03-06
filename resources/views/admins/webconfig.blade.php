@@ -37,10 +37,16 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 
 @section('content')
 @if(session('info'))
-    <div class="mws-form-message success">
+    <div class="mws-form-message success" id='dvss'>
         {{session('info')}}
     </div>
 @endif
+
+<script type="text/javascript">
+    setTimeout(function(){
+        $('#dvss').slideUp(1000);
+    },3000)
+</script>
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
         <span>

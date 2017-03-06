@@ -25,6 +25,7 @@ class AdminWebConfigController extends Controller
         }
        
 
+
          //判断文件上传
         if($request->hasFile('logo')) {
             //自定义上传文件的名字
@@ -33,6 +34,7 @@ class AdminWebConfigController extends Controller
             $suffix = $request->file('logo')->getClientOriginalExtension();
 
             $request->file('logo')->move('./upload/',$names.'.'.$suffix);
+       
         }
         //把上传的图片存储到数据库中
         $res['logo'] = '/upload/'.$names.'.'.$suffix;

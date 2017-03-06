@@ -34,7 +34,7 @@
 				<div class="mws-form-row">
 					<label class="mws-form-label">商品名称</label>
 					<div class="mws-form-item">
-						<input class="small" type="text" value={{$res->name}} name='name'>
+						<input class="small" type="text" name='name' value={{$res->name}}>
 						<input type="hidden" value={{$res->id}} name='id'>
 					</div>
 				</div>
