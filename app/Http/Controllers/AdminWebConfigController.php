@@ -43,10 +43,12 @@ class AdminWebConfigController extends Controller
         //判断结果
         if($pro) {
 
-            echo '添加成功';
+            // echo '添加成功';
+            return redirect('/admin/webconfig')->with('info','修改成功!');
         } else {
 
-            echo '添加失败';
+            // echo '添加失败';
+            return redirect('/admin/webconfig')->with('info','修改失败!');
         }
 
 

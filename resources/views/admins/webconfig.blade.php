@@ -1,8 +1,6 @@
 @extends('admins.moban')
 @section('title','网站配置')
-@section('content')
 <style>
-body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 #searchmain{ font-size:12px;}
 #search{ font-size:12px; background:#548fc9; margin:10px 10px 0 0; display:inline; width:100%; color:#FFF}
 #search form span{height:40px; line-height:40px; padding:0 0px 0 10px; float:left;}
@@ -37,6 +35,12 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 
 <link rel="shortcut icon" href="images/main/favicon.ico" />
 
+@section('content')
+@if(session('info'))
+    <div class="mws-form-message success">
+        {{session('info')}}
+    </div>
+@endif
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
         <span>
