@@ -165,11 +165,11 @@ class GoodsController extends Controller
             foreach($request->file('picurl') as $k=>$v)
             {             
                 $pic = [];   
-                $names = rand(111,999);
+                $names = rand(111111,999999) . time();
                 $suffix = $v->getClientOriginalExtension();
                  $v->move('./upload/',$names.'.'.$suffix);
                  $pic['goodsid'] = $id;
-                 $pic['picurl'] = './upload/'.$names.'.'.$suffix;
+                 $pic['picurl'] = '/upload/'.$names.'.'.$suffix;
                  $goods[] = $pic;
             }           
         }

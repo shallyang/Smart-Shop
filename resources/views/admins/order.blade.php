@@ -94,9 +94,9 @@
                         <td class=" ">
                             <font>
                                 <font>
-                                @foreach(explode(',',$v->goodsid) as $key => $val)
+                                @foreach($goodsimgs[$k] as $key => $val)
 
-                                    <img src="/images/admin/0.jpg" alt="" width="50">
+                                    <img src="{{$val}}" alt="" width="50">
                                 @endforeach
                                 </font>
                             </font>

@@ -91,7 +91,7 @@
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                 @foreach($res as $k => $v)
-                <tr class="odd">
+                <tr class="@if($k % 2 == 1) odd @else even @endif">
                         <td class="sorting_1">
                             <font>
                                 <font>{{$v->goodsid}}</font>
@@ -127,7 +127,7 @@
                         <td class=" ">
                             <font>
                                 <font>
-                                    {{$v->goodsdescribe}}
+                                    {{substr($v->goodsdescribe,0,20) .'......'}}
                                 </font>
                             </font>
                         </td>

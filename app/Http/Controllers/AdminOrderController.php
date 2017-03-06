@@ -17,11 +17,34 @@ class AdminOrderController extends Controller
     {
         //遍历数据库,取出订单列表
         $res = DB::table('order_table')->where('orderid','like','%'.$request->input('orderid').'%')->paginate($request->input('limit',10));
-        // $goodsid = $res->goodsid;
 
+        $goodsid = $res->all();
+        // $goodsid = explode(',',$res->goodsid);
+        // echo '<pre>';
+        foreach($goodsid as $k => $v)
+        {
+            $id = explode(',',$v->goodsid);
+            // var_dump($id);
+            foreach ($id as $key => $value) {
+                //获取对应id的商品图片
+                $goodsimg = DB::table('goods_pic_table')->where('goodsid',$value)->first()->picurl;
+                // 将获取的图片放在一个数组中
+                $goodsimgs[] = $goodsimg;
+            }
+                // var_dump($goodsimgs);
+                // echo '<br>';
+            //获取所有的数组放在一个新的数组中方便传值
+            $allgoodsimgs[] = $goodsimgs;
+            $goodsimgs = null;
+            // echo '<hr>';
+
+        }
+        // var_dump($allgoodsimgs);
+            // die;
         // dd($res);
+        // dd($goodsid);
         //打开所有订单列表
-        return view('admins.order',['res'=>$res, 'request'=>$request]);
+        return view('admins.order',['res'=>$res, 'request'=>$request,'goodsimgs'=>$allgoodsimgs]);
     }
 
     public function getClose($id)
