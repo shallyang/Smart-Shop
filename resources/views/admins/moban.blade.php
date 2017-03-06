@@ -211,9 +211,16 @@
 
     <!-- Themer Script (Remove if not needed) -->
     <script src="/admins/js/core/themer.js"></script>
-
+    
     <!-- Demo Scripts (remove if not needed) -->
     <script src="/admins/js/demo/demo.dashboard.js"></script>
+    <!-- 描述改为百度编辑 -->
+     <script type="text/javascript" charset="utf-8" src="/admins/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/admins/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/admins/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('editor');
+    </script>
 
 </body>
 </html>

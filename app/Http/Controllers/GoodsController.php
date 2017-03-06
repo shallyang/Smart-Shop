@@ -138,9 +138,45 @@ class GoodsController extends Controller
     // 商品添加数据处理
     public function postGoodsinsert(Request $request)
     {
-        $res = $request->except('_token');
-        $pro = DB::table('goods_table')->insert($res);
-        if($pro){
+         $this->validate($request, [
+
+                'goodsname' => 'required',
+                'goodsnum' => 'required',
+                'goodssize'=>'required',
+                'goodsprice'=>'required',
+                'goodscolor'=>'required',
+                'goodsdescribe'=>'required'
+
+            ],[
+                //自定义错误消息
+                'goodsname.required'=>'商品名不能为空',
+                'goodsnum.required'=>'商品数量不能为空',
+                'goodssize.required'=>'商品规格不能为空',
+                'goodsprice.required'=>'商品价格不能为空',
+                'goodscolor.required'=>'商品颜色不能为空',
+                'goodsdescribe.required'=>'商品描述不能为空',
+        ]);
+        
+        $res = $request->except('_token','picurl');
+        $id = DB::table('goods_table')->insertGetId($res);
+        $goods = [];
+        if($request->hasFile('picurl'))
+        {
+            foreach($request->file('picurl') as $k=>$v)
+            {             
+                $pic = [];   
+                $names = rand(111,999);
+                $suffix = $v->getClientOriginalExtension();
+                 $v->move('./upload/',$names.'.'.$suffix);
+                 $pic['goodsid'] = $id;
+                 $pic['picurl'] = './upload/'.$names.'.'.$suffix;
+                 $goods[] = $pic;
+            }           
+        }
+        // var_dump($goods);die;
+        
+        $chi = DB::table('goods_pic_table')->insert($goods);
+        if($chi){
             return redirect('admin/goods/goodslist')->with('info','添加成功!');
         }else{
             return back()->with('info','添加失败!');
