@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
+<meta name="description" content="Smart-专业的综合网上购物商城,销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万个品牌优质商品.便捷、诚信的服务，为您提供愉悦的网上购物体验!" />
+  <meta name="Keywords" content="网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,Smart" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
@@ -127,7 +129,7 @@ $(document).ready(function() {
 				</div>	
 				<div class="header-search">
 					<form action="#" method="post">
-						<input type="search" name="Search" placeholder="Search for a Product..." required="">
+						<input type="search" name="Search" placeholder="请输入需要搜索的商品" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<i class="fa fa-search" aria-hidden="true"> </i>
 						</button>
@@ -1053,59 +1055,6 @@ $(document).ready(function() {
 	<script src="js/jquery.knob.js"></script>
 	<script src="js/jquery.throttle.js"></script>
 	<script src="js/jquery.classycountdown.js"></script>
-		<script>
-			$(document).ready(function() {
-				$('#countdown1').ClassyCountdown({
-					end: '1388268325',
-					now: '1387999995',
-					labels: true,
-					style: {
-						element: "",
-						textResponsive: .5,
-						days: {
-							gauge: {
-								thickness: .10,
-								bgColor: "rgba(0,0,0,0)",
-								fgColor: "#1abc9c",
-								lineCap: 'round'
-							},
-							textCSS: 'font-weight:300; color:#fff;'
-						},
-						hours: {
-							gauge: {
-								thickness: .10,
-								bgColor: "rgba(0,0,0,0)",
-								fgColor: "#05BEF6",
-								lineCap: 'round'
-							},
-							textCSS: ' font-weight:300; color:#fff;'
-						},
-						minutes: {
-							gauge: {
-								thickness: .10,
-								bgColor: "rgba(0,0,0,0)",
-								fgColor: "#8e44ad",
-								lineCap: 'round'
-							},
-							textCSS: ' font-weight:300; color:#fff;'
-						},
-						seconds: {
-							gauge: {
-								thickness: .10,
-								bgColor: "rgba(0,0,0,0)",
-								fgColor: "#f39c12",
-								lineCap: 'round'
-							},
-							textCSS: ' font-weight:300; color:#fff;'
-						}
-
-					},
-					onEndCallback: function() {
-						console.log("Time out!");
-					}
-				});
-			});
-		</script>
 	<!-- //countdown.js -->
 	<!-- menu js aim -->
 	<script src="js/jquery.menu-aim.js"> </script>
