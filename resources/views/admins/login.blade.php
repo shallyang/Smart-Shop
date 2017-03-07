@@ -22,13 +22,22 @@
 <body>
     
     <script src="/js/libs/jquery-1.8.3.min.js"></script>
-
     <div id="mws-login-wrapper">
+        @if(session('info'))
+            <div class="mws-form-message error" id='dvss'>
+            {{session('info')}}
+        
+            </div>
+        @endif
+        <script type="text/javascript">
+            setTimeout(function(){
+                $('#dvss').slideUp(1000);
+            },3000)
+        </script>
         <div id="mws-login">
             <h1>登录框</h1>
             <div class="mws-login-lock"><i class="icon-lock"></i></div>
             <div id="mws-login-form">
-
                <form action="/admin/login/login" method='post' enctype='multipart/form-data'>
                     <div class="mws-form-row">
                         <div class="mws-form-item">

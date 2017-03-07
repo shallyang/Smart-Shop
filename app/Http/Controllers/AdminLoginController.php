@@ -32,7 +32,7 @@ class AdminLoginController extends Controller
 				return redirect('/admin');
 			}else{
 				// echo '密码输入不正确';
-				return view('admins/login');
+				return back()->with('info','用户名和密码不匹配');
 			}
 					
 		} else {
