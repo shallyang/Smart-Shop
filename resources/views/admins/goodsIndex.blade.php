@@ -72,10 +72,10 @@
                                     <span>{{$v->name}}</span>
                                 </td>
                                 <td class=" ">
-                                    @if($v->status == 0)
-                                        下架
+                                    @if($v->status == 1)
+                                        已下架
                                     @else
-                                        上架
+                                        已上架
                                     @endif
                                 </td>                            
                                 <td class=" ">
