@@ -83,7 +83,7 @@ class AdminUserController extends Controller
     public function getOut()
     {
         session()->flush();
-        return redirect('/admin/login');
+        return redirect('/admin');
     }
 }
 
