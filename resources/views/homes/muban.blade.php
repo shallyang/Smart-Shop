@@ -1,22 +1,46 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="keywords" content="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"> 
-<link href="css/animate.min.css" rel="stylesheet" type="text/css" media="all"><!-- animation -->
-<link href="css/menu.css" rel="stylesheet" type="text/css" media="all"> <!-- menu style -->  
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" /> <!-- menu style --> 
+<link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" /> <!-- banner slider --> 
+<link href="css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider -->  
 <!-- //Custom Theme files -->
 <!-- font-awesome icons -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="js/jquery-2.2.3.min.js"></script> 
-<script src="js/jquery-scrolltofixed-min.js" type="text/javascript"></script><!-- fixed nav js -->
+<!-- //js --> 
+<!-- web-fonts -->
+<link href='http://fonts.useso.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Offside' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+<!-- web-fonts --> 
+<script src="js/owl.carousel.js"></script>  
+<script>
+$(document).ready(function() { 
+	$("#owl-demo").owlCarousel({ 
+	  autoPlay: 3000, //Set AutoPlay to 3 seconds 
+	  items :4,
+	  itemsDesktop : [640,5],
+	  itemsDesktopSmall : [480,2],
+	  navigation : true
+ 
+	}); 
+}); 
+</script>
+<script src="js/jquery-scrolltofixed-min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
 
@@ -37,12 +61,6 @@
         });
     });
 </script>
-<!-- //js --> 
-<!-- web-fonts -->
-<link href="http://fonts.useso.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=Lovers+Quarrel" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=Offside" rel="stylesheet" type="text/css"> 
-<!-- web-fonts -->  
 <!-- start-smooth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>	
@@ -71,47 +89,41 @@
 		});
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
-<style>@-webkit-keyframes marqueeAnimation-1202815  { 100%  {margin-left:-1577px}}</style></head>
+<script src="js/bootstrap.js"></script>	
+</head>
 <body>
+
+	<script>
+		$('#myModal88').modal('show');
+	</script> 
 	<!-- header -->
 	<div class="header">
 		<div class="w3ls-header"><!--header-one--> 
 			<div class="w3ls-header-left">
-				<p><a href="#">UPTO $50 OFF ON LAPTOPS | USE COUPON CODE LAPPY </a></p>
+				<p><a href="#">Smart网上超市</a></p>
 			</div>
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> My Account<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> 个人中心<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="login.html">Login </a></li> 
-							<li><a href="signup.html">Sign Up</a></li> 
-							<li><a href="login.html">My Orders</a></li>  
-							<li><a href="login.html">Wallet</a></li> 
+							<li><a href="login.html">登陆 </a></li> 
+							<li><a href="signup.html">注册</a></li> 
+							<li><a href="login.html">我的订单</a></li>
 						</ul> 
-					</li> 
-
+					</li>  
 					<li class="dropdown head-dpdn">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gift" aria-hidden="true"></i> Gift Cards<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="offers.html">Product Gift card</a></li> 
-							<li><a href="offers.html">Occasions Register</a></li>
-							<li><a href="offers.html">View Balance</a></li> 
-						</ul> 
-					</li> 
-
-					<li class="dropdown head-dpdn">
-						<a href="help.html" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+						<a href="help.html" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a>
 					</li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div> 
 		</div>
-		<div class="header-two scroll-to-fixed-fixed" style="z-index: 1000; position: fixed; top: 0px; margin-left: 0px; width: 1349px; left: 0px;"><!-- header-two -->
+		<div class="header-two"><!-- header-two -->
 			<div class="container">
 				<div class="header-logo">
-					<h1><a href="index.html"><span>S</span>mart <i>Bazaar</i></a></h1>
-					<h6>Your stores. Your place.</h6> 
+					<h1><a href="index.html"><span>S</span>mart</a></h1>
+					<h6>你的超市. 你的地盘.</h6> 
 				</div>	
 				<div class="header-search">
 					<form action="#" method="post">
@@ -123,12 +135,12 @@
 				</div>
 				<div class="header-cart"> 
 					<div class="my-account">
-						<a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> CONTACT US</a>						
+						<a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> 联系我们</a>						
 					</div>
 					<div class="cart"> 
 						<form action="#" method="post" class="last"> 
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="display" value="1" />
 							<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
 						</form>  
 					</div>
@@ -136,16 +148,15 @@
 				</div> 
 				<div class="clearfix"> </div>
 			</div>		
-		</div><div style="display: block; width: 1349px; height: 246.344px; float: none;"></div><!-- //header-two -->
+		</div><!-- //header-two -->
 		<div class="header-three"><!-- header-three -->
 			<div class="container">
 				<div class="menu">
 					<div class="cd-dropdown-wrapper">
-						<a class="cd-dropdown-trigger" href="#0">Store Categories</a>
+						<a class="cd-dropdown-trigger" href="#0">商品分类</a>
 						<nav class="cd-dropdown"> 
-							<a href="#0" class="cd-close">Close</a>
-							<ul class="cd-dropdown-content"> 
-								<li><a href="offers.html">Today's Offers</a></li>
+							<a href="#0" class="cd-close">关闭</a>
+							<ul class="cd-dropdown-content">
 								<li class="has-children">
 									<a href="#">Electronics</a> 
 									<ul class="cd-secondary-dropdown is-hidden">
@@ -185,10 +196,10 @@
 											<a href="#">ENTERTAINMENT</a> 
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#">All Electronics</a></li>
-												<li><a href="products.html">Tv &amp; Accessories</a></li>
+												<li><a href="products.html">Tv & Accessories</a></li>
 												<li><a href="products.html">Digital Camera</a></li>
 												<li><a href="products.html">Gaming</a></li>
-												<li><a href="products.html">Home Audio &amp; Theater</a></li>
+												<li><a href="products.html">Home Audio & Theater</a></li>
 												<li class="has-children">
 													<a href="#">Computer</a>
 													<ul class="is-hidden">
@@ -197,7 +208,7 @@
 														<li><a href="products.html">Gaming PC</a></li>
 														<li><a href="products.html">Monitors</a></li>
 														<li><a href="products.html">Networking</a></li>
-														<li><a href="products.html">Printers &amp; Supplies</a></li>
+														<li><a href="products.html">Printers & Supplies</a></li>
 														<li><a href="products.html">Accessories</a></li>
 													</ul>
 												</li> 
@@ -213,7 +224,7 @@
 														<li><a href="products.html">Rice Cookers</a></li>
 														<li><a href="products.html">Mixer Juicer</a></li>
 														<li><a href="products.html">Grinder</a></li>
-														<li><a href="products.html">Blenders &amp; Choppers</a></li>
+														<li><a href="products.html">Blenders & Choppers</a></li>
 														<li><a href="products.html">Microwave Oven</a></li>
 														<li><a href="products.html">Food Processors</a></li>
 													</ul>
@@ -223,7 +234,7 @@
 												<li><a href="products.html">Gas Stove</a></li>
 												<li><a href="products.html">Vacuum Cleaner</a></li>
 												<li><a href="products.html">Sewing Machine</a></li> 
-												<li><a href="products.html">Heaters &amp; Fans</a></li>
+												<li><a href="products.html">Heaters & Fans</a></li>
 											</ul>
 										</li>
 										<li class="has-children">
@@ -231,7 +242,7 @@
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#0">All Electronics </a></li>
 												<li><a href="products.html">Wifi Dongle</a></li>
-												<li><a href="products.html">Router &amp; Modem</a></li>
+												<li><a href="products.html">Router & Modem</a></li>
 												<li class="has-children"><a href="#">Storage Devices</a>
 													<ul class="is-hidden">
 														<li class="go-back"><a href="#0"> </a></li>
@@ -254,7 +265,7 @@
 												<li class="go-back"><a href="#0">All Electronics </a></li>
 												<li><a href="products.html">Epilator</a></li> 
 												<li><a href="products.html">Hair Styler</a></li>
-												<li><a href="products.html">Trimmer &amp; Shaver</a></li>
+												<li><a href="products.html">Trimmer & Shaver</a></li>
 												<li><a href="products.html">Health Care</a></li> 
 												<li><a href="products.html">cables</a></li>
 											</ul>
@@ -272,7 +283,7 @@
 												<li class="go-back"><a href="#">All Fashion Stores</a></li>
 												<li><a href="products1.html">Ethnic wear </a></li>
 												<li><a href="products1.html">Maternity wear</a></li>
-												<li><a href="products1.html">inner &amp; nightwear </a></li>
+												<li><a href="products1.html">inner & nightwear </a></li>
 												<li><a href="products1.html">casual wear </a></li>
 												<li><a href="products1.html">formal wear</a></li>
 												<li><a href="products1.html">Sports wear</a></li>
@@ -285,8 +296,8 @@
 												<li><a href="products1.html">Jeans</a></li>  
 												<li><a href="products1.html">Casual wear</a></li> 
 												<li><a href="products1.html">Shorts</a></li> 
-												<li><a href="products1.html">T-Shirts &amp; Polos</a></li> 
-												<li><a href="products1.html">Trousers &amp; Chinos</a></li> 
+												<li><a href="products1.html">T-Shirts & Polos</a></li> 
+												<li><a href="products1.html">Trousers & Chinos</a></li> 
 											</ul>
 										</li> 
 										<li class="has-children">
@@ -318,7 +329,7 @@
 														<li><a href="products1.html">Boots</a></li>
 													</ul> 
 												</li> 
-												<li><a href="products1.html">Stoles &amp; Scarves</a></li>
+												<li><a href="products1.html">Stoles & Scarves</a></li>
 												<li><a href="products1.html">Handbags</a></li>
 											</ul>
 										</li>
@@ -326,8 +337,8 @@
 											<a href="#">BEAUTY</a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#">All Fashion Stores</a></li>
-												<li><a href="products1.html">Perfumes &amp; Deos</a></li>
-												<li><a href="products1.html">Lipsticks &amp; Nail Polish</a></li>
+												<li><a href="products1.html">Perfumes & Deos</a></li>
+												<li><a href="products1.html">Lipsticks & Nail Polish</a></li>
 												<li><a href="products1.html">Beauty Gift Hampers</a></li> 
 												<li><a href="products1.html">Personal Grooming</a></li>
 												<li><a href="products1.html">Travel bags</a></li>
@@ -341,13 +352,13 @@
 												<li><a href="products1.html">Nail Care</a></li>
 												<li><a href="products1.html">Hair Care</a></li>
 												<li><a href="products1.html">Body Care</a></li>
-												<li><a href="products1.html">Bath &amp; Spa</a></li>   
+												<li><a href="products1.html">Bath & Spa</a></li>   
 											</ul>
 										</li>
 									</ul> <!-- .cd-secondary-dropdown --> 
 								</li> <!-- .has-children -->
 								<li class="has-children">
-									<a href="products2.html">Kids Fashion &amp; Toys</a> 
+									<a href="products2.html">Kids Fashion & Toys</a> 
 									<ul class="cd-secondary-dropdown is-hidden"> 
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products2.html">All Kids Fashions</a></li>
@@ -356,10 +367,10 @@
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#">All Kids Fashions</a></li>
 												<li><a href="products2.html">Ethnic wear </a></li> 
-												<li><a href="products2.html">inner &amp; Sleepwear </a></li>
-												<li><a href="products2.html">Dresses &amp; Frocks </a></li>
+												<li><a href="products2.html">inner & Sleepwear </a></li>
+												<li><a href="products2.html">Dresses & Frocks </a></li>
 												<li><a href="products2.html">Winter wear</a></li>
-												<li><a href="products2.html">Diaper &amp; Accessories</a></li>
+												<li><a href="products2.html">Diaper & Accessories</a></li>
 											</ul>
 										</li> 
 										<li class="has-children"><a href="#">KIDS FASHION</a>
@@ -367,15 +378,15 @@
 												<li class="go-back"><a href="#">All Kids Fashions</a></li>
 												<li><a href="products2.html">Footwear</a></li> 
 												<li><a href="products2.html">Sunglasses </a></li>
-												<li><a href="products2.html">School &amp; Stationery</a></li>
+												<li><a href="products2.html">School & Stationery</a></li>
 												<li><a href="products2.html">Jewellery</a></li>
-												<li><a href="products2.html">Hair bands &amp; Clips</a></li>
+												<li><a href="products2.html">Hair bands & Clips</a></li>
 											</ul>
 										</li>
 										<li class="has-children"><a href="#">Baby Care</a>
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#">All Kids Fashions</a></li>
-												<li><a href="products2.html">Lotions, Oil &amp; Powder </a></li> 
+												<li><a href="products2.html">Lotions, Oil & Powder </a></li> 
 												<li><a href="products2.html">Soaps, Shampoo </a></li>
 												<li><a href="products2.html">Bath Towels</a></li> 
 												<li class="has-children">
@@ -390,10 +401,10 @@
 												<li><a href="products2.html">Toddlers' Rooms</a></li> 	
 											</ul><!-- .cd-secondary-dropdown --> 
 										</li> <!-- .has-children -->								
-										<li class="has-children"><a href="#">TOYS &amp; GAMES </a>
+										<li class="has-children"><a href="#">TOYS & GAMES </a>
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#">All Kids Fashions</a></li>
-												<li><a href="products2.html">Art &amp; Crafts</a></li> 
+												<li><a href="products2.html">Art & Crafts</a></li> 
 												<li><a href="products2.html">Educational Toys </a></li>
 												<li><a href="products2.html">Baby Toys</a></li> 
 												<li><a href="products2.html">Outdoor Play </a></li> 
@@ -403,18 +414,18 @@
 										<li> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#">All Kids Fashions</a></li>
-												<li><a href="products2.html">Toy Tips &amp; Trends</a></li> 
+												<li><a href="products2.html">Toy Tips & Trends</a></li> 
 												<li><a href="products2.html">Preschool Toys</a></li>
 												<li><a href="products2.html">Musical Instruments</a></li> 
-												<li><a href="products2.html">Bikes &amp; Ride-Ons</a></li>
+												<li><a href="products2.html">Bikes & Ride-Ons</a></li>
 												<li><a href="products2.html">Video Games</a></li>
-												<li><a href="products2.html">PC &amp; Digital Gaming</a></li>
+												<li><a href="products2.html">PC & Digital Gaming</a></li>
 											</ul>	
 										</li> 
 									</ul><!-- .cd-secondary-dropdown --> 
 								</li> <!-- .has-children --> 
 								<li class="has-children">
-									<a href="#">Home, Furniture &amp; Patio</a> 
+									<a href="#">Home, Furniture & Patio</a> 
 									<ul class="cd-secondary-dropdown is-hidden">
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products3.html">All Products</a></li>
@@ -423,8 +434,8 @@
 											<ul class="is-hidden">  
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products3.html">Dinner Sets </a></li> 
-												<li><a href="products3.html">Cookware &amp; Bakeware </a></li>
-												<li><a href="products3.html">Containers &amp; Jars </a></li>
+												<li><a href="products3.html">Cookware & Bakeware </a></li>
+												<li><a href="products3.html">Containers & Jars </a></li>
 												<li><a href="products3.html">Kitchen Tools </a></li>
 												<li><a href="products3.html">Food Storage</a></li>
 												<li><a href="products3.html">Casseroles</a></li>
@@ -448,21 +459,21 @@
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products3.html">Lighting</a></li> 
 												<li><a href="products3.html">Painting</a></li>
-												<li><a href="products3.html">Curtains &amp; Blinds</a></li>
+												<li><a href="products3.html">Curtains & Blinds</a></li>
 												<li><a href="products3.html">Patio Furniture</a></li>
-												<li><a href="products3.html">Wardrobes &amp; Cabinets</a></li>
+												<li><a href="products3.html">Wardrobes & Cabinets</a></li>
 												<li><a href="products3.html">Mattresses</a></li>
 											</ul>
 										</li>  
 										<li class="has-children">
-											<a href="#">Gardening &amp; Lawn </a> 
+											<a href="#">Gardening & Lawn </a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"> </a></li>  
 												<li><a href="products3.html">Gardening </a></li> 
 												<li><a href="products3.html">Landscaping </a></li>
 												<li><a href="products3.html">Sheds</a></li>
 												<li><a href="products3.html">Outdoor Storage  </a></li>
-												<li><a href="products3.html">Garden &amp; Ideas </a></li>
+												<li><a href="products3.html">Garden & Ideas </a></li>
 												<li><a href="products3.html">Patio Tips</a></li>
 											</ul>
 										</li> 
@@ -470,7 +481,7 @@
 											<a href="#">Garage Storage</a> 
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#"></a></li>
-												<li><a href="products3.html">Baskets &amp; Bins </a></li> 
+												<li><a href="products3.html">Baskets & Bins </a></li> 
 												<li><a href="products3.html">Garage Door Openers</a></li>
 												<li><a href="products3.html">Free Standing Shelves </a></li>
 												<li><a href="products3.html">Floor cleaning</a></li>
@@ -480,7 +491,7 @@
 									</ul><!-- .cd-secondary-dropdown --> 
 								</li> <!-- .has-children -->  
 								<li class="has-children">
-									<a href="#">Sports, Fitness &amp; Outdoor</a>
+									<a href="#">Sports, Fitness & Outdoor</a>
 									<ul class="cd-secondary-dropdown is-hidden">
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products4.html">All Products</a></li>
@@ -523,7 +534,7 @@
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products4.html"> Airbeds</a></li> 
 												<li><a href="products4.html">Tents </a></li>
-												<li><a href="products4.html">Gazebo's &amp; Shelters</a></li>
+												<li><a href="products4.html">Gazebo's & Shelters</a></li>
 												<li><a href="products4.html">Coolers </a></li>
 												<li><a href="products4.html">Canopies</a></li>
 												<li><a href="products4.html">Sleeping Bags</a></li>
@@ -534,9 +545,9 @@
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products4.html">Shooting </a></li> 
-												<li><a href="products4.html">Knives &amp; Tools </a></li>
-												<li><a href="products4.html">Optics &amp; Binoculars </a></li>
-												<li><a href="products4.html">Lights &amp; Lanterns </a></li>
+												<li><a href="products4.html">Knives & Tools </a></li>
+												<li><a href="products4.html">Optics & Binoculars </a></li>
+												<li><a href="products4.html">Lights & Lanterns </a></li>
 												<li><a href="products4.html">Hunting Clothing </a></li>
 											</ul>
 										</li> 
@@ -544,7 +555,7 @@
 											<a href="#">Other</a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
-												<li><a href="products4.html">Riding Gears &amp; More </a></li> 
+												<li><a href="products4.html">Riding Gears & More </a></li> 
 												<li><a href="products4.html">Body Massagers </a></li>
 												<li><a href="products4.html">Health Monitors </a></li>
 												<li><a href="products4.html">Health Drinks </a></li> 
@@ -558,14 +569,14 @@
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products5.html">All Products</a></li>
 										<li class="has-children">
-											<a href="#">Veggies &amp; Fruits </a> 
+											<a href="#">Veggies & Fruits </a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products5.html">Vegetables </a></li> 
 												<li><a href="products5.html">Fruits </a></li>
 												<li><a href="products5.html">Dry Fruits</a></li> 
-												<li><a href="products5.html">Snacks &amp; Cookies </a></li>
-												<li><a href="products5.html">Breakfast &amp; Cereal</a></li> 
+												<li><a href="products5.html">Snacks & Cookies </a></li>
+												<li><a href="products5.html">Breakfast & Cereal</a></li> 
 											</ul> 
 										</li> 
 										<li class="has-children">
@@ -575,8 +586,8 @@
 												<li><a href="products5.html">Beverages </a></li> 
 												<li><a href="products5.html">Baking </a></li>
 												<li><a href="products5.html">Emergency Food </a></li>
-												<li><a href="products5.html">Candy &amp; Gum </a></li>
-												<li><a href="products5.html">Meals &amp; Pasta </a></li>
+												<li><a href="products5.html">Candy & Gum </a></li>
+												<li><a href="products5.html">Meals & Pasta </a></li>
 											</ul>
 										</li> 
 										<li class="has-children">
@@ -595,7 +606,7 @@
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products5.html">Laundry Room </a></li> 
-												<li><a href="products5.html">Paper &amp; Plastic</a></li>
+												<li><a href="products5.html">Paper & Plastic</a></li>
 												<li><a href="products5.html">Pest Control </a></li>
 												<li><a href="products5.html">Batteries </a></li> 
 											</ul>
@@ -624,7 +635,7 @@
 									</ul><!-- .cd-secondary-dropdown --> 
 								</li> <!-- .has-children -->  
 								<li class="has-children">
-									<a href="#">Photo, Gifts &amp; Office Supplies</a>
+									<a href="#">Photo, Gifts & Office Supplies</a>
 									<ul class="cd-secondary-dropdown is-hidden">
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products6.html">All Products</a></li>
@@ -635,7 +646,7 @@
 												<li><a href="products6.html">Best Priced</a></li> 
 												<li><a href="products6.html">Chocolates </a></li>
 												<li><a href="products6.html">Gift Cards </a></li>
-												<li><a href="products6.html">Fashion &amp; Accessories </a></li>
+												<li><a href="products6.html">Fashion & Accessories </a></li>
 												<li><a href="products6.html">Decorative Plants </a></li>
 											</ul>
 										</li> 
@@ -656,7 +667,7 @@
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products6.html">Personalized Gifts </a></li> 
 												<li><a href="products6.html">Flowers </a></li>
-												<li><a href="products6.html">Cards &amp; Toys</a></li>
+												<li><a href="products6.html">Cards & Toys</a></li>
 												<li><a href="products6.html">Show pieces </a></li>
 												<li><a href="products6.html">Photo Books</a></li>
 											</ul>
@@ -679,7 +690,7 @@
 												<li><a href="products6.html">Calendars</a></li> 
 												<li><a href="products6.html">Mousepads</a></li>
 												<li><a href="products6.html">Phone Cases</a></li>
-												<li><a href="products6.html">Tablet &amp; Laptop Cases</a></li>
+												<li><a href="products6.html">Tablet & Laptop Cases</a></li>
 												<li><a href="products6.html">Mounted Photos</a></li>
 											</ul>
 										</li> 
@@ -697,7 +708,7 @@
 									</ul><!-- .cd-secondary-dropdown --> 
 								</li> 
 								<li class="has-children">
-									<a href="#">Health, Beauty &amp; Pharmacy</a>
+									<a href="#">Health, Beauty & Pharmacy</a>
 									<ul class="cd-secondary-dropdown is-hidden">
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products7.html">All Products</a></li>
@@ -709,7 +720,7 @@
 												<li><a href="products7.html">Sports Nutrition </a></li>
 												<li><a href="products7.html">Vision </a></li>
 												<li><a href="products7.html">Vitamins </a></li>
-												<li><a href="products7.html">Diet &amp; Nutrition </a></li>
+												<li><a href="products7.html">Diet & Nutrition </a></li>
 											</ul>
 										</li> 
 										<li class="has-children">
@@ -727,7 +738,7 @@
 											<a href="#">Beauty </a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
-												<li><a href="products7.html">Massage &amp; Spa </a></li> 
+												<li><a href="products7.html">Massage & Spa </a></li> 
 												<li><a href="products7.html">Face Wash</a></li>
 												<li><a href="products7.html">Facial Cleanser</a></li>
 												<li><a href="products7.html">Makeup </a></li>
@@ -739,7 +750,7 @@
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products7.html">Home Delivery </a></li> 
-												<li><a href="products7.html">History &amp; Reports </a></li>
+												<li><a href="products7.html">History & Reports </a></li>
 												<li><a href="products7.html">Transfer Prescriptions </a></li>
 												<li><a href="products7.html">Health CheckUp</a></li>
 												<li><a href="products7.html">Mobile App</a></li>
@@ -778,21 +789,21 @@
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products8.html">Vehicle Electronics</a></li> 
-												<li><a href="products8.html">Stereos &amp; Monitors</a></li>
+												<li><a href="products8.html">Stereos & Monitors</a></li>
 												<li><a href="products8.html">Bluetooth Devices</a></li>
 												<li><a href="products8.html">GPS Navigation</a></li>
-												<li><a href="products8.html">Speakers &amp; Tweeters</a></li>
+												<li><a href="products8.html">Speakers & Tweeters</a></li>
 											</ul>
 										</li> 
 										<li class="has-children">
-											<a href="#">Safety &amp; Security </a> 
+											<a href="#">Safety & Security </a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products8.html">Anti-Theft Devices </a></li> 
 												<li><a href="products8.html">Helmets</a></li>
 												<li><a href="products8.html">Sensors</a></li>
 												<li><a href="products8.html">Auto Repair Tools </a></li>
-												<li><a href="products8.html">Antifreeze &amp; Coolants </a></li>
+												<li><a href="products8.html">Antifreeze & Coolants </a></li>
 											</ul>
 										</li>
 										<li class="has-children">
@@ -812,7 +823,7 @@
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products8.html">Wheel covers </a></li> 
 												<li><a href="products8.html">Car Lighting </a></li>
-												<li><a href="products8.html">Polish &amp; Waxes</a></li>
+												<li><a href="products8.html">Polish & Waxes</a></li>
 												<li><a href="products8.html">Cargo Management</a></li>
 												<li><a href="products8.html">Car Decoration </a></li>
 											</ul>
@@ -821,9 +832,9 @@
 											<a href="#">Car Care</a> 
 											<ul class="is-hidden">
 												<li class="go-back"><a href="#"></a></li>
-												<li><a href="products8.html">Auto Tips &amp; Advice </a></li> 
-												<li><a href="products8.html">Car Washes &amp; Cleaners </a></li>
-												<li><a href="products8.html">Car Wax &amp; Polish</a></li>
+												<li><a href="products8.html">Auto Tips & Advice </a></li> 
+												<li><a href="products8.html">Car Washes & Cleaners </a></li>
+												<li><a href="products8.html">Car Wax & Polish</a></li>
 												<li><a href="products8.html">Cleaning Tools</a></li>
 												<li><a href="products8.html">Detailing Kits </a></li>
 											</ul>
@@ -831,7 +842,7 @@
 									</ul><!-- .cd-secondary-dropdown --> 
 								</li>
 								<li class="has-children">
-									<a href="#">Books, Music &amp; Movies</a>
+									<a href="#">Books, Music & Movies</a>
 									<ul class="cd-secondary-dropdown is-hidden">
 										<li class="go-back"><a href="#">Menu</a></li>
 										<li class="see-all"><a href="products9.html">All Products</a></li>
@@ -851,7 +862,7 @@
 												<li><a href="products9.html">Academic Text </a></li>
 												<li><a href="products9.html">Romance Books </a></li>
 												<li><a href="products9.html">Journals </a></li>
-												<li><a href="products9.html">Children's &amp; Teen Books </a></li>
+												<li><a href="products9.html">Children's & Teen Books </a></li>
 											</ul>
 										</li> 
 										<li class="has-children">
@@ -881,7 +892,7 @@
 											<ul class="is-hidden"> 
 												<li class="go-back"><a href="#"></a></li>
 												<li><a href="products9.html">New Releases </a></li> 
-												<li><a href="products9.html">Children &amp; Family </a></li>
+												<li><a href="products9.html">Children & Family </a></li>
 												<li><a href="products9.html">Action</a></li>
 												<li><a href="products9.html">Classic Movies </a></li>
 												<li><a href="products9.html">Bollywood Movies </a></li>
@@ -916,7 +927,7 @@
 					</div> <!-- .cd-dropdown-wrapper -->	 
 				</div>
 				<div class="move-text">
-					<div class="marquee"><div style="width: 100000px; margin-left: 630px; animation: marqueeAnimation-1202815 17.5159s linear 1s infinite running;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 0px; float: left;"><a href="offers.html"> New collections are available here...... <span>Get extra 10% off on everything | no extra taxes </span> <span> Try shipping pass free for 15 days with unlimited</span></a></div></div></div>
+					<div class="marquee"><a href="offers.html"> 欢迎光临本网站 <span>今日特价商品 </span></a></div>
 					<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
 					<script>
 					  $('.marquee').marquee({ pauseOnHover: true });
@@ -926,12 +937,12 @@
 			</div>
 		</div>
 	</div>
-	<!-- //header --> 	
-	<!-- sign up-page -->
+	<!-- //header -->	
+	<!-- banner -->
 	@section('content')    
 
     @show
-	<!-- //sign up-page --> 
+	<!-- //deals --> 
 	<!-- footer-top -->
 	<div class="w3agile-ftr-top">
 		<div class="container">
@@ -941,8 +952,8 @@
 						<i class="fa fa-truck" aria-hidden="true"></i>
 					</div> 
 					<div class="ftr-top-right">
-						<h4>FREE DELIVERY</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4> 免费送货</h4>
+						<p> 单笔购物满188元享受我司提供的免费送货服务,足不出户让你享受互联网的便捷服务!</p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div> 
@@ -951,8 +962,8 @@
 						<i class="fa fa-user" aria-hidden="true"></i>
 					</div> 
 					<div class="ftr-top-right">
-						<h4>CUSTOMER CARE</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4> 顾客关怀</h4>
+						<p> 为您提供最周到的服务,想您所想,爱您所爱! </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div>
@@ -961,8 +972,8 @@
 						<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
 					</div> 
 					<div class="ftr-top-right">
-						<h4>GOOD QUALITY</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4> 备受好评</h4>
+						<p> 为您提供最优质的货物,如有质量问题直接退款,无需退货! </p>
 					</div>
 					<div class="clearfix"> </div>
 				</div> 
@@ -972,35 +983,7 @@
 	</div>
 	<!-- //footer-top --> 
 	<!-- subscribe -->
-	<div class="subscribe"> 
-		<div class="container">
-			<div class="col-md-6 social-icons w3-agile-icons">
-				<h4>Keep in touch</h4>  
-				<ul>
-					<li><a href="#" class="fa fa-facebook icon facebook"> </a></li>
-					<li><a href="#" class="fa fa-twitter icon twitter"> </a></li>
-					<li><a href="#" class="fa fa-google-plus icon googleplus"> </a></li>
-					<li><a href="#" class="fa fa-dribbble icon dribbble"> </a></li>
-					<li><a href="#" class="fa fa-rss icon rss"> </a></li> 
-				</ul>
-				<ul class="apps"> 
-					<li><h4>Download Our app : </h4> </li>
-					<li><a href="#" class="fa fa-apple"></a></li>
-					<li><a href="#" class="fa fa-windows"></a></li>
-					<li><a href="#" class="fa fa-android"></a></li>
-				</ul>
-			</div> 
-			<div class="col-md-6 subscribe-right">
-				<h4>Sign up for email and get 25%off!</h4>  
-				<form action="#" method="post"> 
-					<input type="text" name="email" placeholder="Enter your Email..." required="">
-					<input type="submit" value="Subscribe">
-				</form>
-				<div class="clearfix"> </div> 
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
+
 	<!-- //subscribe --> 
 	<!-- footer -->
 	<div class="footer">
@@ -1008,45 +991,32 @@
 			<div class="footer-info w3-agileits-info">
 				<div class="col-md-4 address-left agileinfo">
 					<div class="footer-logo header-logo">
-						<h2><a href="index.html"><span>S</span>mart <i>Bazaar</i></a></h2>
-						<h6>Your stores. Your place.</h6>
+						<h2><a href="index.html"><span>S</span>mart </a></h2>
+						<h6>你的超市,你的地盘.</h6>
 					</div>
 					<ul>
-						<li><i class="fa fa-map-marker"></i> 123 San Sebastian, New York City USA.</li>
-						<li><i class="fa fa-mobile"></i> 333 222 3333 </li>
-						<li><i class="fa fa-phone"></i> +222 11 4444 </li>
+						<li><i class="fa fa-map-marker"></i> 北京,昌平,回龙观.</li>
+						<li><i class="fa fa-mobile"></i> 188 8888 8888 </li>
+						<li><i class="fa fa-phone"></i> +86 010-1234567 </li>
 						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com"> mail@example.com</a></li>
 					</ul> 
 				</div>
 				<div class="col-md-8 address-right">
 					<div class="col-md-4 footer-grids">
-						<h3>Company</h3>
+						<h3>公司详情</h3>
 						<ul>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="marketplace.html">Marketplace</a></li>  
-							<li><a href="values.html">Core Values</a></li>  
-							<li><a href="privacy.html">Privacy Policy</a></li>
+							<li><a href="about.html">关于我们</a></li>
+							<li><a href="marketplace.html">公司位置</a></li>
 						</ul>
 					</div>
 					<div class="col-md-4 footer-grids">
-						<h3>Services</h3>
+						<h3>售后服务</h3>
 						<ul>
-							<li><a href="contact.html">Contact Us</a></li>
-							<li><a href="login.html">Returns</a></li> 
-							<li><a href="faq.html">FAQ</a></li>
-							<li><a href="sitemap.html">Site Map</a></li>
-							<li><a href="login.html">Order Status</a></li>
+							<li><a href="contact.html">联系我们</a></li>
+							<li><a href="login.html">申请退款</a></li> 
+							<li><a href="faq.html">常见问题</a></li>
+							<li><a href="login.html">订单状态</a></li>
 						</ul> 
-					</div>
-					<div class="col-md-4 footer-grids">
-						<h3>Payment Methods</h3>
-						<ul>
-							<li><i class="fa fa-laptop" aria-hidden="true"></i> Net Banking</li>
-							<li><i class="fa fa-money" aria-hidden="true"></i> Cash On Delivery</li>
-							<li><i class="fa fa-pie-chart" aria-hidden="true"></i>EMI Conversion</li>
-							<li><i class="fa fa-gift" aria-hidden="true"></i> E-Gift Voucher</li>
-							<li><i class="fa fa-credit-card" aria-hidden="true"></i> Debit/Credit Card</li>
-						</ul>  
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -1057,7 +1027,7 @@
 	<!-- //footer -->		
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright © 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">网页模板</a></p>
+			<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 		</div>
 	</div> 
 	<!-- cart-js -->
@@ -1077,15 +1047,72 @@
         		}
         	}
         });
-    </script><div id="PPsbmincart"><form method="post" class="sbmincart-empty" action="https://www.paypal.com/cgi-bin/webscr" target="">    <button type="button" class="sbmincart-closer">×</button>    <ul>            </ul>    <div class="sbmincart-footer">                    <p class="sbmincart-empty-text">Your shopping cart is empty</p>            </div>    <input type="hidden" name="cmd" value="_cart">    <input type="hidden" name="upload" value="1">            <input type="hidden" name="bn" value="sbmincart_AddToCart_WPS_US">    </form></div>  
-	<!-- //cart-js --> 	 
+    </script>  
+	<!-- //cart-js -->	
+	<!-- countdown.js -->	
+	<script src="js/jquery.knob.js"></script>
+	<script src="js/jquery.throttle.js"></script>
+	<script src="js/jquery.classycountdown.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#countdown1').ClassyCountdown({
+					end: '1388268325',
+					now: '1387999995',
+					labels: true,
+					style: {
+						element: "",
+						textResponsive: .5,
+						days: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#1abc9c",
+								lineCap: 'round'
+							},
+							textCSS: 'font-weight:300; color:#fff;'
+						},
+						hours: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#05BEF6",
+								lineCap: 'round'
+							},
+							textCSS: ' font-weight:300; color:#fff;'
+						},
+						minutes: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#8e44ad",
+								lineCap: 'round'
+							},
+							textCSS: ' font-weight:300; color:#fff;'
+						},
+						seconds: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#f39c12",
+								lineCap: 'round'
+							},
+							textCSS: ' font-weight:300; color:#fff;'
+						}
+
+					},
+					onEndCallback: function() {
+						console.log("Time out!");
+					}
+				});
+			});
+		</script>
+	<!-- //countdown.js -->
 	<!-- menu js aim -->
 	<script src="js/jquery.menu-aim.js"> </script>
 	<script src="js/main.js"></script> <!-- Resource jQuery -->
 	<!-- //menu js aim --> 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.js"></script>
-
-<a href="#" id="toTop" style="display: block;"><span id="toTopHover"></span>To Top</a></body></html>
+    <!-- Placed at the end of the document so the pages load faster --> 
+</body>
+</html>
