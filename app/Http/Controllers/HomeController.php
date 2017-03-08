@@ -33,5 +33,10 @@ class HomeController extends Controller
         }
         return $obj;
     }
+
+    public function getLogin()
+    {
+    	return view('/homes/login');
+    }
    
 }

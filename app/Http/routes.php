@@ -47,7 +47,7 @@ Route::group(['middleware'=>'Login'],function(){
 });
 
 
-Route::controller('/home/','HomeController');
+Route::controller('/home','HomeController');
 Route::controller('/order','HomeOrderController');
 Route::controller('/user','HomeUserController');
 
