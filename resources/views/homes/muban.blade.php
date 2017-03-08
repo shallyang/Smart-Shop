@@ -115,7 +115,7 @@ $(document).ready(function() {
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> 个人中心<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{ url('home/login')}}">登陆 </a></li> 
-							<li><a href="{{ url('home/register')}}">注册</a></li> 
+							<li><a href="{{ url('home/register')}}">创建用户</a></li> 
 							<li><a href="login.html">我的订单</a></li>
 						</ul> 
 					</li>  
@@ -132,6 +132,7 @@ $(document).ready(function() {
 					<h1><a href="index.html"><span>S</span>mart</a></h1>
 					<h6>你的超市. 你的地盘.</h6> 
 				</div>	
+				@section('search')
 				<div class="header-search">
 					<form action="#" method="post">
 						<input type="search" name="Search" placeholder="请输入需要搜索的商品" required="">
@@ -140,6 +141,7 @@ $(document).ready(function() {
 						</button>
 					</form>
 				</div>
+				@show
 				<div class="header-cart"> 
 					<div class="my-account">
 						<a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> 联系我们</a>						
