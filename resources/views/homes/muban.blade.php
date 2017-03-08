@@ -10,15 +10,15 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> 
-<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" /> <!-- menu style --> 
-<link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" /> <!-- banner slider --> 
-<link href="css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
-<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider -->  
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="/css/menu.css" rel="stylesheet" type="text/css" media="all" /> <!-- menu style --> 
+<link href="/css/ken-burns.css" rel="stylesheet" type="text/css" media="all" /> <!-- banner slider --> 
+<link href="/css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider -->  
 <!-- //Custom Theme files -->
 <!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="js/jquery-2.2.3.min.js"></script> 
