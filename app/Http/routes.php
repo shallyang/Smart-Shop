@@ -46,7 +46,9 @@ Route::group(['middleware'=>'Login'],function(){
 	Route::controller('/admin/webconfig','AdminWebConfigController');
 });
 
-Route::controller('/home','HomeController');
+
+Route::controller('/home/index','HomeController');
 Route::controller('/home/order','HomeOrderController');
 Route::controller('/home/user','HomeUserController');
+
 // Route::controller('/home/goods','HomeGoodsController');
