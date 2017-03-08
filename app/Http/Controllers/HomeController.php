@@ -34,9 +34,23 @@ class HomeController extends Controller
         return $obj;
     }
 
+    // 登录页
     public function getLogin()
     {
     	return view('/homes/login');
     }
+
+    // 判断用户是否存在
+    public function postLogins(Request $request)
+    {
+    	echo '这是前台首页';
+    }
+
+    //注册页
+    public function getRegister(Request $request)
+    {
+    	return view('/homes/login');
+    }
+
    
 }
