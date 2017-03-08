@@ -43,13 +43,19 @@ class HomeController extends Controller
     // 判断用户是否存在
     public function postLogins(Request $request)
     {
-    	echo '这是前台首页';
+    	echo '这是判断用户是否存在';
     }
 
     //注册页
     public function getRegister(Request $request)
     {
-    	return view('/homes/login');
+    	return view('/homes/register');
+    }
+
+    //判断注册
+    public function postRegisters(Request $request)
+    {
+        echo '这是判断注册页';
     }
 
    
