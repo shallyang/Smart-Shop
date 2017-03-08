@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Mail;
 use Hash;
 class AdminUserController extends Controller
 {
@@ -84,6 +85,47 @@ class AdminUserController extends Controller
     {
         session()->flush();
         return redirect('/admin');
+    }
+
+    public function getContent(Request $request)
+    {
+        $res = DB::table('user_content')->where('user_name','like','%'.$request->input('user_name').'%')->paginate($request->input('limit',10));
+
+        return view('admins.user_content',['res'=>$res,'request'=>$request]);
+
+    }
+
+    public function getReplaycontent($id)
+    {
+        // echo $id;
+        $res = DB::table('user_content')->where('id',$id)->first();
+
+        // dd($res);
+
+        return view('admins.user_replycontent',['res'=>$res]);
+
+    }
+
+    public function postReplaycontent(Request $request)
+    {
+        // dd($request);
+        $reply = $request->input('reply');
+        $id = $request->input('id');
+        // $email = $request->input('user_email');
+
+        Mail::send('homes.email', ['id'=>$request->input('id'),'reply'=>$reply], function ($m)use($request){
+                $m->from('yxc930708@163.com', 'Smart客服部');
+
+                $m->to($request->input('user_email'), $request->input('user_name'))->subject('Smart回复');
+            });
+        $res = DB::table('user_content')->where('id',$id)->update(['status'=>1]);
+
+        if ($res) {
+            return redirect('/admin/user/content')->with('info','回复成功');
+        }else{
+            return redirect('/admin/user/content')->with('info','回复失败');
+        }
+
     }
 }
 

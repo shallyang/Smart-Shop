@@ -164,6 +164,7 @@
                             <li><a href="/admin/goods/goodsadd"><i class="icon-inbox"></i>　商品添加</a></li>
                             <li><a href="/admin/goods/goodslist"><i class="icon-indent-left"></i>　商品列表</a></li>
                         </ul>
+                        <a href="/admin/user/content"><i class="icon-comment"></i> 回复管理</a>
                         <a href="/admin/webconfig"><i class="icon-tools"></i> 网站配置</a>
                     </li>
                 </ul>
