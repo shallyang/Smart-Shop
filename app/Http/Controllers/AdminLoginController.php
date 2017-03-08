@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Hash;
 
 
 class AdminLoginController extends Controller
@@ -24,6 +25,7 @@ class AdminLoginController extends Controller
 			$userpassword = DB::table('user_table')->where('username',$username)->value('userpassword');
 		
 			if($password == $userpassword){
+			// if(Hash::check($password,$userpassword)){
 				$userhead = DB::table('user_table')->where('username',$username)->value('userhead');
 				//session 内容
 				// 设置过期时间 单位：分钟
@@ -37,7 +39,7 @@ class AdminLoginController extends Controller
 					
 		} else {
 			//退会到登录页			
-			return view('admins/login');
+			return back()->with('info','用户名和密码不匹配');
 		}
 
     }
