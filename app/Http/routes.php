@@ -51,4 +51,4 @@ Route::controller('/home','HomeController');
 Route::controller('/order','HomeOrderController');
 Route::controller('/user','HomeUserController');
 
-// Route::controller('/home/goods','HomeGoodsController');
+Route::controller('/goods','HomeGoodsController');

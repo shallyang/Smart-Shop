@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class HomeGoodsController extends Controller
 {
     /**
@@ -14,74 +14,26 @@ class HomeGoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex($id)
     {
-        //
+        //查询包含所传值得所有的子类
+        $res = DB::table('goods_type')->where('pid','=',$id)->get();
+        echo'<pre>';
+        $obj = [];
+        if($res == null){
+            $obj[] = DB::table('goods_table')->where('typeid','=',$id)->get();
+       }
+        var_dump($obj);
+        // foreach($res as $k=>$v){
+        //     //获取子类的主id来获得子商品
+        //     $tid =$v->id;
+        //     echo $tid;
+        //     $obj[] = DB::table('goods_table')->where('typeid','=',$tid)->get();
+        // }
+        // echo'<pre>';
+        // var_dump($obj);
+        return view('homes/product');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }

@@ -26,7 +26,7 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link href="/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="js/jquery-2.2.3.min.js"></script> 
+<script src="/js/jquery-2.2.3.min.js"></script> 
 <!-- //js --> 
 <!-- web-fonts -->
 <!-- <link href='http://fonts.useso.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -34,7 +34,7 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link href='http://fonts.useso.com/css?family=Offside' rel='stylesheet' type='text/css'>
 <link href='http://fonts.useso.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'> -->
 <!-- web-fonts --> 
-<script src="js/owl.carousel.js"></script>  
+<script src="/js/owl.carousel.js"></script>  
 <script>
 $(document).ready(function() { 
 	$("#owl-demo").owlCarousel({ 
@@ -47,7 +47,7 @@ $(document).ready(function() {
 	}); 
 }); 
 </script>
-<script src="js/jquery-scrolltofixed-min.js" type="text/javascript"></script>
+<script src="/js/jquery-scrolltofixed-min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
 
@@ -69,8 +69,8 @@ $(document).ready(function() {
     });
 </script>
 <!-- start-smooth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>	
+<script type="text/javascript" src="/js/move-top.js"></script>
+<script type="text/javascript" src="/js/easing.js"></script>	
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$(".scroll").click(function(event){		
@@ -96,7 +96,7 @@ $(document).ready(function() {
 		});
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
-<script src="js/bootstrap.js"></script>	
+<script src="/js/bootstrap.js"></script>	
 </head>
 <body>
 
@@ -165,13 +165,15 @@ $(document).ready(function() {
 							<a href="#0" class="cd-close">Close</a>
 								<ul class="cd-dropdown-content"> 
 									@foreach($cates as $k=>$v)
+
 									<li class="has-children">
-										<a href="#">{{$v->name}}</a>
+
+										<div><a href="/goods/index/{{$v->id}}">{{$v->name}}</a></div>
 									 	<ul class="cd-secondary-dropdown is-hidden">
 											@foreach($v->nu as $vk=>$vs)
-												<a href="#0">{{$vs->name}}</a> 
+												<a href="/goods/index/{{$vs->id}}">{{$vs->name}}</a> 
 												@foreach($vs->nu as $lk=>$lv)
-												<li><a href="#">{{$lv->name}}</a></li>
+												<li><div><a href="/goods/index/{{$lv->id}}">{{$lv->name}}</a></div></li>
 												@endforeach
 											@endforeach
 										</ul>
@@ -197,7 +199,7 @@ $(document).ready(function() {
 	<!-- //header -->	
 	<!-- banner -->
 	@section('content')    
-
+				
     @show
 	<!-- //deals --> 
 	<!-- footer-top -->
@@ -288,7 +290,7 @@ $(document).ready(function() {
 		</div>
 	</div> 
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="/js/minicart.js"></script>
 	<script>
         w3ls.render();
 
@@ -307,13 +309,13 @@ $(document).ready(function() {
     </script>  
 	<!-- //cart-js -->	
 	<!-- countdown.js -->	
-	<script src="js/jquery.knob.js"></script>
-	<script src="js/jquery.throttle.js"></script>
-	<script src="js/jquery.classycountdown.js"></script>
+	<script src="/js/jquery.knob.js"></script>
+	<script src="/js/jquery.throttle.js"></script>
+	<script src="/js/jquery.classycountdown.js"></script>
 	<!-- //countdown.js -->
 	<!-- menu js aim -->
-	<script src="js/jquery.menu-aim.js"> </script>
-	<script src="js/main.js"></script> <!-- Resource jQuery -->
+	<script src="/js/jquery.menu-aim.js"> </script>
+	<script src="/js/main.js"></script> <!-- Resource jQuery -->
 	<!-- //menu js aim --> 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
