@@ -22,6 +22,30 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link href="/css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
 <link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider -->  
 <!-- //Custom Theme files -->
+<link rel="stylesheet" type="text/css" href="/admins/plugins/colorpicker/colorpicker.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/custom-plugins/wizard/wizard.css" media="screen">
+
+<!-- Required Stylesheets -->
+<link rel="stylesheet" type="text/css" href="/admins/bootstrap/css/bootstrap.min.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/fonts/ptsans/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/fonts/icomoon/style.css" media="screen">
+
+<link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol32.css" media="screen">
+
+<!-- Demo Stylesheet -->
+<link rel="stylesheet" type="text/css" href="/admins/css/demo.css" media="screen">
+
+<!-- jQuery-UI Stylesheet -->
+<link rel="stylesheet" type="text/css" href="/admins/jui/css/jquery.ui.all.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/jui/jquery-ui.custom.css" media="screen">
+
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/get.css" media="screen">
+
 <!-- font-awesome icons -->
 <link href="/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
@@ -98,7 +122,7 @@ $(document).ready(function() {
 	<!-- //smooth-scrolling-of-move-up -->
 <script src="/js/bootstrap.js"></script>	
 </head>
-<body>
+<body style="background:#FFF">
 
 	<script>
 		$('#myModal88').modal('show');
@@ -146,12 +170,8 @@ $(document).ready(function() {
 					<div class="my-account">
 						<a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> 联系我们</a>						
 					</div>
-					<div class="cart"> 
-						<form action="#" method="post" class="last"> 
-							<input type="hidden" name="cmd" value="_cart" />
-							<input type="hidden" name="display" value="1" />
-							<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-						</form>  
+					<div class="cart">
+						<button class="w3view-cart" type="submit" name="submit" value="提交" id="shopcar"><i class="fa fa-cart-arrow-down"></i></button>
 					</div>
 					<div class="clearfix"> </div> 
 				</div> 
@@ -196,6 +216,52 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+	</div>
+	<style type="text/css">
+		#shopcarlist{background:lightblue;position:absolute;z-index:9999;display:none;left:1050px;top:150px;}
+		#closeshopcar{float:right;cursor:pointer;padding-right:4px;color:red;}
+
+	</style>
+	<div id="shopcarlist">
+		<span id="closeshopcar" >✘</span>
+		<br>
+		<div class="mws-panel grid_8" id="carlist">	
+            <div class="mws-panel-toolbar">
+                
+            </div>
+            <div class="mws-panel-body no-padding">
+                <table class="mws-table">
+                    <thead>
+                        <tr>
+                        	<th class="checkbox-column">
+                                <input type="checkbox">
+                            </th>
+                            <th width="400px">商品</th>
+                            <th width="100px">单价</th>
+                            <th width="5px">数量</th>
+                            <th width="100px">小计</th>
+                            <th width="50px">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        	<td class="checkbox-column">
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                            	<img src="/upload/3419591488466617.jpg" alt="" style="float:left"width="100px" height="100px">
+								<span>商品名称1</span>
+                            </td>
+                            <td>¥100</td>
+                            <td><input type="text" style="width:30px" value="1" name="goodsnum"></td>
+                            <td>¥100</td>
+                            <!-- 删除按钮 -->
+                            <td><i class="icon-trash"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 	</div>
 
 	<!-- //header -->	
@@ -288,27 +354,42 @@ $(document).ready(function() {
 	<!-- //footer -->		
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+			<p>Copyright &copy; 2016.Company name All rights reserved.</p>
 		</div>
 	</div> 
 	<!-- cart-js -->
-	<script src="/js/minicart.js"></script>
-	<script>
-        w3ls.render();
+ 	<script type="text/javascript">
+ 	// alert($);
+ 		$('#shopcar').click(function(){
 
-        w3ls.cart.on('w3sb_checkout', function (evt) {
-        	var items, len, i;
+			$('#shopcarlist').show().animate({
 
-        	if (this.subtotal() > 0) {
-        		items = this.items();
+				width:'960px',
+				height:'400px',
+				left:'150px',
+				top:'150px'
 
-        		for (i = 0, len = items.length; i < len; i++) {
-        			items[i].set('shipping', 0);
-        			items[i].set('shipping2', 0);
-        		}
-        	}
-        });
-    </script>  
+			},1000);
+			$('#carlist').show();
+			$('#closeshopcar').show();
+
+ 			// $('#').hiden();
+ 		});
+
+ 		$('#closeshopcar').click(function(){
+
+ 			$('#shopcarlist').animate({
+
+				width:'0px',
+				height:'0px',
+				left:'1050px',
+				top:'150px'
+
+			},1000);
+			$('#closeshopcar').hide();
+			$('#carlist').hide(1000);
+		});	
+ 	</script>
 	<!-- //cart-js -->	
 	<!-- countdown.js -->	
 	<script src="/js/jquery.knob.js"></script>
