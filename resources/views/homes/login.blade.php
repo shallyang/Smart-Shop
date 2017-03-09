@@ -1,6 +1,7 @@
 @extends('homes.muban')
 @section('title','用户登录页')
 @section('content')
+
 <script type="text/javascript" src="/homes/js/jquery-1.8.3.min.js"></script>
 	<!-- login-page -->
 	<div class="login-page">
@@ -9,7 +10,7 @@
 			<div class="login-body">
 				
 				<!-- form表单 -->
-				<form action="home/register" method="post" enctype="multipart-form/data">
+				<form action="/home/logins" method="post" enctype="multipart-form/data">
 					
 					<input type="text" class="user" name="email" placeholder="请输入您的邮箱" required="">
 					<!-- 判断邮箱里面是否为空 -->
