@@ -22,35 +22,37 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link href="/css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
 <link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider -->  
 <!-- //Custom Theme files -->
-<link rel="stylesheet" type="text/css" href="/admins/plugins/colorpicker/colorpicker.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/custom-plugins/wizard/wizard.css" media="screen">
-
-<!-- Required Stylesheets -->
-<link rel="stylesheet" type="text/css" href="/admins/bootstrap/css/bootstrap.min.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/fonts/ptsans/stylesheet.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/fonts/icomoon/style.css" media="screen">
-
-<link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol32.css" media="screen">
-
-<!-- Demo Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admins/css/demo.css" media="screen">
-
-<!-- jQuery-UI Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admins/jui/css/jquery.ui.all.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/jui/jquery-ui.custom.css" media="screen">
-
-<!-- Theme Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admins/css/get.css" media="screen">
-
 <!-- font-awesome icons -->
 <link href="/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
+<!-- 购物车样式 -->
+<link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
 <!-- js -->
 <script src="/js/jquery-2.2.3.min.js"></script> 
+
+<!-- 购物车样式 -->
+<style type="text/css">
+	.mws-panel {
+    margin-bottom: 32px;
+    box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.15);
+	}
+
+
+	.grid_8 {
+	    width: 98.0%;
+	}
+
+	.grid_8 {
+	    float: left;
+	    position: relative;
+	    margin-left: 1%;
+	    margin-right: 1%;
+	}
+
+	div {
+	    display: block;
+	}
+</style>
 <!-- //js --> 
 <!-- web-fonts -->
 <!-- <link href='http://fonts.useso.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -190,7 +192,7 @@ $(document).ready(function() {
 
 									<li class="has-children">
 
-										<div><a href="/goods/index/{{$v->id}}">{{$v->name}}</a></div>
+										<div><a>{{$v->name}}</a></div>
 									 	<ul class="cd-secondary-dropdown is-hidden">
 											@foreach($v->nu as $vk=>$vs)
 												<a href="/goods/index/{{$vs->id}}">{{$vs->name}}</a> 
