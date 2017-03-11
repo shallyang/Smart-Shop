@@ -14,6 +14,9 @@
 		<link rel="stylesheet" href="/css/safe/Snaddress.min.css" />
 		<link rel="stylesheet" href="/css/zpwd/sui.css" />
 		<script type="text/javascript" src="/js/sui.js" ></script>
+		
+		
+		
 	</head>
 	<style>
 		a{
@@ -43,11 +46,10 @@
 							<dl class="side-menu-tree">
 								<dt>账户管理</dt>
 								<dd>
-									<a ><span ></span>我的资料</a>
-
+									<a style="color:#f70" href='/user/info'><span class="active"></span>我的资料</a>
 								</dd>								
 								<dd>
-									<a style="color:#f70"><span class="active"></span>地址管理</a>
+									<a href='/user/address'><span></span>地址管理</a>
 
 								</dd>
 							</dl>
@@ -63,74 +65,68 @@
 	                    </h3>
 						<div class="user-profile clearfix" style="margin-left: 0px;width: 100%;border: 0px;">
 							<div class="user-profile-wrap" style="width: 100%;height: 500px;">
-								<p style="margin-left: 70px;font-size: 14px;"><span style="color:#F88600;font-size: 14px;">新增收货地址</span><span style="margin-left: 10px;font-size: 14px;font-weight: bold;">电话号码、手机号选填一项 &nbsp;, &nbsp;其余均为必填项</span> </p>
+								<p style="margin-left: 70px;font-size: 14px;"><span style="color:#F88600;font-size: 14px;">新增收货地址</span></p>
+							<form class="sui-form" action='/user/addressinsert' method='post' >
 							<div style="margin-left: 70px;margin-top: 30px;height: 30px;">
 								<span style="color: #F2873B;">*&nbsp;</span><span class="titles">所在地区:</span>
-								<select style="padding:5px;margin-left: 14px;"> 
-									<option selected="">中国大陆</option>
+								<select style="height: 30px;width: 230px; margin-left: 14px;" id='province' name='province'>
+									<option >请选择省</option>
 								</select>
-								<select style="height: 30px;width: 230px;color: #CCCCCC;"> 
-									<option selected="" >请选择省市区</option>
+								<select style="height: 30px;width: 230px;" id='city' name='city'> 
+									<option >请选择市区</option>
 								</select>
 							</div>
 							<div style="margin-left: 70px;margin-top: 50px;">
 								<span style="color: #F2873B;">*&nbsp;</span><span class="titles">详细地址:</span>
 							</div>
 							<div style="margin-left: 150px;margin-top:-40px;">
-								<textarea style="width:500px;height: 90px;padding: 5px;" placeholder="建议您如实填写详细收货地址，例如街道 名称，门牌号码，楼层和房间号等信息"></textarea>
+								<textarea style="width:500px;height: 90px;padding: 5px;" placeholder="建议您如实填写详细收货地址，例如街道 名称，门牌号码，楼层和房间号等信息" name='street'></textarea>
 							</div>
 							
 							<div style="margin-left: 80px;margin-top: 20px;">
 								<span class="titles">邮政编号:</span>
-								<input type="text" placeholder="如您不清楚地区邮递号，请填写000000" style="padding: 5px;width: 300px;margin-left: 14px;" />
+								<input type="text" placeholder="如您不清楚地区邮递号，请填写000000" style="width: 300px;margin-left: 14px;" name='number'/>
 							</div>
 							
 							<div style="margin-left: 55px;margin-top: 30px;">
 								<span style="color: #F2873B;">*</span>
 								<span class="titles">收货人姓名:</span>
-								<input type="text" placeholder="长度不超过25个字符" style="padding: 5px;width: 300px;margin-left: 14px;" />
+								<input type="text" placeholder="长度不超过25个字符" style="width: 300px;margin-left: 14px;" name='name'/>
 							</div>
 							<div style="margin-left: 80px;margin-top: 30px;">
 								<span class="titles">手机号码:</span>
-								<select style="padding: 5px;margin-left: 14px;">
+								<select style="margin-left: 14px;">
 									<option>中国大陆+86</option>
 								</select>
-								<input type="text" placeholder="电话号码、手机号码必须填一项"  style="padding: 5px;width: 200px;"/>
-							</div>
-							<div style="margin-left: 80px;margin-top: 30px;">
-								<span  class="titles">电话号码:</span>
-								<select style="padding: 5px;margin-left: 14px;">
-									<option>中国大陆+86</option>
-								</select>
-								<input type="text" placeholder="区号"  style="padding: 5px;"/>&nbsp;—&nbsp;<input type="text" placeholder="电话号码"  style="padding: 5px;"/>&nbsp;—&nbsp;<input type="text" placeholder="分机"  style="padding: 5px;"/>
-							</div>
-							<div style="margin-left: 150px;margin-top: 10px;">
-								<form class="sui-form">
+								<input type="text" placeholder="手机号码必须填"  style="width: 200px;" name='phone'/>
+							</div>							
+							<div style="margin-left: 150px;margin-top: 10px;">							
 								<div class="am-u-sm-7 am-u-sm-offset-3" style="padding-right: 0rem;"> 
-									<label class="checkbox-pretty inline ">
-										<input type="checkbox" checked="checked">
+									
+										<input type="checkbox" value='1' name='status'>					
 										<span style="font-size: 12px;color: #878787;">
 											<font style="font-size: 12px;color: #333333;">设为默认地址</font>
-										</span> </label> </div>
-							   </form>
+										</span> 
+								
+								 </div>
+										{{csrf_field()}}
+							   
 							</div>
 							
-							<button style="margin-left:150px;margin-top:10px;background-color:#F37B1D ;color: #fff;width: 100px;height: 30px;border: 0px;border-radius: 5px;">确定</button>
+							<button style="margin-left:150px;margin-top:10px;background-color:#F37B1D ;color: #fff;width: 100px;height: 30px;border: 0px;border-radius: 5px;" type='submit'>确定</button>
+							</form>
 							</div>
 							
 						</div>
 					</div>
 				</div>
-							<!--
-                            	作者：admin
-                            	时间：2016-05-05
-                            	描述：
-                            -->
+							
 							<div style="margin-top: 30px;width: 1068px; margin: 15px 0 30px 170px;">
 								<dl style="color: #F88600;font-size: 16px;margin-top: 69px;">您已添加4个地址，你还可以添加16个地址</dl>
 								
 								<table class="sui-table table-bordered-simple" style="margin-top: 20px;">
 								  <thead>
+
 								    <tr>
 								      <th>收货人</th>
 								      <th>所在地区</th>
@@ -142,42 +138,17 @@
 								    </tr>
 								  </thead>
 								  <tbody>
+								  @foreach($res as $k=>$v)
 								    <tr>
-								      <td>张晓晓</td>
-								      <td>北京 北京市 东城区  安定门街道</td>
-								      <td>北京市海淀区上地三街80号</td>
-								      <td>100000</td>
-								      <td>198******90</td>
+								      <td>{{$v->name}}</td>
+								      <td>{{$v->province}}&nbsp;{{$v->city}}</td>
+								      <td>{{$v->street}}</td>
+								      <td>{{$v->number}}</td>
+								      <td>{{$v->phone}}</td>
 								      <td style="color: #007AFF;">修改&nbsp;|&nbsp;删除</td>
-								      <td ><span style="padding: 2px;font-size: 10px;color: #EC5937;border-radius:5px;background-color: #fad5d0;border: 1px #C85E0B solid;">默认地址</span></td>
-								    </tr>
-								    <tr>
-								      <td>张晓晓</td>
-								      <td>北京 北京市 东城区  安定门街道</td>
-								      <td>北京市海淀区上地三街80号</td>
-								      <td>100000</td>
-								      <td>198******90</td>
-								       <td style="color: #007AFF;">修改&nbsp;|&nbsp;删除</td>
-								        <td ><span style="padding: 5px;"></span></td>
-								    </tr>
-								    <tr>
-								      <td>张晓晓</td>
-								      <td>北京 北京市 东城区  安定门街道</td>
-								      <td>北京市海淀区上地三街80号</td>
-								      <td>100000</td>
-								      <td>198******90</td>
-								       <td style="color: #007AFF;">修改&nbsp;|&nbsp;删除</td>
-								        <td ><span style="padding: 5px;"></span></td>
-								    </tr>
-								    <tr>
-								      <td>张晓晓</td>
-								      <td>北京 北京市 东城区  安定门街道</td>
-								      <td>北京市海淀区上地三街80号</td>
-								      <td>100000</td>
-								      <td>198******90</td>
-								       <td style="color: #007AFF;">修改&nbsp;|&nbsp;删除</td>
-								        <td ><span style="padding: 5px;"></span></td>
-								    </tr>
+								      <td >@if($v->status==1)<span style="padding: 2px;font-size: 10px;color: #EC5937;border-radius:5px;background-color: #fad5d0;border: 1px #C85E0B solid;">默认地址</span></td>@endif
+								    </tr>	
+								    @endforeach					
 								  </tbody>
 								</table>
 								
@@ -242,7 +213,36 @@
 				width: 100%;
 			}
 		</style>
-		<script type="text/javascript" src="js/safe/ms_common.min.js" ></script>
+		<script type="text/javascript" src="/js/safe/ms_common.min.js" ></script>
 	</body>
+	<!-- 城市联动 -->
+		<script type="text/javascript">
+		var provinces = document.getElementById('province');
+		var citys = document.getElementById('city');
+		var pro = ['安徽','河北','河南','山西'];
+		var ct = [
+			['亳州','合肥','蚌埠'],
+			['石家庄','保定','秦皇岛'],
+			['郑州','开封','荥阳'],
+			['运城','太原','大同']
+			];
+		for (var i = 0; i < pro.length; i++) {
+		
+		provinces.innerHTML += '<option value='+i+'>'+pro[i]+'</option>';
+	};
+	
+	provinces.onchange = function()
+	{		
+		var v = this.value;
+		var j = ct[v];	
+		var  into = '';
+		for (var i = 0; i < j.length; i++) {			
+			into += '<option value='+i+'>'+ j[i]+'</option>';
+		}
+		citys.innerHTML = into;
+	}
 
+		</script>
+	
+	
 </html>

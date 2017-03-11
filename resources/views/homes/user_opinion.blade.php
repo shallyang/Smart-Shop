@@ -45,61 +45,31 @@
 					</div>
 					<div class="ms-side" style="margin-top: 20px;" >
 						<article class="side-menu side-menu-off">
-							<dl class="side-menu-tree"  style="padding-left: 30px;">
-								<dt><img src="/img/左侧/我的购物车.png"  style="margin-right: 10px;margin-left: -20px;"/>我的购物车</dt>
+							<dl class="side-menu-tree" style="padding-left: 50px;">
 								<dt><img src="/img/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>订单管理</dt>
 								<dd>
-									<a>我的订单</a>
+									<a href="/user/order">订单管理</a>
 
 								</dd>
 								<dd>
-									<a>我的收藏</a>
+									<a href="/user/mymoney">我的钱包</a>
+
+								</dd>								
+								<dt><img src="/img/左侧/我的买啦.png"  style="margin-right: 10px;margin-left: -20px;"/>账户管理</dt>
+								<dd>
+									<a href='/user/info'>我的资料</a>
 
 								</dd>
 								<dd>
-									<a>我的评价</a>
-
+									<a href='/user/collectgoods'>宝贝收藏</a>
 								</dd>
 								<dd>
-									<a>我的足迹</a>
-
+									<a href='/user/collectshop'>店铺收藏</a>
 								</dd>
+								
+								<dt><img src="/img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>					
 								<dd>
-									<a>我的拍卖</a>
-
-								</dd>
-								<dd>
-									<a>我的优惠券</a>
-
-								</dd>
-								<dt><img src="/img/左侧/我的买啦.png"  style="margin-right: 10px;margin-left: -20px;"/>我的买啦</dt>
-								<dd>
-									<a>我的推荐</a>
-
-								</dd>
-								<dd>
-									<a>我的钱包</a>
-
-								</dd>
-								<dd>
-									<a>我要提现</a>
-
-								</dd>
-								<dd>
-									<a>我的买豆</a>
-
-								</dd>
-								<dd>
-									<a>邀请管理</a>
-
-								</dd>
-								<dt><img src="/img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
-								<dd>
-									<a>退换货</a>
-
-								</dd>
-								<dd>
-									<a style="color:#f70">意见/投诉</a>
+									<a href='/user/opinion'>意见/投诉</a>
 
 								</dd>
 							</dl>
