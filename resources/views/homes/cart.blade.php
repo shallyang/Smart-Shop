@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <form action="/order/getbilling" method="get">
+                    <form action="/order/billing" method="get">
                         @foreach($carts as $k => $v)
                             <tr>
                             	<td class="checkbox-column">

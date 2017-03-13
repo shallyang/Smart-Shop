@@ -83,11 +83,11 @@ class HomeController extends Controller
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
+                $ses = Session::put('email',$useremail);
                 // dd($rem);
-                if($rem){
-                  $ses = Session::put('email',$useremail);
-                  dd(Session::get('email'));
-                }
+                // if($rem){
+                //   dd(session());
+                // }
 
                 return redirect('/home');
 

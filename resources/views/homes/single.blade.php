@@ -45,7 +45,6 @@
 								颜色:<li>　{{$res->goodscolor}}</li>
 							</ul>	
 						</div><br>
-					<form action="#" method="post">
 						 <div class="quantity clearfix">
 						 <span class ='uls'>选择数量:</span>
                             <input type="button" value="-" class="minus">
@@ -57,8 +56,7 @@
 							<input type="hidden" name="add" value="1" /> 
 							<input type="hidden" name="w3ls_item" value="Snow Blower" /> 
 							<input type="hidden" name="amount" value="540.00" /> 
-							<button type="submit" class="w3ls-cart" ><i class="fa fa-cart-plus" aria-hidden="true"></i> 加入购物车</button>
-						</form>
+							<button type="submit" class="w3ls-cart" goodsid="{{$res->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> 加入购物车</button>
 						<button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i>立即购买</button><br><br>
 						
 						<div class="bdsharebuttonbox" data-tag="share_1">
@@ -154,13 +152,11 @@
 							<div class="view-caption agileits-w3layouts"> 
 								<h4><a href="/goods/single/{{$v->goodsid}}">{{$v->goodsname}}</a></h4>
 								<h5>¥{{$v->goodsprice}}</h5>		
-								<form action="#" method="post">
 									<input type="hidden" name="cmd" value="_cart" />
 									<input type="hidden" name="add" value="1" /> 
 									<input type="hidden" name="w3ls_item" value="Women Sandal" /> 
 									<input type="hidden" name="amount" value="20.00" /> 
-									<button type="submit" class="w3ls-cart" ><i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
-								</form>
+									<button class="w3ls-cart" goodsid="{{$v->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
 							</div>  	
 						</div> 
 					</div>
@@ -206,6 +202,27 @@
 
 		}
 	
+	});
+</script>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+
+	$('.w3ls-cart').each(function(){
+		$(this).click(function(){
+			var goodsid = $(this).attr("goodsid");
+			// alert(goodsid);
+			$.get('/order/intocart', {goodsid}, function(data) {
+				/*optional stuff to do after success */
+				// console.log(data);
+				var notice = data + '已成功加入购物车!!';
+				alert(notice);
+			});
+
+
+		})
+		
 	});
 </script>
 @endsection

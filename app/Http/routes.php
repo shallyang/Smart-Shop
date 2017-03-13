@@ -57,32 +57,7 @@ Route::get('/home/login',function(){
 	
 	return view('homes.login');
 });
-
-// Route::group(['middleware'=>'HomeLogin'],function(Request $request){});
-	// Route::controller('/order','HomeOrderController');
-Route::get('/order/getbilling',function(Request $request){
-	$buylist = $request->goodsid;
-	// echo '<pre>';
-    foreach($buylist as $v){
-
-        $goods = explode('+',$v);
-
-        // var_dump($goods);
-
-        $goodsinfo = DB::table('goods_table')->where('goodsid',$goods[0])->first();
-
-        $goodsinfo->num = $goods[1];
-
-        // unset($goodsinfo->describe);
-
-
-        $buyorder[] = $goodsinfo;
-
-    }
-
-    // dd($buyorder);
-
-    return view('homes.order_reply',['buyorder'=>$buyorder]);
-})->middleware(['HomeLogin']);
 	
+Route::get('/order/billing','HomeOrderController@billing')->middleware('HomeLogin');
+
 Route::controller('/order','HomeOrderController');
