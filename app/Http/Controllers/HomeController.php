@@ -227,12 +227,6 @@ class HomeController extends Controller
           }
           //获取值
           $res = $request->except('_token','useremail','repassword','vcode');
-          
-          
-          // //写入数据库
-           // $base = DB::table('user_table')->where('useremail','=',$request->input('useremail'))->update($res);
-         
-          // dd($base);die;
           $email = $request->input('useremail');
 
           $res['userstatus'] = '0';
@@ -280,6 +274,7 @@ class HomeController extends Controller
           // dd($email);
 
           $datas = DB::table('user_table')->where('useremail',$email)->first();
+          // dd($datas);
           $data = $datas->userid;
           // dd($data);
   
@@ -289,7 +284,7 @@ class HomeController extends Controller
             Mail::send('homes.yactivate', ['id'=>$data,'token'=>$res['token']], function ($m) use ($res){
                 $m->from('yxc930708@163.com', 'shopProject');
 
-                $m->to($res['useremail'], $res['useremail'])->subject('用户验证提醒');
+                $m->to($res['useremail'], $res['username'])->subject('用户验证提醒');
             });
         }
         return redirect('/home/yremind');
