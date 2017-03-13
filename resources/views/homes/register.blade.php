@@ -6,6 +6,27 @@
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1">创建您的账户</h3>  
 			<div class="login-body">
+			@if (count($errors) > 0)
+			    <div class="style-msg2 errormsg">
+			     <div class="msgtitle">错误提示信息:</div>
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li style='list-style:none;font-size:17px'>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
+			
+			@if(session('info'))
+		        <div class="alert alert-danger" id='dvss' >
+		        {{session('info')}}
+		        </div>
+		    @endif
+		    <script type="text/javascript">
+		        setTimeout(function(){
+		            $('#dvss').fadeOut(1000);
+		        },3000)
+		    </script>
 				<form action="/home/registers" method="post" enctype="multipart/form-data">
 					<input type="text" class="user" name="name" placeholder="请输入用户名" required="">
 
@@ -44,6 +65,23 @@
 						 $('input[name=password]').blur(function(){
                                     if(!($('input[name=password]').val())){
                                         $(this).css('border','solid 1px red').attr('placeholder','密码不能为空');                                                      }
+                           })
+					</script>
+
+					<!-- 验证码	-->
+					<input type="password" name="vcode" class="lock" placeholder="请输入验证码" style="width:270px;float:left" required="">
+					<!-- 验证码 -->
+					<img src="{{ url('home/vcode') }}" alt="" style='margin-left:10px;cursor:pointer;float:right' onclick ='this.src = this.src+="?a"'>
+		
+					<!-- 判断验证码 -->
+					<script type="text/javascript">
+
+						$('input[name=vcode]').focus(function(){
+                                    $(this).css('border','solid 1px blue').attr('placeholder','请输入验证码');
+                                })
+						 $('input[name=vcode]').blur(function(){
+                                    if(!($('input[name=vcode]').val())){
+                                        $(this).css('border','solid 1px red').attr('placeholder','验证码不能为空');                                                      }
                            })
 					</script>
 					
