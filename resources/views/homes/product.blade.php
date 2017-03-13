@@ -11,7 +11,7 @@
 			<div class="agile-product-text">              
 				<h5><a href="/goods/single/{{$v->goodsid}}">{{$v->goodsname}}</a></h5> 
 				<h6>¥{{$v->goodsprice}}</h6>
-				<button type="submit" class="w3ls-cart pw3ls-cart" class="intocar">
+				<button type="submit" class="w3ls-cart pw3ls-cart intocart" goodsid="{{$v->goodsid}}">
 					<i class="fa fa-cart-plus" aria-hidden="true"> 加入购物车</i>
 				</button>
 			</div>
@@ -22,6 +22,24 @@
 </div>
 @endsection
 
+<!-- 购物车js -->
+@section('js')
 <script type="text/javascript">
-	alert($);
+
+	$('.intocart').each(function(){
+		$(this).click(function(){
+			var goodsid = $(this).attr("goodsid");
+			// alert(goodsid);
+			$.get('/order/intocart', {goodsid}, function(data) {
+				/*optional stuff to do after success */
+				// console.log(data);
+				var notice = data + '已成功加入购物车!!';
+				alert(notice);
+			});
+
+
+		})
+		
+	});
 </script>
+@endsection

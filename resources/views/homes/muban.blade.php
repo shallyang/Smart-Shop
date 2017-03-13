@@ -27,6 +27,7 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <!-- //font-awesome icons -->
 <!-- 购物车样式 -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
 <!-- js -->
 <script src="/js/jquery-2.2.3.min.js"></script> 
 
@@ -173,7 +174,8 @@ $(document).ready(function() {
 						<a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> 联系我们</a>						
 					</div>
 					<div class="cart">
-						<button class="w3view-cart" type="submit" name="submit" value="提交" id="shopcar"><i class="fa fa-cart-arrow-down"></i></button>
+						
+						<a href="/order/selectcart"><button class="w3view-cart" type="submit" name="submit" value="提交" id="shopcar"><i class="fa fa-cart-arrow-down"></i></button></a>
 					</div>
 					<div class="clearfix"> </div> 
 				</div> 
@@ -220,51 +222,11 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<style type="text/css">
-		#shopcarlist{background:lightblue;position:absolute;z-index:9999;display:none;left:1050px;top:150px;}
-		#closeshopcar{float:right;cursor:pointer;padding-right:4px;color:red;}
+		/*购物车样式
+		#shopcarlist{background:lightblue;position:fixed;z-index:9999;display:none;left:1050px;top:150px;}
+		#closeshopcar{float:right;cursor:pointer;padding-right:4px;color:red;}*/
 
 	</style>
-	<div id="shopcarlist">
-		<span id="closeshopcar" >✘</span>
-		<br>
-		<div class="mws-panel grid_8" id="carlist">	
-            <div class="mws-panel-toolbar">
-                
-            </div>
-            <div class="mws-panel-body no-padding">
-                <table class="mws-table">
-                    <thead>
-                        <tr>
-                        	<th class="checkbox-column">
-                                <input type="checkbox">
-                            </th>
-                            <th width="400px">商品</th>
-                            <th width="100px">单价</th>
-                            <th width="5px">数量</th>
-                            <th width="100px">小计</th>
-                            <th width="50px">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        	<td class="checkbox-column">
-                                <input type="checkbox">
-                            </td>
-                            <td>
-                            	<img src="/upload/3419591488466617.jpg" alt="" style="float:left"width="100px" height="100px">
-								<span>商品名称1</span>
-                            </td>
-                            <td>¥100</td>
-                            <td><input type="text" style="width:30px" value="1" name="goodsnum"></td>
-                            <td>¥100</td>
-                            <!-- 删除按钮 -->
-                            <td><i class="icon-trash"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-	</div>
 
 	<!-- //header -->	
 	<!-- banner -->
@@ -273,7 +235,7 @@ $(document).ready(function() {
     @show
 	<!-- //deals --> 
 	<!-- footer-top -->
-	<div class="w3agile-ftr-top">
+	<div class="w3agile-ftr-top" style="margin-top:20px">
 		<div class="container">
 			<div class="ftr-toprow">
 				<div class="col-md-4 ftr-top-grids">
@@ -362,35 +324,45 @@ $(document).ready(function() {
 	<!-- cart-js -->
  	<script type="text/javascript">
  	// alert($);
- 		$('#shopcar').click(function(){
+ 	// 	$('#shopcar').click(function(){
 
-			$('#shopcarlist').show().animate({
+		// 	$('#shopcarlist').show().animate({
 
-				width:'960px',
-				height:'400px',
-				left:'150px',
-				top:'150px'
+		// 		width:'960px',
+		// 		height:'400px',
+		// 		left:'150px',
+		// 		top:'150px'
 
-			},1000);
-			$('#carlist').show();
-			$('#closeshopcar').show();
+		// 	},1000);
+		// 	$('#carlist').show();
+		// 	$('#closeshopcar').show();
+		// 	// var i = 0;
+ 	// 		$.get('/order/selectcart', function(data) {
+ 				
+ 	// 			if (data) {
+ 	// 				// console.log(data);
+ 	// 				for(var i=0 ;i <= data.length; i++){
+ 	// 					console.log(data[i]);
+ 	// 				}
+ 	// 			}else{
+ 	// 				console.log('购物车为空');
+ 	// 			}
+ 	// 		},'json');
+ 	// 	});
 
- 			// $('#').hiden();
- 		});
+ 	// 	$('#closeshopcar').click(function(){
 
- 		$('#closeshopcar').click(function(){
+ 	// 		$('#shopcarlist').animate({
 
- 			$('#shopcarlist').animate({
+		// 		width:'0px',
+		// 		height:'0px',
+		// 		left:'1050px',
+		// 		top:'150px'
 
-				width:'0px',
-				height:'0px',
-				left:'1050px',
-				top:'150px'
-
-			},1000);
-			$('#closeshopcar').hide();
-			$('#carlist').hide(1000);
-		});	
+		// 	},1000);
+		// 	$('#closeshopcar').hide();
+		// 	$('#carlist').hide(1000);
+		// });	
  	</script>
 	<!-- //cart-js -->	
 	<!-- countdown.js -->	
@@ -405,5 +377,8 @@ $(document).ready(function() {
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster --> 
+    @section('js')
+
+    @show
 </body>
 </html>
