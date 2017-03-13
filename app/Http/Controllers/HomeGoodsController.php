@@ -76,14 +76,42 @@ class HomeGoodsController extends Controller
         //如果是第二级分类.获取所有版块下的所有商品
         // echo '<pre>';
         // dd($obj);
-
+        //获取评论的内容
 
         return view('homes/product',['obj'=>$obj]);
     }
 
-   public function getSingle()
+   public function getSingle($id)
    {
+    //通过id来获取商品的详情
+    $res = DB::table('goods_table')->where('goodsid','=',$id)->first();
+    //通过id来获取商品的图片
+    $row = DB::table('goods_pic_table')->where('goodsid','=',$id)->get();
+    $obj = [];
+    foreach($row as $k=>$v){
+        $obj[] = $v;
+    }
+    //通过得到的pid来匹配同类的其他商品
+    $typeid = $res->typeid;
+    $sli = DB::table('goods_table')->where('typeid','=',$typeid)->get();
+    
+    //通过得到的同类商品来获取同类的图片
+    $imgs = [];
+    foreach($sli as $k=>$v){
+         $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$v->goodsid)->value('picurl');
+    }
+    //获取评论表里面的信息
+    $text = DB::table('review_table')->where('goodsid','=',$id)->orderBy('reciewid','desc')->get();
+    return view('homes/single',['res'=>$res,'obj'=>$obj,'sli'=>$sli,'imgs'=>$imgs,'text'=>$text]);
+   }
+   public function getAjax(Request $request)
+   {
+        $text = $_GET['tex'];
+        $id = $_GET['id'];
 
-    return view('homes/single');
+           $res = DB::table('review_table')->insert(['goodsid'=>$id,'commnet'=>$text]);
+           if($res){
+                return 1;
+           }
    }
 }
