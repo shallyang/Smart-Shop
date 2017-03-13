@@ -83,32 +83,32 @@ class HomeOrderController extends Controller
     	return '0';
 
 	}
+//提交订单写在路由里面
+    // public function getGetbilling(Request $request)
+    // {
+//         $buylist = $request->goodsid;
+// // echo '<pre>';
+//         foreach($buylist as $v){
 
-    public function getGetbilling(Request $request)
-    {
-        $buylist = $request->goodsid;
-// echo '<pre>';
-        foreach($buylist as $v){
+//             $goods = explode('+',$v);
 
-            $goods = explode('+',$v);
+//             // var_dump($goods);
 
-            // var_dump($goods);
+//             $goodsinfo = DB::table('goods_table')->where('goodsid',$goods[0])->first();
 
-            $goodsinfo = DB::table('goods_table')->where('goodsid',$goods[0])->first();
+//             $goodsinfo->num = $goods[1];
 
-            $goodsinfo->num = $goods[1];
-
-            // unset($goodsinfo->describe);
+//             // unset($goodsinfo->describe);
 
 
-            $buyorder[] = $goodsinfo;
+//             $buyorder[] = $goodsinfo;
 
-        }
+//         }
 
-        // dd($buyorder);
+//         // dd($buyorder);
 
-        return view('homes.order_reply',['buyorder'=>$buyorder]);
+//         return view('homes.order_reply',['buyorder'=>$buyorder]);
 
-    }
+    // }
     
 }

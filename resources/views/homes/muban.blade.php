@@ -134,7 +134,7 @@ $(document).ready(function() {
 	<div class="header">
 		<div class="w3ls-header"><!--header-one--> 
 			<div class="w3ls-header-left">
-				<p><a href="#">Smart网上超市</a></p>
+				<p><a href="/home">Smart网上超市</a></p>
 			</div>
 			<div class="w3ls-header-right">
 				<ul>
@@ -156,7 +156,7 @@ $(document).ready(function() {
 		<div class="header-two"><!-- header-two -->
 			<div class="container">
 				<div class="header-logo">
-					<h1><a href="index.html"><span>S</span>mart</a></h1>
+					<h1><a href="/home"><span>S</span>mart</a></h1>
 					<h6>你的超市. 你的地盘.</h6> 
 				</div>	
 				@section('search')
