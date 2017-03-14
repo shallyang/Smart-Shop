@@ -15,7 +15,7 @@ class HomeLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $uid = session('email');
+        $uid = session('user');
         // dd(session());
         if ($uid) {
             return $next($request);

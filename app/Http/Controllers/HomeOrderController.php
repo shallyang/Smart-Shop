@@ -83,7 +83,7 @@ class HomeOrderController extends Controller
     	return '0';
 
 	}
-//提交订单写在路由里面
+//提交订单页面写在路由里面
     public function billing(Request $request)
     {
         $buylist = $request->goodsid;
@@ -93,8 +93,9 @@ class HomeOrderController extends Controller
             $goods = explode('+',$v);
 
             // var_dump($goods);
-
+            //查询商品信息
             $goodsinfo = DB::table('goods_table')->where('goodsid',$goods[0])->first();
+            $goodsinfo->pic = DB::table('goods_pic_table')->where('goodsid',$goods[0])->value('picurl');
 
             $goodsinfo->num = $goods[1];
 
@@ -105,10 +106,61 @@ class HomeOrderController extends Controller
 
         }
 
-        // $useremail = 
+        //用户信息 用户地址
+        $userid = session('user')['userid'];
+        $useraddrs = DB::table('user_address')->where('userid',$userid)->get();
+        // dd($buyorder);
+        $i = 1;
+        foreach($useraddrs as $k => $v){
+            if ($v->status == 1) {
+
+                $addr[0] = $v->name.' '.$v->province.$v->city.$v->street.' '.$v->phone;
+            }
+            $addr[$i] = $v->name.' '.$v->province.$v->city.$v->street.' '.$v->phone;
+
+            $i++;
+        }
         // dd($buyorder);
 
-        return view('homes.order_reply',['buyorder'=>$buyorder]);
+        return view('homes.order_reply',['buyorder'=>$buyorder,'addr'=>$addr]);
+
+    }
+
+    public function postInputorder(Request $request)
+    {
+        //获取需要填入数据库的值
+        $res['userid'] = session('user')['userid'];
+        $res['passstatus'] = 0;
+        $res['ordertime'] = time();
+        $buyGoods = $request->input('goodsid');
+        // var_dump($buyGoods);die;
+        $addr = $request->input('addr');
+        $res['orderprice'] = $request->input('total');
+        // dd($orderprice);
+        //切割商品编号
+        $goodsid = '';
+        foreach ($buyGoods as $value) {
+            # code...
+            $goodid = explode('+',$value)[0];
+            $goodsid = $goodsid . ',' . $goodid;
+        }
+        $res['goodsid'] = substr($goodsid,1);
+
+        //切割地址
+
+        $res['getaddress'] = explode(' ',$addr)[1];
+        $res['getphone'] = explode(' ',$addr)[2];
+        $res['getman'] = explode(' ',$addr)[0];
+        // var_dump($res);die;
+
+        //创建订单 , 插入数据库
+        $res = DB::table('order_table')->insert($res);
+
+        if ($res) {
+            
+        }else{
+            return redirect('/order/selectcart')->with('info','抱歉!!!系统异常,下单失败,请稍后重试!!');
+        }
 
     }
     
