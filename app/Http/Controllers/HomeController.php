@@ -74,12 +74,12 @@ class HomeController extends Controller
 
         $username = $request->input('username');
         
-        $a = DB::table('user_table')->where('username',$username)->value('userpassword');
+       
         $id = DB::table('user_table')->where('username',$username)->value('userid');
         $name = DB::table('user_table')->where('username',$username)->value('username');
 
         
-        $a = DB::table('user_table')->where('useremail',$useremail)->value('userpassword');
+        $a = DB::table('user_table')->where('username',$username)->value('userpassword');
 
 
         //判断输入的密码和数据库密码是否匹配
