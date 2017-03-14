@@ -71,7 +71,7 @@ class HomeController extends Controller
     {
     	  $useremail = $request->input('email');
         $password = $request->input('password');
-
+        // var_dump($password);
         $username = $request->input('username');
         
        
@@ -80,6 +80,7 @@ class HomeController extends Controller
 
         
         $a = DB::table('user_table')->where('username',$username)->value('userpassword');
+        // dd($a);
 
 
         //判断输入的密码和数据库密码是否匹配
@@ -92,6 +93,7 @@ class HomeController extends Controller
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
                 $ses = Session::put('user',['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
+
                 // 登录成功
                 return redirect('/user/order');
             }else{            
@@ -222,7 +224,6 @@ class HomeController extends Controller
           $res['token'] = str_random(30);
 
           $data = DB::table('user_table')->where('username',$username)->first();
-          $data = DB::table('user_table')->where('useremail',$email)->first();
           $id = $data->userid;
           //修改
           $change = DB::table('user_table')->where('userid',$id)->update($res);  

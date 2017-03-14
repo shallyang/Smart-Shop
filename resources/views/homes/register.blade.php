@@ -90,7 +90,7 @@
 					</script>
 
 					<!-- 验证码	-->
-					<input type="password" name="vcode" class="lock" placeholder="请输入验证码" style="width:270px;float:left" required="">
+					<input type="text" name="vcode" class="lock" placeholder="请输入验证码" style="width:270px;float:left" required="">
 					<!-- 验证码 -->
 					<img src="{{ url('home/vcode') }}" alt="" style='margin-left:10px;cursor:pointer;float:right' onclick ='this.src = this.src+="?a"'>
 		
