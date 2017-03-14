@@ -95,15 +95,6 @@ class HomeController extends Controller
                 $ses = Session::put(['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
                 // 登录成功
                 return redirect('/user/order');
-
-                $ses = Session::put('email',$useremail);
-                // dd($rem);
-                // if($rem){
-                //   dd(session());
-                // }
-
-                return redirect('/home');
-
             }else{            
                 return back()->with('info','密码错误');
             } 
