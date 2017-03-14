@@ -31,6 +31,7 @@
                                     $(this).css('border','solid 1px blue');
                                 })
 						 $('input[name=username]').blur(function(){
+						 	
                                     if(!($('input[name=username]').val())){
                                         $(this).css('border','solid 1px red').attr('placeholder','用户名不能为空');                           }
                             })
@@ -85,18 +86,19 @@
 					<input type="submit" value="我的账户">
 
 					<div class="forgot-grid">
-						<label class="checkbox"><input type="checkbox" name="checkbox" value = '1'><i></i>记住我</label>
+
 						<div class="forgot">
 							<a href="/home/test">忘记密码 ? »</a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
+					<h6> 没有账号? <a href="{{ url('home/register')}}">去注册 »</a></h6> 
 					{{ csrf_field() }}
 				</form>
 				<!-- form表单结束 -->
 			
 			</div>  
-			<h6> 没有账号? <a href="{{ url('home/register')}}">去注册 »</a></h6> 
+			
 		</div>
 	</div>
 

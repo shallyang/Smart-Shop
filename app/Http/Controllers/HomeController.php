@@ -92,6 +92,10 @@ class HomeController extends Controller
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
+                // dd($rem);
+                // if($rem == 1){
+                //   $remember = Session::put('remember',['email'=>$useremail,'password'=>$password,'username'=>$username]);
+                // }
                 $ses = Session::put('user',['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
 
                 // 登录成功
