@@ -28,7 +28,7 @@ class HomeOrderController extends Controller
     public function getSelectcart()
     {
     	$cartall = session('cart');
-
+        // dd($cartall);
         if ($cartall == null) {
             $carts = null;
             return view('homes.cart',['carts' => $carts]);            
@@ -83,8 +83,8 @@ class HomeOrderController extends Controller
     	return '0';
 
 	}
-
-    public function getGetbilling(Request $request)
+//提交订单写在路由里面
+    public function billing(Request $request)
     {
         $buylist = $request->goodsid;
 // echo '<pre>';
@@ -105,6 +105,7 @@ class HomeOrderController extends Controller
 
         }
 
+        // $useremail = 
         // dd($buyorder);
 
         return view('homes.order_reply',['buyorder'=>$buyorder]);

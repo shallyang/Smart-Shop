@@ -71,11 +71,16 @@ class HomeController extends Controller
     {
     	  $useremail = $request->input('email');
         $password = $request->input('password');
+
         $username = $request->input('username');
         
         $a = DB::table('user_table')->where('username',$username)->value('userpassword');
         $id = DB::table('user_table')->where('username',$username)->value('userid');
         $name = DB::table('user_table')->where('username',$username)->value('username');
+
+        
+        $a = DB::table('user_table')->where('useremail',$useremail)->value('userpassword');
+
 
         //判断输入的密码和数据库密码是否匹配
         if($a){
@@ -86,9 +91,18 @@ class HomeController extends Controller
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
+
                 $ses = Session::put(['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
                 // 登录成功
                 return redirect('/user/order');
+
+                $ses = Session::put('email',$useremail);
+                // dd($rem);
+                // if($rem){
+                //   dd(session());
+                // }
+
+                return redirect('/home');
 
             }else{            
                 return back()->with('info','密码错误');
@@ -218,6 +232,7 @@ class HomeController extends Controller
           $res['token'] = str_random(30);
 
           $data = DB::table('user_table')->where('username',$username)->first();
+          $data = DB::table('user_table')->where('useremail',$email)->first();
           $id = $data->userid;
           //修改
           $change = DB::table('user_table')->where('userid',$id)->update($res);  

@@ -30,7 +30,23 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
 <!-- js -->
 <script src="/js/jquery-2.2.3.min.js"></script> 
-
+<script src="/js/jquery-2.2.3.min.js"></script> 
+<script src="/js/owl.carousel.js"></script>
+<script src="/js/bootstrap.js"></script>
+<!--flex slider-->
+<script defer src="/js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+<script>
+	// Can also be used with $(document).ready()
+	$(window).load(function() {
+	  $('.flexslider').flexslider({
+		animation: "slide",
+		controlNav: "thumbnails"
+	  });
+	});
+</script>
+<!--flex slider-->
+<script src="/js/imagezoom.js"></script>
 <!-- 购物车样式 -->
 <style type="text/css">
 	.mws-panel {
@@ -134,7 +150,7 @@ $(document).ready(function() {
 	<div class="header">
 		<div class="w3ls-header"><!--header-one--> 
 			<div class="w3ls-header-left">
-				<p><a href="#">Smart网上超市</a></p>
+				<p><a href="/home">Smart网上超市</a></p>
 			</div>
 			<div class="w3ls-header-right">
 				<ul>
@@ -158,7 +174,7 @@ $(document).ready(function() {
 		<div class="header-two"><!-- header-two -->
 			<div class="container">
 				<div class="header-logo">
-					<h1><a href="index.html"><span>S</span>mart</a></h1>
+					<h1><a href="/home"><span>S</span>mart</a></h1>
 					<h6>你的超市. 你的地盘.</h6> 
 				</div>	
 				@section('search')

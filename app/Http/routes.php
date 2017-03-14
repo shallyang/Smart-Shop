@@ -48,7 +48,16 @@ Route::group(['middleware'=>'Login'],function(){
 
 
 Route::controller('/home','HomeController');
-Route::controller('/order','HomeOrderController');
 Route::controller('/user','HomeUserController');
 
 Route::controller('/goods','HomeGoodsController');
+
+
+Route::get('/home/login',function(){
+	
+	return view('homes.login');
+});
+	
+Route::get('/order/billing','HomeOrderController@billing')->middleware('HomeLogin');
+
+Route::controller('/order','HomeOrderController');

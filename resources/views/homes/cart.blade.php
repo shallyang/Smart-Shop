@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <form action="/order/getbilling" method="get">
+                    <form action="/order/billing" method="get">
                         @foreach($carts as $k => $v)
                             <tr>
                             	<td class="checkbox-column">
@@ -29,11 +29,11 @@
                                 </td>
                                 <td>
                                 	<img src="{{$v['goodspic']}}" alt="" style="float:left"width="100px" height="100px">
-        							<span>{{$v['goodsname']}}</span>
+        							<a href="/goods/single/{{$v['goodsid']}}"><span>{{$v['goodsname']}}</span></a>
                                 </td>
                                 <td>¥<span class='money'>{{$v['goodsprice']}}</span></td>
                                 <td><input type="text" style="width:40px" name="num" value="{{$v['goodsnum']}}" class="select"></td>
-                                <td>¥<span class='smallmoney'>{{$v['goodsprice']}}</span></td>
+                                <td>¥<span class='smallmoney'></span></td>
                                 <!-- 删除按钮 -->
                                 <td><input type="hidden" goodsid="{{$v['goodsid']}}" name="goodsid[]"><i class="icol-bin-closed" style="cursor:pointer"></i></td>
                             </tr>
@@ -206,5 +206,12 @@
     //     console.log('1');
     //     return false; 
     // })
+    $(function(){
+        $('.money').each(function() {
+            var num = $(this).parent().next().find('input').val();
+            var pic = $(this).text() * num;
+            $(this).parents('tr').find('.smallmoney').text(pic);
+        });
+    }); 
 </script>
 @endsection
