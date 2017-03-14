@@ -1,6 +1,22 @@
 @extends('/homes/muban')
 @section('title','商品详情')
 @section('content')
+<script src="/js/owl.carousel.js"></script>
+<script src="/js/bootstrap.js"></script>
+<!--flex slider-->
+<script defer src="/js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+<script>
+	// Can also be used with $(document).ready()
+	$(window).load(function() {
+	  $('.flexslider').flexslider({
+		animation: "slide",
+		controlNav: "thumbnails"
+	  });
+	});
+</script>
+<!--flex slider-->
+<script src="/js/imagezoom.js"></script>
 <style type="text/css">
 	#detail-21{margin-left:100px;}
 	.uls{font-size:20px;}

@@ -30,23 +30,7 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
 <!-- js -->
 <script src="/js/jquery-2.2.3.min.js"></script> 
-<script src="/js/jquery-2.2.3.min.js"></script> 
-<script src="/js/owl.carousel.js"></script>
-<script src="/js/bootstrap.js"></script>
-<!--flex slider-->
-<script defer src="/js/jquery.flexslider.js"></script>
-<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
-<script>
-	// Can also be used with $(document).ready()
-	$(window).load(function() {
-	  $('.flexslider').flexslider({
-		animation: "slide",
-		controlNav: "thumbnails"
-	  });
-	});
-</script>
-<!--flex slider-->
-<script src="/js/imagezoom.js"></script>
+
 <!-- 购物车样式 -->
 <style type="text/css">
 	.mws-panel {
