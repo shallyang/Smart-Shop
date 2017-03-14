@@ -91,8 +91,7 @@ class HomeController extends Controller
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
-
-                $ses = Session::put(['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
+                $ses = Session::put('user',['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
                 // 登录成功
                 return redirect('/user/order');
             }else{            

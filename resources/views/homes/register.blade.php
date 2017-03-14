@@ -9,11 +9,8 @@
 			<h3 class="w3ls-title w3ls-title1">创建您的账户</h3>  
 			<div class="login-body">
 			@if (count($errors) > 0)
-<<<<<<< HEAD
 			    <div class="alert alert-danger" id="dv">
-=======
 			    <div class="style-msg2 errormsg">
->>>>>>> 7261a41547ea28672d59919f8a8bf3eec8e092e1
 			     <div class="msgtitle">错误提示信息:</div>
 			        <ul>
 			            @foreach ($errors->all() as $error)
@@ -22,14 +19,11 @@
 			        </ul>
 			    </div>
 			@endif
-<<<<<<< HEAD
 			<script type="text/javascript">
 		        setTimeout(function(){
 		            $('#dv').fadeOut(1000);
 		        },3000)
 		    </script>
-=======
->>>>>>> 7261a41547ea28672d59919f8a8bf3eec8e092e1
 			
 			@if(session('info'))
 		        <div class="alert alert-danger" id='dvss' >
@@ -81,7 +75,6 @@
                                         $(this).css('border','solid 1px red').attr('placeholder','密码不能为空');                                                      }
                            })
 					</script>
-<<<<<<< HEAD
 					<input type="password" name="repassword" class="lock" placeholder="请确认密码" required="">
 
 					<!-- 判断密码是否为空 -->
@@ -95,8 +88,6 @@
                                         $(this).css('border','solid 1px red').attr('placeholder','密码不能为空');                                                      }
                            })
 					</script>
-=======
->>>>>>> 7261a41547ea28672d59919f8a8bf3eec8e092e1
 
 					<!-- 验证码	-->
 					<input type="password" name="vcode" class="lock" placeholder="请输入验证码" style="width:270px;float:left" required="">
