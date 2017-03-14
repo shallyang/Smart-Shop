@@ -133,13 +133,7 @@
 							<div class="profile-info">
 								<div class="control-group clearfix " style="width: 1020px;margin-bottom: 0px;">	
 								</div>
-							</div>
-							<div style="margin-left: 30px;height: 25px;" >
-								<input  type="text"  placeholder="输入商品标题或者订单号进行搜索 " style="width: 200px;height: 25px;font-size: 12px;" />
-								<button style="height: 100%;margin-left: -5px;border: 1px #ccc solid;font-size: 12px;color:#353535;background-color: #f2f2f2;width: 100px;">订单搜索</button>
-							    <span style="margin-left: 5px;">更多搜索条件</span>
-							</div>
-							
+							</div>					
 							<div class="tab-content" style="width: 1000px;margin-top: 10px;border:1px #fff solid; border-top:transparent;margin-left: 30px;">
 								  <div id="index" class="tab-pane " style="padding: 40px 30px;">
 								  </div>
@@ -151,7 +145,7 @@
 								 	<span style="color: #858585;margin-left: 45px;">收货地址</span>
 								 	<span style="color: #858585;margin-left: 100px;">实付款(元)</span>
 								 	<span style="color: #858585;margin-left: 45px;">交易状态</span>
-								 	<span style="color: #858585;margin-left: 45px;">交易操作</span>
+								 	<span style="color: #858585;margin-left: 45px;">操作</span>
 								 </div>
 								 <div style="width: 100%;height: 0px;padding: 10px;">
 								 	<span style="line-height: 20px;">全选</span>
@@ -215,9 +209,8 @@
                                         </form>
                                     @endif
 								 </div>
-								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center ;">
-								 	<dl style="margin-top: 30px;">还有9天10时4分</dl>
-								 	<button style="color: fff;background-color: #65b5ff;border: 0px;padding: 4px;margin-top: 5px;">确认收货</button>
+								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center ;">		
+								 	<button onClick="location.href='/user/changeget/{{$v->orderid}}'" style="color: fff;background-color: #65b5ff;border: 0px;padding: 4px;margin-top: 5px;">修改订单</button>
 								 </div>
 								 </div>	
 								 @endforeach                     

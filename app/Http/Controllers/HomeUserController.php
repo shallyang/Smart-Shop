@@ -113,9 +113,7 @@ class HomeUserController extends Controller
     public function getChangeget($id)
     {
         $res = DB::table('order_table')->where('orderid',$id)->select()->first();
-
-        // dd($res);
-        return view('admins.order_changeget',['res'=>$res]);
+        return view('homes/user_orderchange',['res'=>$res]);
     }
 
     public function postChangeget(Request $request)
@@ -123,11 +121,12 @@ class HomeUserController extends Controller
         //删除token 和订单号
         $res = $request->except('_token','orderid');
         //获取订单号
+       // dd($res);
         $orderid = $request->orderid;
         //修改数据
-        $res = DB::table('order_table')->where('orderid',$orderid)->update($res);
+        $pro = DB::table('order_table')->where('orderid',$orderid)->update($res);
 
-        if ($res) {
+        if ($pro) {
             return redirect('/user/order')->with('info','修改成功!');
         } else {
             return redirect('/user/order')->with('info','修改失败!');
