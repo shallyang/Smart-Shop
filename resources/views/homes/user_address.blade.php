@@ -3,6 +3,11 @@
 		<meta charset="utf-8">
 		<title></title>
 		<script type="text/javascript" src="/js/safe/aywmq_qt.js" ></script>
+		<link href="/css/font-awesome.css" rel="stylesheet"> 
+
+		<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+
 		<script type="text/javascript" src="/js/safe/da_opt.js" ></script>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
@@ -33,6 +38,16 @@
 }
 	</style>
 	<body class="ms-body">
+
+	  	@if (count($errors) > 0)
+        <div class="mws-form-message error" id="dvs">
+             <ul>                     
+                @foreach ($errors->all() as $error)
+                    <li style="font-size:20px;list-style:none">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    	@endif     
 		<div id="" class="ng-top-banner"></div>
 		
 		<div id="ms-center" class="personal-member">
@@ -62,6 +77,7 @@
 					<div class="main-wrap mt15">
 						<h3>
 	                        <strong style=" font-size: 14px;">收货地址</strong>
+	                        <a href="/user/order" style="font-size:15px">返回</a>
 	                    </h3>
 						<div class="user-profile clearfix" style="margin-left: 0px;width: 100%;border: 0px;">
 							<div class="user-profile-wrap" style="width: 100%;height: 500px;">
@@ -121,8 +137,7 @@
 					</div>
 				</div>
 							
-							<div style="margin-top: 30px;width: 1068px; margin: 15px 0 30px 170px;">
-								<dl style="color: #F88600;font-size: 16px;margin-top: 69px;">您已添加4个地址，你还可以添加16个地址</dl>
+							<div style="margin-top: 30px;width: 1068px; margin: 15px 0 30px 170px;">			
 								
 								<table class="sui-table table-bordered-simple" style="margin-top: 20px;">
 								  <thead>
@@ -145,7 +160,7 @@
 								      <td>{{$v->street}}</td>
 								      <td>{{$v->number}}</td>
 								      <td>{{$v->phone}}</td>
-								      <td style="color: #007AFF;">修改&nbsp;|&nbsp;删除</td>
+								      <td style="color: #007AFF;"><a href="/user/deladdress/{{$v->id}}">删除</a></td>
 								      <td >@if($v->status==1)<span style="padding: 2px;font-size: 10px;color: #EC5937;border-radius:5px;background-color: #fad5d0;border: 1px #C85E0B solid;">默认地址</span></td>@endif
 								    </tr>	
 								    @endforeach					
