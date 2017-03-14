@@ -9,13 +9,13 @@
 			<h3 class="w3ls-title w3ls-title1">创建您的账户</h3>  
 			<div class="login-body">
 			@if (count($errors) > 0)
-			    <div class="alert alert-danger" id="dv">
-			    <div class="style-msg2 errormsg">
-			     <div class="msgtitle">错误提示信息:</div>
+			    <div class="alert alert-danger" id="dv"> 
 			        <ul>
+			        <div class="style-msg2 errormsg">
 			            @foreach ($errors->all() as $error)
 			                <li style='list-style:none;font-size:17px'>{{ $error }}</li>
 			            @endforeach
+			         </div>    
 			        </ul>
 			    </div>
 			@endif
