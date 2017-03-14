@@ -148,7 +148,7 @@
 				@foreach($sli as $k=>$v)
 					<div class="item">
 						<div class="glry-w3agile-grids agileits">
-							<a href="products1.html"><img src="{{$imgs[$k]}}" alt="img" height='220'></a>
+							<a href="/goods/single/{{$v->goodsid}}"><img src="{{$imgs[$k]}}" alt="img" height='220'></a>
 							<div class="view-caption agileits-w3layouts"> 
 								<h4><a href="/goods/single/{{$v->goodsid}}">{{$v->goodsname}}</a></h4>
 								<h5>¥{{$v->goodsprice}}</h5>		

@@ -105,6 +105,7 @@ class HomeOrderController extends Controller
 
         }
 
+        // $useremail = 
         // dd($buyorder);
 
         return view('homes.order_reply',['buyorder'=>$buyorder]);
