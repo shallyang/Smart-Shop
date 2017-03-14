@@ -69,46 +69,35 @@ class HomeController extends Controller
     // 判断登录
     public function postLogins(Request $request)
     {
-    	$useremail = $request->input('email');
+    	  $useremail = $request->input('email');
         $password = $request->input('password');
-        $a = DB::table('user_table')->value('userpassword');
+        $username = $request->input('username');
+        
+        $a = DB::table('user_table')->where('username',$username)->value('userpassword');
+        $id = DB::table('user_table')->where('username',$username)->value('userid');
+        $name = DB::table('user_table')->where('username',$username)->value('username');
 
-        // $try = session()->has('email');
-        // if($try){
-        //     return redirect('/home');
-        // }
-
-        // 取出数据库的信息
-        $userstatus = DB::table('user_table')->where('userpassword',$password)->value('userstatus');
-        // dd($userstatus);die;
-
-        // 判断
-        if ($userstatus == 0) {
-            $userpassword = DB::table('user_table')->where('userpassword',$password)->value('userpassword');
-            if($password == $userpassword){
+        //判断输入的密码和数据库密码是否匹配
+        if($a){
+            if($password == $a){
                  //验证码检测
                 if(Session::get('vcode') != $request->input('vcode')) {
                     return back()->with('info','验证码有误');
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
-                // dd($rem);die;
-                if($rem == '1'){
-                  $ses = Session::put('email','$useremail');
-                }
+                $ses = Session::put(['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
+                // 登录成功
+                return redirect('/user/order');
 
-                return redirect('/home');
-
-            }else{   
-            //密码不匹配退回到登录页           
+            }else{            
                 return back()->with('info','密码错误');
-            }                   
-        } else {         
-            return back()->with('info','邮箱和密码不匹配');
+            } 
+            }else{                         
+                return back()->with('info','邮箱和密码不匹配');
+            }
         }
-    }
 
-    
     //注册页
     public function getRegister(Request $request)
     {
@@ -150,8 +139,6 @@ class HomeController extends Controller
           $data = DB::table('user_table')->insertGetId($res);
   
           if ($data) {
-
-            // return redirect('/home/login');
             Mail::send('homes.activate', ['id'=>$data,'token'=>$res['token']], function ($m) use ($res){
                 $m->from('yxc930708@163.com', 'shopProject');
 
@@ -180,8 +167,6 @@ class HomeController extends Controller
 
         $res['userstatus'] = '1';
 
-        // $pro = DB::table('user_table')->where('id', $id)->update($res);
-
         if($pro) {
 
             return redirect('/homes/login');
@@ -193,11 +178,11 @@ class HomeController extends Controller
         return view('/homes/remind');
     }
 
+   
+
     // 找回密码页
     public function getBack(Request $request)
     {   
-        // $res = DB::table('user_table')->all();
-        // return view('homes/getback',['res'=>$res]);
         return view('/homes/getback');
     }
 
@@ -206,13 +191,11 @@ class HomeController extends Controller
     {
         // echo '判断找回密码页';
         $this->validate($request, [
-                
                 'userpassword' => 'required|regex:/^\w{8,12}$/',
                 'repassword'=>'required|same:userpassword',
                 'useremail'=>'required|email',
             ],[
                 //自定义错误消息
-                
                 'userpassword.required'=>'密码不能为空',
                 'userpassword.regex'=>'密码格式不正确',
                 'repassword.required'=>'确认密码不能为空',
@@ -226,33 +209,35 @@ class HomeController extends Controller
                 return back()->with('info','验证码有误');
           }
           //获取值
-          $res = $request->except('_token','useremail','repassword','vcode');
+          $res = $request->except('_token','repassword','vcode');
           $email = $request->input('useremail');
-
+          $password = $request->input('userpassword');
+          $username = $request->input('username');
           $res['userstatus'] = '0';
 
           $res['token'] = str_random(30);
 
-          $datas = DB::table('user_table')->where('useremail',$email)->first('userid');
-          $data = $datas->userid;
-  
-          if ($data) {
-            Mail::send('homes.activate', ['useremail'=>$data,'token'=>$res['token']], function ($m) use ($res){
+          $data = DB::table('user_table')->where('username',$username)->first();
+          $id = $data->userid;
+          //修改
+          $change = DB::table('user_table')->where('userid',$id)->update($res);  
+          if ($change) {
+            Mail::send('homes.zactivate', ['id'=>$id,'token'=>$res['token']], function ($m) use ($res){
                 $m->from('yxc930708@163.com', 'shopProject');
 
-                $m->to($res['useremail'], $res['username'])->subject('用户密码修改提醒');
+                $m->to($res['useremail'])->subject('用户密码修改提醒');
             });
         }
-        return redirect('/home/remind');
+        return view('homes/zremind');
     } 
 
+    //检测确认用户
     public function getTest()
     {
         return view('homes/testemail');
     } 
 
-   
-
+  
     //检测验证
     public function postTestemail(Request $request)
     {
@@ -266,27 +251,20 @@ class HomeController extends Controller
           
           //获取值
           $res = $request->except('_token');
-          // dd($res);
           $res['userstatus'] = '0';
 
           $res['token'] = str_random(30);
           $email = $request->input('useremail');
-          // dd($email);
-
           $datas = DB::table('user_table')->where('useremail',$email)->first();
-          // dd($datas);
           $data = $datas->userid;
-          // dd($data);
   
           if ($data) {
-
-            // return redirect('/home/login');
             Mail::send('homes.yactivate', ['id'=>$data,'token'=>$res['token']], function ($m) use ($res){
                 $m->from('yxc930708@163.com', 'shopProject');
 
                 $m->to($res['useremail'], $res['username'])->subject('用户验证提醒');
             });
         }
-        return redirect('/home/yremind');
+        return view('homes/yremind');
     }
 }

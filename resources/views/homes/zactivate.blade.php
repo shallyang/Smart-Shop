@@ -6,6 +6,6 @@
 </head>
 <body>
 	<p>请点击以下链接来验证账户,如果链接失败请复制以下链接到浏览器地址栏进行验证</p>
-	<a href="http://www.sokomz.com/home/back/yactivate?id={{$id}}&token={{$token}}">"http://www.sokomz.com/home/back/yactivate?id={{$id}}&token={{$token}}"</a>
+	<a href="http://www.sokomz.com/home/login/zactivate?id={{$id}}&token={{$token}}">"http://www.sokomz.com/home/login/zactivate?id={{$id}}&token={{$token}}"</a>
 </body>
 </html>

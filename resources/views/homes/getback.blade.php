@@ -46,6 +46,19 @@
 			},3000)
    			</script>  
 				<form action="/home/backs" method="post" enctype="multipart/form-data">
+
+					<input type="text" class="user" name="username" placeholder="请输入用户名" required="">
+					<!-- 判断邮箱是否为空 -->
+					<script type="text/javascript">
+
+						$('input[name=username]').focus(function(){
+                                    $(this).css('border','solid 1px blue').attr('placeholder','请输入用户名');
+                                })
+						 $('input[name=username]').blur(function(){
+                                    if(!($('input[name=username]').val())){
+                                        $(this).css('border','solid 1px red').attr('placeholder','用户名不能为空');                                                      }
+                           })
+					</script>
 				
 					<input type="text" class="user" name="useremail" placeholder="请输入邮箱" required="">
 					<!-- 判断邮箱是否为空 -->

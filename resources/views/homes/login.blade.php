@@ -1,5 +1,7 @@
 @extends('homes.muban')
 @section('title','用户登录页')
+@section('person')
+@endsection
 @section('content')
 
 <script type="text/javascript" src="/homes/js/jquery-1.8.3.min.js"></script>
@@ -21,6 +23,19 @@
 			
 				<!-- form表单 -->
 				<form action="/home/logins" method="post" enctype="multipart-form/data">
+
+					<input type="text" class="user" name="username" placeholder="请输入您的用户名" required="">
+					<!-- 判断邮箱里面是否为空 -->
+					<script type="text/javascript">
+						$('input[name=username]').focus(function(){
+                                    $(this).css('border','solid 1px blue');
+                                })
+						 $('input[name=username]').blur(function(){
+                                    if(!($('input[name=username]').val())){
+                                        $(this).css('border','solid 1px red').attr('placeholder','用户名不能为空');                           }
+                            })
+					</script>
+
 					<input type="text" class="user" name="email" placeholder="请输入您的邮箱" required="">
 					<!-- 判断邮箱里面是否为空 -->
 					<script type="text/javascript">
