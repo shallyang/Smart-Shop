@@ -66,7 +66,7 @@
 													<input type="hidden" name="w3ls_item" value="Audio speaker" /> 
 													<input type="hidden" name="amount" value="200.00" /> 
 													<button type="submit" class="w3ls-cart  intocart" goodsid="{{$v->goodsid}}">
-													<i class="fa fa-cart-plus" aria-hidden="true" "></i>加入购物车</button>
+													<i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
 												</form>  
 											</div>   
 										</div>   

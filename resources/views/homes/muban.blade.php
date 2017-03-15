@@ -173,8 +173,9 @@ $(document).ready(function() {
 				</div>	
 				@section('search')
 				<div class="header-search">
-					<form action="#" method="post">
-						<input type="search" name="Search" placeholder="请输入需要搜索的商品" required="">
+					<form action="/goods/search" method="post">
+						<input type="search" name="Search" placeholder="请输入需要搜索的商品" required="" @if(isset($name))value='{{$name}}' @endif>
+						{{csrf_field()}}
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<i class="fa fa-search" aria-hidden="true"> </i>
 						</button>

@@ -3,11 +3,12 @@
 @section('content')
 <div class="clearfix"></div>
 <!-- //breadcrumbs -->
+
 <div class="products-row">
 	@foreach($obj as $k=>$v)
 	<div class="col-md-3 product-grids"> 		
 		<div class="agile-products">
-			<a href="/goods/single/{{$v->goodsid}}"><img src="{{$v->picurl}}" width="250" height="300" alt="商品图片" ></a>
+			<a href="/goods/single/{{$v->goodsid}}"><img src="{{$v->picurl}}" alt="商品图片" width='280' height='300'></a>
 			<div class="agile-product-text">              
 				<h5><a href="/goods/single/{{$v->goodsid}}">{{$v->goodsname}}</a></h5> 
 				<h6>¥{{$v->goodsprice}}</h6>
@@ -41,5 +42,6 @@
 		})
 		
 	});
+
 </script>
 @endsection
