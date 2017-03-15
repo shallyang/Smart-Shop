@@ -21,21 +21,17 @@ class HomeController extends Controller
 
     public function getIndex(Request $request)
     {
-    	$res = DB::table('goods_type')
+        $res = DB::table('goods_type')
             ->select(DB::raw("*,concat(pathid,',',id) as paths"))
             ->orderBy('paths')
             ->get();
-        $row = DB::table('goods_type')->where('pid','=',24)->get();
-        $rel = [];
+        //获取最新产品
+        $row = DB::table('goods_table')->orderBy('goodsid','desc')->limit(10)->get();
         $imgs = [];
-        foreach($row as $k => $v){
-            $rel[] = DB::table('goods_table')->where('typeid','=',$v->id)->first();
+        foreach($row as $k=>$v){
+            $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$v->goodsid)->first();
         }
-         foreach($rel as $ks=>$kv){
-            $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$kv->goodsid)->first();
-            }
-
-        return view('homes/index',['res'=>$res,'rel'=>$rel,'imgs'=>$imgs]);
+        return view('homes/index',['res'=>$res,'row'=>$row,'imgs'=>$imgs]);
     }
     public static function getCate($pid)
     {
