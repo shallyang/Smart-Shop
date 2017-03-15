@@ -26,7 +26,7 @@
 					<div class="mws-form-row">
 						<label class="mws-form-label">收货地址</label>
 						<div class="mws-form-item">
-							<textarea rows="" cols="" class="large" name="getaddress">{{$res->getaddress}}</textarea>
+							<div></div>
 						</div>
 					</div>
 				</div>

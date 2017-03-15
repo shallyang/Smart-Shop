@@ -116,8 +116,10 @@ class HomeUserController extends Controller
 
     public function getChangeget($id)
     {
+        $userid = session('user')['userid'];
         $res = DB::table('order_table')->where('orderid',$id)->select()->first();
-        return view('homes/user_orderchange',['res'=>$res]);
+        $pro = DB::table('user_address')->where('userid',$userid)->get();
+        return view('homes/user_orderchange',['res'=>$res,'pro'=>$pro]);
     }
 
     public function postChangeget(Request $request)
@@ -142,20 +144,20 @@ class HomeUserController extends Controller
 
     //没添加的用户信息页面
     public function getInfo()
-    {           
-        $pro = DB::table('user_table')->where('userid',9)->get()[0];
-        // var_dump($pro);die;
+    {    
+        $userid = session('user')['userid'];       
+        $pro = DB::table('user_table')->where('userid',$userid)->get()[0];
             if(!$pro->userinfostatu){
                 return view('homes/user_info');
-        }
-        
-    	return redirect('/user/userinfo');
+        }else{
+            return redirect('/user/userinfo');
+        }    	
     }
     // 添加过的用户页面
     public function getUserinfo()
     {
-
-        $pro = DB::table('user_table')->where('userid',8)->get()[0];
+        $userid = session('user')['userid'];
+        $pro = DB::table('user_table')->where('userid',$userid)->get()[0];
         $provin = ['安徽','河北','河南','山西'];
          $ct = [
             ['亳州','合肥','蚌埠'],
@@ -210,7 +212,9 @@ class HomeUserController extends Controller
         $res['province'] = $pro[$request->province];
         $res['city'] = $ct[$request->province][$request->city];  
         $res['userinfostatu'] = '1';
-        $pro = DB::table('user_table')->where('userid',8)->update($res);
+        $userid = session('user')['userid'];
+        // dd($res);
+        $pro = DB::table('user_table')->where('userid',$userid)->update($res);
         if($pro){
             return redirect('/user/order')->with('info','修改成功!');
         }else{

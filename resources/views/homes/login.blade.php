@@ -28,7 +28,7 @@
 					<!-- 判断邮箱里面是否为空 -->
 					<script type="text/javascript">
 						$('input[name=username]').focus(function(){
-                                    $(this).css('border','solid 1px blue');
+                                    $(this).css('border','solid 1px blue').attr('placeholder','请输入您的用户名');
                                 })
 						 $('input[name=username]').blur(function(){
 						 	
@@ -41,7 +41,7 @@
 					<!-- 判断邮箱里面是否为空 -->
 					<script type="text/javascript">
 						$('input[name=email]').focus(function(){
-                                    $(this).css('border','solid 1px blue');
+                                    $(this).css('border','solid 1px blue').attr('placeholder','请输入您的邮箱');
                                 })
 						 $('input[name=email]').blur(function(){
                                     if(!($('input[name=email]').val())){
@@ -55,7 +55,7 @@
 					<script type="text/javascript">
 
 						$('input[name=password]').focus(function(){
-                                    $(this).css('border','solid 1px blue');
+                                    $(this).css('border','solid 1px blue').attr('placeholder','请输入您的密码');
                                 })
 						 $('input[name=password]').blur(function(){
                                     if(!($('input[name=password]').val())){
