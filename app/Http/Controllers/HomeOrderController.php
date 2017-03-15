@@ -172,7 +172,8 @@ class HomeOrderController extends Controller
 
             if ($request->input('paymethod')) {
                 # code...
-                
+                return view('homes.alipay');
+
             } else {
                 $usermoney = DB::table('user_table')->where('userid',\Session::get('user')['userid'])->value('usermoney');
                 // dd($usermoney);
