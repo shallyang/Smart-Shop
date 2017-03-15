@@ -128,6 +128,7 @@
 					<div class="main-wrap mt15" style="border: 0px;">
 						      <ul class="sui-nav nav-tabs" style="margin-top:0px;width: 1000px;margin-left: 30px;">
 								  <li   style="margin-left: -5px;"><a href="#profile" data-toggle="tab">所有订单<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li   style="margin-left: -5px;"><a href="" data-toggle="tab">返回<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
 								  
 								</ul>
 							<div class="profile-info">
@@ -155,6 +156,7 @@
 								    	<input type="button" style="border:0px;display: inline-block;background-color: #fff;background-image: url(img/我的订单/组-40.png);background-repeat: no-repeat;width: 58px;height: 20px;" />
 								    </div>
 								 </div>
+								 @if(isset($res))
 								 @foreach($res as $k=>$v)
 								 <div style="margin-top: 30px;width: 100%;height: 250px;border: 1px #addff8 solid;">
 								 <div style="width: 100%;height: 50px;background-color: #eaf9ff;vertical-align: middle;font-size: 12px;">
@@ -213,10 +215,8 @@
 								 	<button onClick="location.href='/user/changeget/{{$v->orderid}}'" style="color: fff;background-color: #65b5ff;border: 0px;padding: 4px;margin-top: 5px;">修改订单</button>
 								 </div>
 								 </div>	
-								 @endforeach                     
-                        
-					  	
-								
+								 @endforeach  
+								 @endif                   							
 		</div>
 		</div>
 		<div class="clear"></div>

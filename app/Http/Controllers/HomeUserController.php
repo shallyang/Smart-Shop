@@ -10,23 +10,21 @@ use DB;
 
 class HomeUserController extends Controller
 {
-    public function getPerson()
+    public function getMymoney()
     {
-        return view('homes/user_person');
-    }
-    public function getMymoney($id)
-    {
-        $res = DB::table('user_table')->where('userid',$id)->value('usermoney');
+        $userid = session('user')['userid'];
+        $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');
     	return view('homes/user_mymoney',['res'=>$res]);
     }
     //用户充值
     public function postMymoneyinsert(Request $request)
     {
+        $userid = session('user')['userid'];
         $res = $request->except('_token');
         // var_dump($res);die;
-        $pro = DB::table('user_table')->where('userid',$res['id'])->value('usermoney');
+        $pro = DB::table('user_table')->where('userid',$userid)->value('usermoney');
         $newmoney = (int)$res['usermoney'] + $pro;
-        $tem = DB::table('user_table')->where('userid',$res['id'])->update(['usermoney'=>$newmoney]);
+        $tem = DB::table('user_table')->where('userid',$userid)->update(['usermoney'=>$newmoney]);
         if($tem){
             return redirect('/user/mymoney')->with('info','充值成功!');
         }else{
@@ -36,15 +34,21 @@ class HomeUserController extends Controller
     //订单管理页面
     public function getOrder()
     {
-        $res = DB::table('order_table')->get();
-        foreach($res as $k=>$v){
-            $arr = explode(',',$v->goodsid);
-            foreach($arr as $ks=>$vs){                 
-                $img = DB::table('goods_pic_table')->where('goodsid',$vs)->value('picurl');
-                $imgs[] = $img;                
-            }            
-            $pics[] = $imgs;
-            $imgs = null;
+        $userid = session('user')['userid'];
+        $res = DB::table('order_table')->where('userid',$userid)->get();
+        if(empty($res)){
+            return view('homes/user_order')->with('info','该用户没添加订单');
+        }else{
+
+            foreach($res as $k=>$v){
+                $arr = explode(',',$v->goodsid);
+                foreach($arr as $ks=>$vs){                 
+                    $img = DB::table('goods_pic_table')->where('goodsid',$vs)->value('picurl');
+                    $imgs[] = $img;                
+                }            
+                $pics[] = $imgs;
+                $imgs = null;
+            }
         }
     	return view('homes/user_order',['res'=>$res,'pics'=>$pics]);
     }
@@ -139,7 +143,7 @@ class HomeUserController extends Controller
     //没添加的用户信息页面
     public function getInfo()
     {           
-        $pro = DB::table('user_table')->where('userid',8)->get()[0];
+        $pro = DB::table('user_table')->where('userid',9)->get()[0];
         // var_dump($pro);die;
             if(!$pro->userinfostatu){
                 return view('homes/user_info');
@@ -205,6 +209,7 @@ class HomeUserController extends Controller
             ];
         $res['province'] = $pro[$request->province];
         $res['city'] = $ct[$request->province][$request->city];  
+        $res['userinfostatu'] = '1';
         $pro = DB::table('user_table')->where('userid',8)->update($res);
         if($pro){
             return redirect('/user/order')->with('info','修改成功!');
@@ -215,7 +220,8 @@ class HomeUserController extends Controller
     //商品收藏
     public function getCollectgoods()
     {
-        $res = DB::table('collect_table')->where('userid',8)->get();
+        $userid = session('user')['userid'];
+        $res = DB::table('collect_table')->where('userid',$userid)->get();
         $arr = [];
         foreach($res as $k=>$v){
             // $pro = DB::select('select goodsname,goodsprice from goods_table where goodsid = ?',[$v->goodsid])[0];
@@ -242,14 +248,16 @@ class HomeUserController extends Controller
    //收货地址页面
     public function getAddress()
     {
-        $res = DB::table('user_address')->get();
+        $userid = session('user')['userid'];
+        // echo $userid;
+        $res = DB::table('user_address')->where('userid',$userid)->get();
         // var_dump($res);
     	return view('homes/user_address',['res'=>$res]);
     }
     //添加收货地址
     public function postAddressinsert(Request $request)
     {
-
+        $userid = session('user')['userid'];
         $res = $request->except('_token');   
          $pro = ['安徽','河北','河南','山西'];
          $ct = [
@@ -261,12 +269,13 @@ class HomeUserController extends Controller
         if(empty($request->status)){
             $res['status'] = '0';
             $res['province'] = $pro[$request->province];
-            $res['city'] = $ct[$request->province][$request->city];
+            $res['city'] = $ct[$request->province][$request->city];  
+            $res['userid'] = $userid;          
             $tem = DB::table('user_address')->insert($res);
 
         }else{        
         // var_dump($res);die;
-            $getstatus = DB::table('user_address')->get();
+            $getstatus = DB::table('user_address')->where('userid',$userid)->get();
             foreach($getstatus as $k=>$v){
                 if($v->status == '1'){
                     DB::table('user_address')->where('id',$v->id)->update(['status'=>'0']);
@@ -274,6 +283,7 @@ class HomeUserController extends Controller
             }
             $res['province'] = $pro[$request->province];
             $res['city'] = $ct[$request->province][$request->city];
+            $res['userid'] = $userid;
             $tem = DB::table('user_address')->insert($res);
         }        
        

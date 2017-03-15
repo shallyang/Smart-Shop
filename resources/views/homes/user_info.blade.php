@@ -213,6 +213,12 @@
 				top:130px;
 				left:30px;
 			}
+			.cur{
+				border:solid 2px blue;
+			}
+			.lost{
+				border:solid 2px green;
+			}
 		</style>
 		<script type="text/javascript" src="js/safe/ms_common.min.js" ></script>
 		<script type="text/javascript">
@@ -240,6 +246,10 @@
 		}
 		citys.innerHTML = into;
 	}
+
+		</script>
+		<script type="text/javascript">
+		
 
 		</script>
 	</body>

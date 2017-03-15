@@ -169,8 +169,7 @@
 									<center>
 									<form action="/user/mymoneyinsert" method='post'>
 									<span style="color:red;">请输入您的充值金额:</span></p>
-										<input type="text" name='usermoney' style='width:70px;height:25px'>
-										<input type="hidden" name='id' value='7'>
+										<input type="text" name='usermoney' style='width:70px;height:25px'>			
 										<input type="submit" value='确定' id='close'>
 										{{csrf_field()}}
 									</form>
@@ -181,7 +180,7 @@
 									<form action="/user/mymoneyinsert" method='post'>
 									<span style="color:red;">请输入您的提现金额:</span></p>
 										<input type="text" name='usermoney' style='width:70px;height:25px'>
-										<input type="hidden" name='id' value='7'>
+										
 										<input type="submit" value='确定' id='closes'>
 										{{csrf_field()}}
 									</form>
