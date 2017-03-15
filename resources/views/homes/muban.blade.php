@@ -139,15 +139,25 @@ $(document).ready(function() {
 			<div class="w3ls-header-right">
 				<ul>
 				@section('person')
-					<li class="dropdown head-dpdn">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> 个人中心<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="{{ url('home/login')}}">登陆 </a></li> 
-							<li><a href="{{ url('home/register')}}">创建用户</a></li> 
-							<li><a href="login.html">我的订单</a></li>
-						</ul> 
-					</li> 
-				@show 
+ 					@if(session('user'))
+  					<li class="dropdown head-dpdn">
+ 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> 个人中心<span class="caret"></span></a>
+ 						<ul class="dropdown-menu">
+ 							<li><a href="{{ url('user/order')}}">{{session('user')['username']}}</a></li> 
+ 						</ul> 
+ 					</li> 
+ 					@else if
+ 					<li class="dropdown head-dpdn">
+ 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>个人中心<span class="caret"></span></a>
+  						<ul class="dropdown-menu">
+  							<li><a href="{{ url('home/login')}}">登陆 </a></li> 
+  							<li><a href="{{ url('home/register')}}">创建用户</a></li> 
+ 							<li><a href="login.html">我的订单</a></li>
+ 							<li><a href="{{ url('user/order') }}">我的订单</a></li>
+  						</ul> 
+  					</li> 
+ 					@endif
+  				@show 
 					<li class="dropdown head-dpdn">
 						<a href="help.html" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a>
 					</li>
