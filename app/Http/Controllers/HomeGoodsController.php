@@ -114,33 +114,4 @@ class HomeGoodsController extends Controller
                 return 1;
            }
    }
-   public function getFind(Request $request)
-   {
-        $id = $_GET['id'];
-        //通过获取到的类id的值来查询其子类
-        $res = DB::table('goods_type')->where('pid',$id)->get();
-        //通过子类的id来查找子商品
-        $obj = [];
-        foreach($res as $k=>$v){
-            $obj[] = DB::table('goods_table')->where('typeid',$v->id)->get();
-
-        }
-        $imgs = [];
-        
-        foreach($obj as $ks=>$kv){
-            foreach($kv as $lk => $lv){
-
-             $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$lv->goodsid)->first();
-
-            }
-       
-        }
-        // return $obj;
-        if($obj && $imgs){
-            
-            array_push($obj,$imgs);
-            return json_encode($obj);
-        }
-
-   }
 }
