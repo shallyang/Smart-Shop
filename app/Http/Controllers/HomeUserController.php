@@ -62,13 +62,15 @@ class HomeUserController extends Controller
                 $arr['paystatu'] = 1;
                 $tem = DB::table('user_money')->insert($arr);
                 $in = DB::table('user_table')->where('userid',$userid)->update(['usermoney'=>$newmoney]);
+            }else{
+                return back()->with('info','提现失败!');
             }
              
         if($tem && $in){
             return redirect('/user/mymoney')->with('info','提现成功!');
         }else{
             return back()->with('info','提现失败!');
-        }
+        }         
 
     }
     //订单管理页面
