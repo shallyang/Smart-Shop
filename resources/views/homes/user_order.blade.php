@@ -153,7 +153,7 @@
 					<div class="main-wrap mt15" style="border: 0px;">
 						      <ul class="sui-nav nav-tabs" style="margin-top:0px;width: 1000px;margin-left: 30px;">
 								  <li   style="margin-left: -5px;"><a href="#profile" data-toggle="tab">所有订单<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
-								  <li   style="margin-left: -5px;"><a href="" data-toggle="tab">返回<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li   style="margin-left: -5px;"><a href="/home" >返回</a></li>
 								  
 								</ul>
 							<div class="profile-info">
