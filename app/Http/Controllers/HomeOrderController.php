@@ -130,7 +130,7 @@ class HomeOrderController extends Controller
     {
         //获取需要填入数据库的值
         $res['userid'] = session('user')['userid'];
-        $res['passstatus'] = 0;
+        $res['passstatus'] = 3;
         $res['ordertime'] = time();
         $buyGoods = $request->input('goodsid');
         // var_dump($buyGoods);die;
@@ -154,10 +154,51 @@ class HomeOrderController extends Controller
         // var_dump($res);die;
 
         //创建订单 , 插入数据库
-        $res = DB::table('order_table')->insert($res);
+        $orderid = DB::table('order_table')->insertGetId($res);
+        // dd($orderid);
 
-        if ($res) {
-            
+        if ($orderid) {
+
+            //删除已下单的购物车中的商品
+            $info = \Session::get('cart');
+            // dd($info);
+            foreach($info as $k => $v) {
+
+                if(in_array($v, explode(',', $goodsid), true)) {
+
+                    \Session::forget('cart.'.$k);
+                }
+            }
+
+            if ($request->input('paymethod')) {
+                # code...
+                
+            } else {
+                $usermoney = DB::table('user_table')->where('userid',\Session::get('user')['userid'])->value('usermoney');
+                // dd($usermoney);
+                //事务处理
+                // DB::transaction(function () {
+                //     DB::table('user_table')->update(['usermoney' => $usermoney-$request->input('total'),]);
+
+                //     DB::table('posts')->delete();
+                // });
+                // DB::beginTransaction();
+                $yue = $usermoney-$request->input('total');
+                if ( $yue >= 0) {
+                    //余额足够,支付成功进入用户订单页面
+                    DB::table('user_table')->where('userid',\Session::get('user')['userid'])->update(['usermoney' => $yue]);
+                    $a = DB::table('order_table')->where('orderid',$orderid)->update(['passstatus' => 0]);
+                    // DB::commit();
+                    // echo $orderid;
+                    // dd($a);
+                    return redirect('/user/order');
+                } else {
+                    //余额不足跳转到订单页面
+                    return redirect('/user/order')->with('info','抱歉!!!您的余额不足,请选择其他支付方式或充值后重试!!');
+                    // DB::rollBack();
+                }
+            }
+
         }else{
             return redirect('/order/selectcart')->with('info','抱歉!!!系统异常,下单失败,请稍后重试!!');
         }
