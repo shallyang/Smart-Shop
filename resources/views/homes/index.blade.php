@@ -52,7 +52,7 @@
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 							<div class="tabcontent-grids">  
 								<div id="owl-demo" class="owl-carousel"> 
-								@foreach($row as $k=>$v)
+								@foreach($rel as $k=>$v)
 									<div class="item">
 										<div class="glry-w3agile-grids agileits"> 
 											<a href="/goods/single/{{$v->goodsid}}"><img src="{{$imgs[$k]->picurl}}" alt="img" width='230px' height='250px'></a>
