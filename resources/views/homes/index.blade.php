@@ -52,7 +52,7 @@
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 							<div class="tabcontent-grids">  
 								<div id="owl-demo" class="owl-carousel"> 
-								@foreach($row as $k=>$v)
+								@foreach($rel as $k=>$v)
 									<div class="item">
 										<div class="glry-w3agile-grids agileits"> 
 											<a href="/goods/single/{{$v->goodsid}}"><img src="{{$imgs[$k]->picurl}}" alt="img" width='230px' height='250px'></a>
@@ -66,7 +66,7 @@
 													<input type="hidden" name="w3ls_item" value="Audio speaker" /> 
 													<input type="hidden" name="amount" value="200.00" /> 
 													<button type="submit" class="w3ls-cart  intocart" goodsid="{{$v->goodsid}}">
-													<i class="fa fa-cart-plus" aria-hidden="true" "></i>加入购物车</button>
+													<i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
 												</form>  
 											</div>   
 										</div>   

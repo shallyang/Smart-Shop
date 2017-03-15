@@ -1,3 +1,28 @@
+@if(session('info'))
+	<style type="text/css">
+		.mws-form-message {
+		    font-size: 12px;
+		    cursor: pointer;
+		    border: 1px solid #d2d2d2;
+		    padding: 15px 8px 15px 45px;
+		    position: relative;
+		    vertical-align: middle;
+		    background-position: 12px 12px;
+		    background-repeat: no-repeat;
+		    background-color: #ffcbca;
+		    background-image: url(../images/core/message-error.png);
+		    border-color: #eb979b;
+		    color: #9b4449;
+		    margin-bottom: 0;
+    		border-width: 0 0 1px 0;
+    		border-radius: 0;
+		}
+
+	</style>
+    <div class="mws-form-message error">
+        {{session('info')}}
+    </div>
+@endif
 <html>
 
 	<head>
@@ -37,9 +62,24 @@
 				position:absolute;
 			}
 		</style>
+		<script type="text/javascript">
+			//提示信息关闭
+		    setTimeout(function(){
+
+		        $('.error').slideUp(1000);
+
+		    },2000);
+		</script>
 	</head>
 
 	<body class="ms-body">
+
+
+			@if (session('info'))
+			    <div class="alert alert-success">
+			        {{ session('info') }}
+			    </div>
+			@endif
 		<div id="" class="ng-top-banner"></div>
 		<div id="ms-center" class="personal-member">
 			<div class="cont">

@@ -174,9 +174,6 @@
 								 	<span style="color: #858585;margin-left: 45px;">操作</span>
 								 </div>
 								 <div style="width: 100%;height: 0px;padding: 10px;">
-								 	<span style="line-height: 20px;">全选</span>
-								 	<input type="button" value="批量确认收货"  style="padding: 2px;border: 1px #ccc solid;background-color: #fff;color: #ccc;margin-left: 20px;"/>
-								    <div style="float: right;margin-right: 5px;">
 								    	<input type="button"  style="display: inline-block;background-color: #fff; background-image: url(img/我的订单/组-39.png);width: 20px;height: 20px;border: 0px;background-repeat: no-repeat;" />
 								    	<input type="button" style="border:0px;display: inline-block;background-color: #fff;background-image: url(img/我的订单/组-40.png);background-repeat: no-repeat;width: 58px;height: 20px;" />
 								    </div>
@@ -186,10 +183,9 @@
 								 <div style="margin-top: 30px;width: 100%;height: 250px;border: 1px #addff8 solid;">
 								 <div style="width: 100%;height: 50px;background-color: #eaf9ff;vertical-align: middle;font-size: 12px;">
 								<input type="checkbox" style="line-height: 50px;margin-left: 20px;"/>
-								<span style="line-height: 50px;">2016-04-02</span>
+								<span style="line-height: 50px;">{{date('Y-m-d H:i:s',$v->ordertime)}}</span>
 								<span style="line-height: 50px;margin-left: 20px;">订单号：{{$v->orderid}}</span>
 								<span style="line-height: 50px;margin-left: 100px;">{{$v->getman}}</span>
-								<img src="/img/speech-bubble-3-拷贝.png" style="margin-left: 100px;"/> <span>和我联系</span>
 								 </div>	
 								 <div style="float: left;width: 65%;height: 93px;">
 								 	<div style="width: 100%;">
@@ -207,15 +203,14 @@
 								 
 								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center;">
 								 	
-								 	<span style="font-weight: bold;margin-top: 30px;display: block;">129</span>
+								 	<span style="font-weight: bold;margin-top: 30px;display: block;">{{$v->orderprice}}</span>
 								 	
 								 </div>
 								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center ;">
 								 	@if($v -> passstatus == 0)
                                         <form action="/user/goship/{{$v ->orderid }}" method="get">
 
-                                            未发货&nbsp;&nbsp;
-                                            <button class="btn btn-info">发货</button>
+                                            未发货&nbsp;&nbsp;                        
                                         </form>
                                     @elseif($v -> passstatus == 1)
                                         已发货<br/>

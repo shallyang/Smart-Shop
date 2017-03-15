@@ -14,22 +14,62 @@ class HomeUserController extends Controller
     {
         $userid = session('user')['userid'];
         $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');
-    	return view('homes/user_mymoney',['res'=>$res]);
+        $pro = DB::table('user_money')->where('userid',$userid)->get();
+    	return view('homes/user_mymoney',['res'=>$res,'pro'=>$pro]);
     }
+    
     //用户充值
     public function postMymoneyinsert(Request $request)
     {
         $userid = session('user')['userid'];
         $res = $request->except('_token');
-        // var_dump($res);die;
-        $pro = DB::table('user_table')->where('userid',$userid)->value('usermoney');
-        $newmoney = (int)$res['usermoney'] + $pro;
-        $tem = DB::table('user_table')->where('userid',$userid)->update(['usermoney'=>$newmoney]);
+        // var_dump($userid);die;
+            $money = DB::table('user_table')->where('userid',$userid)->value('usermoney');
+            $newmoney = (int)$res['usermoney'] + $money;
+            $time = time();
+            $arr['time'] = $time;
+            $arr['userid'] = $userid;
+            $arr['moneydiff'] = $res['usermoney'];
+            $tem = DB::table('user_money')->insert($arr);
+            $in = DB::table('user_table')->where('userid',$userid)->update(['usermoney'=>$newmoney]); 
         if($tem){
             return redirect('/user/mymoney')->with('info','充值成功!');
         }else{
             return back()->with('info','充值失败!');
         }
+    }
+    //用户提现
+    public function getOutmoney()
+    {
+        $userid = session('user')['userid'];
+         $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');
+        $pro = DB::table('user_money')->where('userid',$userid)->get();
+        return view('homes/user_mymoney',['res'=>$res,'pro'=>$pro]);
+    }
+    //提现处理
+    public function postOutmoney(Request $request)
+    {
+         $userid = session('user')['userid'];
+         $res = $request->except('_token');
+        // var_dump($userid);die;
+            $money = DB::table('user_table')->where('userid',$userid)->value('usermoney');
+            if($money >= (int)$res['usermoney']){
+                $newmoney = $money - (int)$res['usermoney'];
+                $time = time();
+                $arr['time'] = $time;
+                $arr['userid'] = $userid;
+                $arr['moneydiff'] = $res['usermoney'];
+                $arr['paystatu'] = 1;
+                $tem = DB::table('user_money')->insert($arr);
+                $in = DB::table('user_table')->where('userid',$userid)->update(['usermoney'=>$newmoney]);
+            }
+             
+        if($tem && $in){
+            return redirect('/user/mymoney')->with('info','提现成功!');
+        }else{
+            return back()->with('info','提现失败!');
+        }
+
     }
     //订单管理页面
     public function getOrder()
@@ -174,18 +214,14 @@ class HomeUserController extends Controller
     public function postInfoupdate(Request $request)
     {
         $this->validate($request, [
-
-                'username' => 'required',
                 'truename' => 'required',
                 'usersex'=>'required',
                 'userphone'=>'required|regex:/^1[345678]\d{9}$/',
                 'useremail'=>'required|email',
                 'userqq'=>'required|regex:/^\d{4,13}$/',
-                'userhead'=>'required'
 
             ],[
                 //自定义错误消息
-                'username.required'=>'用户名不能为空',
                 'truename.required'=>'真实姓名不能为空',
                 'userphone.required'=>'用户手机号不能为空',
                 'userphone.regex'=>'手机号格式不正确',
@@ -193,7 +229,6 @@ class HomeUserController extends Controller
                 'useremail.email'=>'邮箱格式不正确',
                 'userqq.required'=>'用户QQ不能为空',
                 'userqq.regex'=>'QQ格式输入不正确',
-                'userhead.required'=>'上传图片不能为空'
         ]);
         $res = $request->except('_token','userhead','province','city');
         $names = rand(111111,999999).time();
@@ -261,6 +296,26 @@ class HomeUserController extends Controller
     //添加收货地址
     public function postAddressinsert(Request $request)
     {
+        $this->validate($request, [
+
+                'name' => 'required',
+                'province' => 'required',
+                'city'=>'required',
+                'userphone'=>'required|regex:/^1[345678]\d{9}$/',
+                'street'=>'required',
+                'number'=>'required|regex:/^\d{6}$/',
+
+            ],[
+                //自定义错误消息
+                'name.required'=>'用户名不能为空',
+                'province.required'=>'请选择省',
+                'userphone.required'=>'用户手机号不能为空',
+                'userphone.regex'=>'手机号格式不正确',
+                'street.required'=>'请输入具体街道地址',
+                'number.regex'=>'邮政编号格式不正确',
+                'number.required'=>'邮政编号不能为空',
+                'cuty.required'=>'请选择市区'
+        ]);
         $userid = session('user')['userid'];
         $res = $request->except('_token');   
          $pro = ['安徽','河北','河南','山西'];
