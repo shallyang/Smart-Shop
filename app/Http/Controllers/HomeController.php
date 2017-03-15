@@ -25,13 +25,17 @@ class HomeController extends Controller
             ->select(DB::raw("*,concat(pathid,',',id) as paths"))
             ->orderBy('paths')
             ->get();
-        //获取最新产品
-        $row = DB::table('goods_table')->orderBy('goodsid','desc')->limit(10)->get();
+        $row = DB::table('goods_type')->where('pid','=',24)->get();
+        $rel = [];
         $imgs = [];
-        foreach($row as $k=>$v){
-            $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$v->goodsid)->first();
+        foreach($row as $k => $v){
+            $rel[] = DB::table('goods_table')->where('typeid','=',$v->id)->first();
         }
-        return view('homes/index',['res'=>$res,'row'=>$row,'imgs'=>$imgs]);
+         foreach($rel as $ks=>$kv){
+            $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$kv->goodsid)->first();
+            }
+
+        return view('homes/index',['res'=>$res,'rel'=>$rel,'imgs'=>$imgs]);
     }
     public static function getCate($pid)
     {
@@ -86,7 +90,6 @@ class HomeController extends Controller
 
         
         $a = DB::table('user_table')->where('username',$username)->value('userpassword');
-        // dd($a);
 
 
         //判断输入的密码和数据库密码是否匹配
@@ -98,14 +101,10 @@ class HomeController extends Controller
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
-                // dd($rem);
-                // if($rem == 1){
-                //   $remember = Session::put('remember',['email'=>$useremail,'password'=>$password,'username'=>$username]);
-                // }
                 $ses = Session::put('user',['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
 
                 // 登录成功
-                return redirect('/user/order');
+                return redirect('/home/index');
             }else{            
                 return back()->with('info','密码错误');
             } 
