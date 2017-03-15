@@ -144,6 +144,7 @@ $(document).ready(function() {
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>{{session('user')['username']}}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/user/order">我的订单</a></li>
+							<li><a href="/home/out">退出</a></li>
 						</ul> 
 					</li> 
 					@else

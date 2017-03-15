@@ -119,6 +119,27 @@ class HomeController extends Controller
     	return view('/homes/register');
     }
 
+    //注销
+    public function getOut(Request $request){
+        // 清除session
+        $request->session()->forget('user');
+        $res = DB::table('goods_type')
+            ->select(DB::raw("*,concat(pathid,',',id) as paths"))
+            ->orderBy('paths')
+            ->get();
+        $row = DB::table('goods_type')->where('pid','=',24)->get();
+        $rel = [];
+        $imgs = [];
+        foreach($row as $k => $v){
+            $rel[] = DB::table('goods_table')->where('typeid','=',$v->id)->first();
+        }
+         foreach($rel as $ks=>$kv){
+            $imgs[] = DB::table('goods_pic_table')->where('goodsid','=',$kv->goodsid)->first();
+            }
+
+        return view('homes/index',['res'=>$res,'rel'=>$rel,'imgs'=>$imgs]);
+    }
+
     //判断注册
     public function postRegisters(Request $request)
     {
