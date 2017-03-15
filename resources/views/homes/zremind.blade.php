@@ -18,8 +18,8 @@
               </div>       
             <script type="text/javascript">
                  setTimeout(function(){
-                     $('#dv').fadeOut(1000);
-                },3000)
+                     $('#dv').fadeOut(2000);
+                },6000)
             </script>
         </div>
     </div>
