@@ -55,9 +55,9 @@
 								@foreach($row as $k=>$v)
 									<div class="item">
 										<div class="glry-w3agile-grids agileits"> 
-											<a href="products.html"><img src="{{$imgs[$k]->picurl}}" alt="img" width='230px' height='250px'></a>
+											<a href="/goods/single/{{$v->goodsid}}"><img src="{{$imgs[$k]->picurl}}" alt="img" width='230px' height='250px'></a>
 											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">{{$v->goodsname}}</a></h4>
+												<h4><a href="/goods/single/{{$v->goodsid}}">{{$v->goodsname}}</a></h4>
 												<p>{{$v->goodscolor}}</p>
 												<h5>{{$v->goodsprice}}</h5> 
 												<form action="#" method="post">
@@ -65,8 +65,8 @@
 													<input type="hidden" name="add" value="1" /> 
 													<input type="hidden" name="w3ls_item" value="Audio speaker" /> 
 													<input type="hidden" name="amount" value="200.00" /> 
-													<button type="submit" class="w3ls-cart" >
-													<i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
+													<button type="submit" class="w3ls-cart  intocart" goodsid="{{$v->goodsid}}">
+													<i class="fa fa-cart-plus" aria-hidden="true" "></i>加入购物车</button>
 												</form>  
 											</div>   
 										</div>   
@@ -80,4 +80,26 @@
 			</div>  	
 		</div>  	
 	</div> 
+@endsection
+<!-- 购物车js -->
+@section('js')
+<script type="text/javascript">
+
+	$('.intocart').each(function(){
+		$(this).click(function(){
+			var goodsid = $(this).attr("goodsid");
+			// alert(goodsid);
+			$.get('/order/intocart', {goodsid}, function(data) {
+				/*optional stuff to do after success */
+				// console.log(data);
+				var notice = data + '已成功加入购物车!!';
+				alert(notice);
+
+			});
+
+			return false;
+		})
+		
+	});
+</script>
 @endsection

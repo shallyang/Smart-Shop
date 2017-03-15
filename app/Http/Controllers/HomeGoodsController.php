@@ -102,7 +102,8 @@ class HomeGoodsController extends Controller
     }
     //获取评论表里面的信息
     $text = DB::table('review_table')->where('goodsid','=',$id)->orderBy('reciewid','desc')->get();
-    return view('homes/single',['res'=>$res,'obj'=>$obj,'sli'=>$sli,'imgs'=>$imgs,'text'=>$text]);
+    $lenght = count($text);
+    return view('homes/single',['res'=>$res,'obj'=>$obj,'sli'=>$sli,'imgs'=>$imgs,'text'=>$text,'num'=>$lenght]);
    }
    public function getAjax(Request $request)
    {
@@ -113,5 +114,16 @@ class HomeGoodsController extends Controller
            if($res){
                 return 1;
            }
+   }
+   public function getGoodscollect($goodsid)
+   {
+        $userid = session('user')['userid'];
+        // dd($goodsid);
+        $arr['userid'] = $userid;
+        $arr['goodsid'] = $goodsid;
+        $res = DB::table('collect_table')->insert($arr);
+        if($res){
+        return redirect('/goods/single/'.$goodsid)->with('info','恭喜你收藏成功');
+        }
    }
 }

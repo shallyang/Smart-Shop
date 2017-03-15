@@ -26,10 +26,16 @@
 	#dv{margin-left:320px;margin-top:-6px;}
 	#dvd{margin-left:20px;width:600px;height:80px;border-top:1px solid #ccc;line-height:80px;}
 	#user{margin-left:400px;}
+	#cont{width:500px;height:100px;text-align:center;line-height:100px;font-size:20px;}
 </style>
 <div class="products">
 	<div class="container">  
 			<div class="single-page">
+			@if (session('info'))
+			    <div class="alert alert-success">
+			        {{ session('info') }}
+			    </div>
+			@endif
 				<div class="single-page-row" id="detail-21">
 					<div class="col-md-4 single-top-left">
 						<div class="flexslider">
@@ -72,8 +78,8 @@
 							<input type="hidden" name="add" value="1" /> 
 							<input type="hidden" name="w3ls_item" value="Snow Blower" /> 
 							<input type="hidden" name="amount" value="540.00" /> 
-							<button type="submit" class="w3ls-cart" goodsid="{{$res->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> 加入购物车</button>
-						<button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i>立即购买</button><br><br>
+							<button  type="submit" class="w3ls-cart shopcar" goodsid="{{$res->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> 加入购物车</button>
+						<button class="w3ls-cart w3ls-cart-like" onClick="location.href='/goods/goodscollect/{{$res->goodsid}}'"><i class="fa fa-heart-o" aria-hidden="true"></i>收藏商品</button><br><br>
 						
 						<div class="bdsharebuttonbox" data-tag="share_1">
 						<p>分享一下：</p>
@@ -86,6 +92,7 @@
 								<a class="bds_more" data-cmd="more">　更多</a>
 								<a class="bds_count" data-cmd="count"></a>
 						</div>
+
 						<script>
 							with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 						</script>	
@@ -116,20 +123,12 @@
 						<div class="panel-heading" role="tab" id="headingTwo">
 							<h4 class="panel-title" style="text-align:center">
 								<a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									<i class="fa fa-info-circle fa-icon" aria-hidden="true"></i>点我评论<span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+									<i class="fa fa-info-circle fa-icon" aria-hidden="true"></i>查看评论<span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
 								</a> 
 							</h4>
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body">
-								<form action="" method="post" enctype='multipart/form-data'>
-									<p>评论内容</p>
-									<textarea name="text" id="tex" cols="50" rows="3"></textarea><br>
-									<input type="hidden" name='id' id='goodsid' value="{{$res->goodsid}}">
-								</form>
-								<div id='dv'>
-								<button id='sends' class='btn-info'>评论</button></div>
-							</div>
+						@if($num !== 0)
 							<h4>全部评论:</h4>
 							@foreach($text as $k=>$v)
 							<conter>
@@ -138,6 +137,11 @@
 							</div>
 							</conter>
 							@endforeach
+						@else
+						<div id='cont'>
+						<span>亲！商品还未任何评论,等你来抢沙发哟!</span>
+						</div>
+						@endif
 						</div>
 					</div>
 				</div>
@@ -172,7 +176,7 @@
 									<input type="hidden" name="add" value="1" /> 
 									<input type="hidden" name="w3ls_item" value="Women Sandal" /> 
 									<input type="hidden" name="amount" value="20.00" /> 
-									<button class="w3ls-cart" goodsid="{{$v->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
+									<button class="w3ls-cart shopcar" goodsid="{{$v->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i>加入购物车</button>
 							</div>  	
 						</div> 
 					</div>
@@ -225,7 +229,7 @@
 @section('js')
 <script type="text/javascript">
 
-	$('.w3ls-cart').each(function(){
+	$('.shopcar').each(function(){
 		$(this).click(function(){
 			var goodsid = $(this).attr("goodsid");
 			// alert(goodsid);
@@ -236,9 +240,13 @@
 				alert(notice);
 			});
 
-
 		})
 		
 	});
+    setTimeout(function(){
+
+        $('.alert').slideUp(1000);
+    },3000);
+
 </script>
 @endsection
