@@ -81,8 +81,17 @@ class HomeController extends Controller
     {
     	  $useremail = $request->input('email');
         $password = $request->input('password');
+        // var_dump($password);
+        $username = $request->input('username');
         
-        $a = DB::table('user_table')->where('useremail',$useremail)->value('userpassword');
+       
+        $id = DB::table('user_table')->where('username',$username)->value('userid');
+        $name = DB::table('user_table')->where('username',$username)->value('username');
+
+        
+        $a = DB::table('user_table')->where('username',$username)->value('userpassword');
+        // dd($a);
+
 
         //判断输入的密码和数据库密码是否匹配
         if($a){
@@ -93,14 +102,14 @@ class HomeController extends Controller
                 }
                 //判断是否记住密码
                 $rem = $request->input('checkbox');
-                $ses = Session::put('email',$useremail);
                 // dd($rem);
-                // if($rem){
-                //   dd(session());
+                // if($rem == 1){
+                //   $remember = Session::put('remember',['email'=>$useremail,'password'=>$password,'username'=>$username]);
                 // }
+                $ses = Session::put('user',['useremail'=>$useremail,'username'=>$name,'userid'=>$id]);
 
-                return redirect('/home');
-
+                // 登录成功
+                return redirect('/user/order');
             }else{            
                 return back()->with('info','密码错误');
             } 
@@ -223,11 +232,12 @@ class HomeController extends Controller
           $res = $request->except('_token','repassword','vcode');
           $email = $request->input('useremail');
           $password = $request->input('userpassword');
+          $username = $request->input('username');
           $res['userstatus'] = '0';
 
           $res['token'] = str_random(30);
 
-          $data = DB::table('user_table')->where('useremail',$email)->first();
+          $data = DB::table('user_table')->where('username',$username)->first();
           $id = $data->userid;
           //修改
           $change = DB::table('user_table')->where('userid',$id)->update($res);  

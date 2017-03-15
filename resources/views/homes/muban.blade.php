@@ -30,23 +30,7 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <link rel="stylesheet" type="text/css" href="/admins/css/icons/icol16.css" media="screen">
 <!-- js -->
 <script src="/js/jquery-2.2.3.min.js"></script> 
-<script src="/js/jquery-2.2.3.min.js"></script> 
-<script src="/js/owl.carousel.js"></script>
-<script src="/js/bootstrap.js"></script>
-<!--flex slider-->
-<script defer src="/js/jquery.flexslider.js"></script>
-<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
-<script>
-	// Can also be used with $(document).ready()
-	$(window).load(function() {
-	  $('.flexslider').flexslider({
-		animation: "slide",
-		controlNav: "thumbnails"
-	  });
-	});
-</script>
-<!--flex slider-->
-<script src="/js/imagezoom.js"></script>
+
 <!-- 购物车样式 -->
 <style type="text/css">
 	.mws-panel {
@@ -154,6 +138,7 @@ $(document).ready(function() {
 			</div>
 			<div class="w3ls-header-right">
 				<ul>
+				@section('person')
 					<li class="dropdown head-dpdn">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> 个人中心<span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -161,7 +146,8 @@ $(document).ready(function() {
 							<li><a href="{{ url('home/register')}}">创建用户</a></li> 
 							<li><a href="login.html">我的订单</a></li>
 						</ul> 
-					</li>  
+					</li> 
+				@show 
 					<li class="dropdown head-dpdn">
 						<a href="help.html" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a>
 					</li>
@@ -251,7 +237,7 @@ $(document).ready(function() {
     @show
 	<!-- //deals --> 
 	<!-- footer-top -->
-	<div class="w3agile-ftr-top" style="margin-top:20px">
+	<div class="w3agile-ftr-top">
 		<div class="container">
 			<div class="ftr-toprow">
 				<div class="col-md-4 ftr-top-grids">

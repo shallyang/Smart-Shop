@@ -1,6 +1,10 @@
 @extends('/homes/muban')
 @section('title','商品列表')
-
+@if(session('info'))
+    <div class="mws-form-message error">
+        {{session('info')}}
+    </div>
+@endif
 @section('content')
 
 <div id="shopcarlist" style="margin-top:20px;">
@@ -85,6 +89,8 @@
         </div>
     </div>
 </div>
+<div class="clearfix"> </div> 
+
 @endsection
 
 @section('js')
@@ -213,5 +219,12 @@
             $(this).parents('tr').find('.smallmoney').text(pic);
         });
     }); 
+
+    //提示信息关闭
+    setTimeout(function(){
+
+        $('.error').slideUp(1000);
+
+    },2000);
 </script>
 @endsection

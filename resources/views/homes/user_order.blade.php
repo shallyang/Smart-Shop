@@ -109,7 +109,7 @@
 								<dd>
 									<a href="/user/mymoney">我的钱包</a>
 
-								</dd>								
+								</dd>							
 								<dt><img src="/img/左侧/我的买啦.png"  style="margin-right: 10px;margin-left: -20px;"/>账户管理</dt>
 								<dd>
 									<a href='/user/info'>我的资料</a>
@@ -117,16 +117,7 @@
 								</dd>
 								<dd>
 									<a href='/user/collectgoods'>宝贝收藏</a>
-								</dd>
-								<dd>
-									<a href='/user/collectshop'>店铺收藏</a>
-								</dd>
-								
-								<dt><img src="/img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>					
-								<dd>
-									<a href='/user/opinion'>意见/投诉</a>
-
-								</dd>
+								</dd>							
 							</dl>
 
 							<a ison="on" class="switch-side-menu icon-up-side"><i></i></a>
@@ -140,22 +131,9 @@
 								  
 								</ul>
 							<div class="profile-info">
-								<div class="control-group clearfix " style="width: 1020px;margin-bottom: 0px;">
-									<div style="margin-top: -60px";>
-                                        <div style="float:right;display: inline;margin-left:60px;display: inline-block;height: 25px;margin-right: -5px;padding-top: 10px;"> 
-									    <img src="/img/trash-拷贝.png"  style="height: 10px;width: 10px;" />
-									           <font style="">订单回收站</font>
-                                        </div> 
-									 </div>
-									
+								<div class="control-group clearfix " style="width: 1020px;margin-bottom: 0px;">	
 								</div>
-							</div>
-							<div style="margin-left: 30px;height: 25px;" >
-								<input  type="text"  placeholder="输入商品标题或者订单号进行搜索 " style="width: 200px;height: 25px;font-size: 12px;" />
-								<button style="height: 100%;margin-left: -5px;border: 1px #ccc solid;font-size: 12px;color:#353535;background-color: #f2f2f2;width: 100px;">订单搜索</button>
-							    <span style="margin-left: 5px;">更多搜索条件</span>
-							</div>
-							
+							</div>					
 							<div class="tab-content" style="width: 1000px;margin-top: 10px;border:1px #fff solid; border-top:transparent;margin-left: 30px;">
 								  <div id="index" class="tab-pane " style="padding: 40px 30px;">
 								  </div>
@@ -167,7 +145,7 @@
 								 	<span style="color: #858585;margin-left: 45px;">收货地址</span>
 								 	<span style="color: #858585;margin-left: 100px;">实付款(元)</span>
 								 	<span style="color: #858585;margin-left: 45px;">交易状态</span>
-								 	<span style="color: #858585;margin-left: 45px;">交易操作</span>
+								 	<span style="color: #858585;margin-left: 45px;">操作</span>
 								 </div>
 								 <div style="width: 100%;height: 0px;padding: 10px;">
 								 	<span style="line-height: 20px;">全选</span>
@@ -203,17 +181,36 @@
 								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center;">
 								 	
 								 	<span style="font-weight: bold;margin-top: 30px;display: block;">129</span>
-								 	<dl>(含运费:00)</dl>
 								 	
 								 </div>
 								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center ;">
-								 	<dl style="margin-top: 30px;">卖家已发货</dl>
-								 	<dl>订单详情</dl>
-								 	<dl>查看物流</dl>
+								 	@if($v -> passstatus == 0)
+                                        <form action="/user/goship/{{$v ->orderid }}" method="get">
+
+                                            未发货&nbsp;&nbsp;
+                                            <button class="btn btn-info">发货</button>
+                                        </form>
+                                    @elseif($v -> passstatus == 1)
+                                        已发货<br/>
+                                        物流公司:<span>{{$v->shippost}}</span><br />
+                                        物流单号:<a href="" class="passnum">{{$v->passnum}}</a>
+                                    @elseif($v -> passstatus == 2)
+                                        已签收
+                                    @elseif($v -> passstatus == 3)
+                                        <!-- 获取需要关闭的订单的id -->
+                                        <form action="/user/close/{{$v->orderid}}" method="get">
+                                            <span>未付款&nbsp;&nbsp;</span>
+                                            <button class="btn btn-warning">关闭</button>
+                                        </form>
+                                    @elseif($v -> passstatus == 4)
+                                        <form action="/user/delete/{{$v->orderid}}" method="get">
+                                            已关闭<br>
+                                            <button class="btn btn-danger">删除</button>
+                                        </form>
+                                    @endif
 								 </div>
-								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center ;">
-								 	<dl style="margin-top: 30px;">还有9天10时4分</dl>
-								 	<button style="color: fff;background-color: #65b5ff;border: 0px;padding: 4px;margin-top: 5px;">确认收货</button>
+								 <div style="float: left;border-left: 1px #addff8 solid;width: 11%;height:200px;text-align: center ;">		
+								 	<button onClick="location.href='/user/changeget/{{$v->orderid}}'" style="color: fff;background-color: #65b5ff;border: 0px;padding: 4px;margin-top: 5px;">修改订单</button>
 								 </div>
 								 </div>	
 								 @endforeach                     

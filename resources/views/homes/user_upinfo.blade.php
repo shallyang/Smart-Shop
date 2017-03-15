@@ -15,15 +15,16 @@
 		<script type="text/javascript" src="/js/sui.js" ></script>
 	</head>
 	<body class="ms-body">
-	  @if (count($errors) > 0)
-	        <div class="mws-form-message error" id="dvs">
-	             <ul>                     
-	                @foreach ($errors->all() as $error)
-	                    <li style="font-size:20px;list-style:none">{{ $error }}</li>
-	                @endforeach
-	            </ul>
-	        </div>
-	    @endif     
+
+	@if (count($errors) > 0)
+        <div class="mws-form-message error" id="dvs">
+             <ul>                     
+                @foreach ($errors->all() as $error)
+                    <li style="font-size:20px;list-style:none">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif     
 		
 		<div id="ms-center" class="personal-member">
 			<div class="cont">
@@ -58,7 +59,7 @@
 						<div class="user-profile clearfix">
 							<div class="user-profile-wrap">
 								<div class="profile-avatar">
-									<img src="" height="120" width="120">	
+									<img src="{{$pro->userhead}}" height="120" width="120">	
 									<div class="edit_bg"></div>
 								</div>
 								<span id='pic'>选择头像:<input type="file" name='userhead'></span>
@@ -67,7 +68,7 @@
 								<div class="control-group clearfix ">
 									<div class="controls lh26">
 										<label class="control-label"><em>*</em><span style="margin-left: 10px;">用户名:</span> 
-											<input  style="margin-left: 10px;" type="text" name='username'>				   
+											<input  style="margin-left: 10px;" type="text" value='{{$pro->username}}'>				   
 									</div>					
 								</div>
 							</div>
@@ -76,7 +77,7 @@
 								<div class="control-group clearfix">
 									<label class="control-label"><em>*&nbsp;</em>真实姓名：</label>
 									<div class="controls">
-										<input  type="text" style='height:30px' maxlength="12"  name='truename'>
+										<input  type="text" style='height:30px' maxlength="12"  name='truename' value='{{$pro->truename}}'>
 									</div>
 								</div>
 								
@@ -84,11 +85,11 @@
 									<label class="control-label"><em>*&nbsp;</em>性别：</label>
 									<div id="gender" class="controls">
 										<label class="sex-label">
-											<input type="radio" name="usersex" checked="checked" value='1'>
+											<input type="radio" name="usersex" value='1' @if($pro->usersex == '1') checked @endif>
 											<span>男</span>
 										</label>
 										<label class="sex-label">
-											<input type="radio" name="usersex" value='0'>
+											<input type="radio" name="usersex" value='0' @if($pro->usersex == '0') checked @endif>
 											<span>女</span>
 										</label>
 									</div>
@@ -96,19 +97,19 @@
 								<div class="control-group clearfix">
 									<label class="control-label">手机：</label>
 									<div class="controls lh26">
-										<input  type="text" style='height:30px' maxlength="12"  name='userphone'>	
+										<input  type="text" style='height:30px' maxlength="12"  name='userphone' value='{{$pro->userphone}}'>	
 									</div>
 								</div>
 								<div class="control-group clearfix">
 									<label class="control-label">邮箱：</label>
 									<div class="controls lh26">
-										<input  type="text" style='height:30px' maxlength="12"  name='useremail'>	
+										<input  type="text" style='height:30px' maxlength="12"  name='useremail' value='{{$pro->useremail}}'>	
 									</div>
 								</div>
 								<div class="control-group clearfix">
 									<label class="control-label">QQ：</label>
 									<div class="controls lh26">
-										<input  type="text" style='height:30px' maxlength="12"  name='userqq'>			
+										<input  type="text" style='height:30px' maxlength="12"  name='userqq' value='{{$pro->userqq}}'>			
 									</div>
 								</div>							
 								<div class="control-group clearfix priority-high">
@@ -117,14 +118,14 @@
 										<div style="">
 								
 								<select style="height: 30px;width: 230px;" id='province' name='province'>
-									<option >请选择省</option>
+									<option>请选择省</option>
 								</select>
 								<select style="height: 30px;width: 230px;" id='city' name='city'> 
-									<option >请选择市区</option>
+									<option>{{$pro->city}}</option>
 								</select>
 							</div>
 										<p class="adress-detail">
-											<input type="text" value="" style='height:30px' placeholder='请输入具体地址' name='street'>
+											<input type="text"  style='height:30px' placeholder='请输入具体地址' name='street' value='{{$pro->street}}'>
 											<span class="tips-words"></span>
 										</p>
 										<div id="" class="error-place ml0">
@@ -241,6 +242,10 @@
 		citys.innerHTML = into;
 	}
 
+		</script>
+		<script type="text/javascript">
+		$('#province').val('{{$pro->provincevalue}}');
+		$('#city').val('{{$pro->cityvalue}}');
 		</script>
 	</body>
 

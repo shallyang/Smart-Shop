@@ -87,15 +87,6 @@
 								<dd>
 									<a href='/user/collectgoods'>宝贝收藏</a>
 								</dd>
-								<dd>
-									<a href='/user/collectshop'>店铺收藏</a>
-								</dd>
-								
-								<dt><img src="/img/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>					
-								<dd>
-									<a href='/user/opinion'>意见/投诉</a>
-
-								</dd>
 							</dl>
 
 							<a ison="on" class="switch-side-menu icon-up-side"><i></i></a>
