@@ -126,4 +126,21 @@ class HomeGoodsController extends Controller
         return redirect('/goods/single/'.$goodsid)->with('info','恭喜你收藏成功');
         }
    }
+   //全局搜索
+   public function postSearch(Request $request)
+   {
+        $obj = [];
+        $name = $request->input('Search');
+        $res = DB::table('goods_table')->where('goodsname','like','%'.$name.'%')->get();
+        foreach ($res as $ks => $vs) {
+            $vs->picurl = DB::table('goods_pic_table')->where('goodsid',$vs->goodsid)->value('picurl');
+        }
+        //吧查询出的三维数组转化形成二维数组
+        foreach ($res as $key => $value) {
+            
+            $obj[] = $value;
+        }
+        return view('homes/product',['obj'=>$obj,'name'=>$name]);
+
+   }
 }

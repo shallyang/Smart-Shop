@@ -144,6 +144,7 @@ $(document).ready(function() {
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>{{session('user')['username']}}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/user/order">我的订单</a></li>
+							<li><a href="/home/out">退出</a></li>
 						</ul> 
 					</li> 
 					@else
@@ -171,8 +172,9 @@ $(document).ready(function() {
 				</div>	
 				@section('search')
 				<div class="header-search">
-					<form action="#" method="post">
-						<input type="search" name="Search" placeholder="请输入需要搜索的商品" required="">
+					<form action="/goods/search" method="post">
+						<input type="search" name="Search" placeholder="请输入需要搜索的商品" required="" @if(isset($name))value='{{$name}}' @endif>
+						{{csrf_field()}}
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<i class="fa fa-search" aria-hidden="true"> </i>
 						</button>
