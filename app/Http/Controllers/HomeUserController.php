@@ -97,7 +97,7 @@ class HomeUserController extends Controller
             # code...
             return redirect('/home/login');
         }
-        $res = DB::table('order_table')->where('userid',$userid)->get();
+        $res = DB::table('order_table')->where('userid',$userid)->orderBy('orderid', 'desc')->get();
         if(empty($res)){
             return view('homes/user_order')->with('info','该用户没添加订单');
         }else{
@@ -106,7 +106,7 @@ class HomeUserController extends Controller
                 $arr = explode(',',$v->goodsid);
                 foreach($arr as $ks=>$vs){                 
                     $img = DB::table('goods_pic_table')->where('goodsid',$vs)->value('picurl');
-                    $imgs[] = $img;                
+                    $imgs[] = $img;
                 }            
                 $pics[] = $imgs;
                 $imgs = null;
