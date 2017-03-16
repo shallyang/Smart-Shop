@@ -183,7 +183,7 @@ $(document).ready(function() {
 				@show
 				<div class="header-cart"> 
 					<div class="my-account">
-						<a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> 联系我们</a>						
+						<a href="/home/content"><i class="fa fa-map-marker" aria-hidden="true"></i> 联系我们</a>						
 					</div>
 					<div class="cart">
 						
