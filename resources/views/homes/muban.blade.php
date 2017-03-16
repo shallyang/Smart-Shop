@@ -1,7 +1,12 @@
 <?php
 
 $cates = \App\Http\Controllers\HomeController::getCate(0);
-
+$webconf = DB::table('web_config_table')->first();
+// var_dump($webconf);
+if ($webconf->open) {
+	# code...
+	return view('errors.503');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,9 +14,8 @@ $cates = \App\Http\Controllers\HomeController::getCate(0);
 <title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<meta name="description" content="Smart-专业的综合网上购物商城,销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万个品牌优质商品.便捷、诚信的服务，为您提供愉悦的网上购物体验!" />
-  <meta name="Keywords" content="网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,Smart" />
+<meta name="description" content="{{$webconf->description}}" />
+<meta name="Keywords" content="{{$webconf->keywords}}" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
@@ -330,7 +334,7 @@ $(document).ready(function() {
 	<!-- //footer -->		
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright &copy; 2016.Company name All rights reserved.</p>
+			<p>{{$webconf->copyright}}</p>
 		</div>
 	</div> 
 	<!-- cart-js -->
