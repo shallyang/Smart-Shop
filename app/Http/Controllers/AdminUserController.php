@@ -113,7 +113,7 @@ class AdminUserController extends Controller
         $id = $request->input('id');
         // $email = $request->input('user_email');
 
-        Mail::send('homes.email', ['id'=>$request->input('id'),'reply'=>$reply], function ($m)use($request){
+        Mail::send('admins.email', ['id'=>$request->input('id'),'reply'=>$reply], function ($m)use($request){
                 $m->from('yxc930708@163.com', 'Smart客服部');
 
                 $m->to($request->input('user_email'), $request->input('user_name'))->subject('Smart回复');

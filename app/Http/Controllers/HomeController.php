@@ -160,7 +160,7 @@ class HomeController extends Controller
           }
           //获取值
           $res = $request->except('_token','repassword','vcode');
-          $res['userstatus'] = '0';
+          $res['userstatus'] = '1';
 
           $res['token'] = str_random(30);
 

@@ -20,14 +20,13 @@
 					<div class="mws-form-row">
 						<label class="mws-form-label">手机号</label>
 						<div class="mws-form-item">
-							<input type="text" class="medium" name="getphone" value="{{$res->getphone}}"></div>
+							<input type="text" class="medium" name="getphone" value="{{$res->getphone}}">
 							<input type="hidden" class="medium" name="orderid" value="{{$res->orderid}}"></div>
 					</div>
 					<div class="mws-form-row">
 						<label class="mws-form-label">收货地址</label>
 						<div class="mws-form-item">
-							<div></div>
-						</div>
+							<textarea type="text" class="medium" name="getaddress">{{$res->getaddress}}</textarea></div>
 					</div>
 				</div>
 				{{ csrf_field() }}
