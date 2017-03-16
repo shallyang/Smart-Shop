@@ -1,5 +1,5 @@
 @extends('/homes/muban')
-@section('title','提交订单')
+@section('title','支付宝支付')
 
 @section('content')
 	逐步开放中,请稍后!

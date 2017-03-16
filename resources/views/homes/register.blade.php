@@ -110,7 +110,7 @@
 					{{ csrf_field() }}
 				</form>
 			</div>  
-			<h6>创建完成? <a href="{{ url('/home/login') }}">立即登录 »</a> </h6>  
+			<h6>已有账户? <a href="{{ url('/home/login') }}">立即登录 »</a> </h6>  
 		</div>
 	</div>
 @endsection

@@ -295,4 +295,22 @@ class HomeController extends Controller
         }
         return view('homes/yremind');
     }
+
+    //关于我们
+    public function getAbout()
+    {
+        return view('homes.aboutus');
+    }
+
+    //联系我们
+    public function getContent()
+    {
+        return view('homes.content');
+    }
+
+    //常见问题
+    public function getFaq()
+    {
+        return view('homes.q&a');
+    }
 }

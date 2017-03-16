@@ -308,17 +308,17 @@ $(document).ready(function() {
 					<div class="col-md-4 footer-grids">
 						<h3>公司详情</h3>
 						<ul>
-							<li><a href="about.html">关于我们</a></li>
+							<li><a href="/home/about">关于我们</a></li>
 							<li><a href="marketplace.html">公司位置</a></li>
 						</ul>
 					</div>
 					<div class="col-md-4 footer-grids">
 						<h3>售后服务</h3>
 						<ul>
-							<li><a href="contact.html">联系我们</a></li>
-							<li><a href="login.html">申请退款</a></li> 
-							<li><a href="faq.html">常见问题</a></li>
-							<li><a href="login.html">订单状态</a></li>
+							<li><a href="/home/content">联系我们</a></li>
+							<li><a>申请退款</a></li> 
+							<li><a href="/home/faq">常见问题</a></li>
+							<li><a>订单状态</a></li>
 						</ul> 
 					</div>
 					<div class="clearfix"></div>

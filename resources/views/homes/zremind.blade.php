@@ -17,9 +17,9 @@
                     </div>
               </div>       
             <script type="text/javascript">
-                 setTimeout(function(){
-                     $('#dv').fadeOut(2000);
-                },6000)
+                //  setTimeout(function(){
+                //      $('#dv').fadeOut(2000);
+                // },6000)
             </script>
         </div>
     </div>

@@ -6,6 +6,6 @@
 </head>
 <body>
 	<p>请点击以下链接来激活账户,如果链接失败请复制以下链接到浏览器地址栏进行激活</p>
-	<a href="http://www.sokomz.com/home/login/activate?id={{$id}}&token={{$token}}">"http://www.sokomz.com/home/login/activate?id={{$id}}&token={{$token}}"</a>
+	<a href="http://www.shallyang.cn/home/login/activate?id={{$id}}&token={{$token}}">"http://www.shallyang.cn/home/login/activate?id={{$id}}&token={{$token}}"</a>
 </body>
 </html>

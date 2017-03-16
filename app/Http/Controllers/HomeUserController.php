@@ -13,6 +13,10 @@ class HomeUserController extends Controller
     public function getMymoney()
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');
         $pro = DB::table('user_money')->where('userid',$userid)->get();
     	return view('homes/user_mymoney',['res'=>$res,'pro'=>$pro]);
@@ -22,6 +26,10 @@ class HomeUserController extends Controller
     public function postMymoneyinsert(Request $request)
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         $res = $request->except('_token');
         // var_dump($userid);die;
             $money = DB::table('user_table')->where('userid',$userid)->value('usermoney');
@@ -42,14 +50,22 @@ class HomeUserController extends Controller
     public function getOutmoney()
     {
         $userid = session('user')['userid'];
-         $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
+        $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');
         $pro = DB::table('user_money')->where('userid',$userid)->get();
         return view('homes/user_mymoney',['res'=>$res,'pro'=>$pro]);
     }
     //提现处理
     public function postOutmoney(Request $request)
     {
-         $userid = session('user')['userid'];
+        $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
          $res = $request->except('_token');
         // var_dump($userid);die;
             $money = DB::table('user_table')->where('userid',$userid)->value('usermoney');
@@ -77,6 +93,10 @@ class HomeUserController extends Controller
     public function getOrder()
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         $res = DB::table('order_table')->where('userid',$userid)->get();
         if(empty($res)){
             return view('homes/user_order')->with('info','该用户没添加订单');
@@ -159,6 +179,10 @@ class HomeUserController extends Controller
     public function getChangeget($id)
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         $res = DB::table('order_table')->where('orderid',$id)->select()->first();
         $pro = DB::table('user_address')->where('userid',$userid)->get();
         return view('homes/user_orderchange',['res'=>$res,'pro'=>$pro]);
@@ -187,7 +211,11 @@ class HomeUserController extends Controller
     //没添加的用户信息页面
     public function getInfo()
     {    
-        $userid = session('user')['userid'];       
+        $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }     
         $pro = DB::table('user_table')->where('userid',$userid)->get()[0];
             if(!$pro->userinfostatu){
                 return view('homes/user_info');
@@ -199,6 +227,10 @@ class HomeUserController extends Controller
     public function getUserinfo()
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         $pro = DB::table('user_table')->where('userid',$userid)->get()[0];
         $provin = ['安徽','河北','河南','山西'];
          $ct = [
@@ -262,6 +294,10 @@ class HomeUserController extends Controller
     public function getCollectgoods()
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         $res = DB::table('collect_table')->where('userid',$userid)->get();
         $arr = [];
         foreach($res as $k=>$v){
@@ -290,6 +326,10 @@ class HomeUserController extends Controller
     public function getAddress()
     {
         $userid = session('user')['userid'];
+        if (!$userid) {
+            # code...
+            return redirect('/home/login');
+        }
         // echo $userid;
         $res = DB::table('user_address')->where('userid',$userid)->get();
         // var_dump($res);

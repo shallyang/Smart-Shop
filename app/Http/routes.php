@@ -60,4 +60,4 @@ Route::get('/home/login',function(){
 	
 Route::get('/order/billing','HomeOrderController@billing')->middleware('HomeLogin');
 
-Route::controller('/order','HomeOrderController');
+// Route::get('/user/order','HomeUserController@order')->middleware('HomeLogin');
