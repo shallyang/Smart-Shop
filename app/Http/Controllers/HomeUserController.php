@@ -350,8 +350,8 @@ class HomeUserController extends Controller
                 //自定义错误消息
                 'name.required'=>'用户名不能为空',
                 'province.required'=>'请选择省',
-                'userphone.required'=>'用户手机号不能为空',
-                'userphone.regex'=>'手机号格式不正确',
+                'phone.required'=>'用户手机号不能为空',
+                'phone.regex'=>'手机号格式不正确',
                 'street.required'=>'请输入具体街道地址',
                 'number.regex'=>'邮政编号格式不正确',
                 'number.required'=>'邮政编号不能为空',
