@@ -16,7 +16,7 @@ class AdminOrderController extends Controller
     public function getIndex(Request $request)
     {
         //遍历数据库,取出订单列表
-        $res = DB::table('order_table')->where('orderid','like','%'.$request->input('orderid').'%')->paginate($request->input('limit',10));
+        $res = DB::table('order_table')->where('orderid','like','%'.$request->input('orderid').'%')->orderby('ordertime','desc')->paginate($request->input('limit',10));
 
         $goodsid = $res->all();
         // $goodsid = explode(',',$res->goodsid);

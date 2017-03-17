@@ -41,7 +41,7 @@ class AdminWebConfigController extends Controller
 
 
         //将表单的数据插入数据库
-         $pro = DB::table('web_config_table')->insert($res);
+         $pro = DB::table('web_config_table')->update($res);
         //判断结果
         if($pro) {
 
