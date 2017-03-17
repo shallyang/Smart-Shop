@@ -342,7 +342,7 @@ class HomeUserController extends Controller
                 'name' => 'required',
                 'province' => 'required',
                 'city'=>'required',
-                'userphone'=>'required|regex:/^1[345678]\d{9}$/',
+                'phone'=>'required|regex:/^1[345678]\d{9}$/',
                 'street'=>'required',
                 'number'=>'required|regex:/^\d{6}$/',
 
