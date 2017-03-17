@@ -13,8 +13,7 @@ class HomeUserController extends Controller
     public function getMymoney()
     {
         $userid = session('user')['userid'];
-        if (!$userid) {
-            # code...
+        if ($userid) {
             return redirect('/home/login');
         }
         $res = DB::table('user_table')->where('userid',$userid)->value('usermoney');

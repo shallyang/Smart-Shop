@@ -101,7 +101,7 @@
 						  @foreach($arr as $k=>$v)				
 						  <div style="float: left;padding: 10px;margin-left: 10px;">			
 						  	<!-- <span id='cha'><a href="">×</a></span> -->
-							<img src="{{$v->partid}}" style="min-width: 150px;" />
+							<img src="{{$v->partid}}" style="width: 150px; height:150px" />
 							<br />
 							<span style="color: #686868;margin-top: 23px;display:block;margin-left: 50px;">{{$v->goodsname}}</span>
 							<br />

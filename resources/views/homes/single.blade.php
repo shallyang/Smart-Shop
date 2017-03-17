@@ -79,7 +79,7 @@
 							<input type="hidden" name="w3ls_item" value="Snow Blower" /> 
 							<input type="hidden" name="amount" value="540.00" /> 
 							<button  type="submit" class="w3ls-cart shopcar" goodsid="{{$res->goodsid}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> 加入购物车</button>
-						<button class="w3ls-cart w3ls-cart-like" onClick="location.href='/goods/goodscollect/{{$res->goodsid}}'"><i class="fa fa-heart-o" aria-hidden="true"></i>收藏商品</button><br><br>
+						<button class="w3ls-cart w3ls-cart-like    collect" getgoodsid='{{$res->goodsid}}'><i class="fa fa-heart-o" aria-hidden="true"></i>收藏商品</button><br><br>
 						
 						<div class="bdsharebuttonbox" data-tag="share_1">
 						<p>分享一下：</p>
@@ -248,5 +248,18 @@
         $('.alert').slideUp(1000);
     },3000);
 
+</script>
+<script type="text/javascript">
+	var goodsid = $('.collect').attr('getgoodsid');
+	console.log(goodsid);
+	$('.collect').click(function()
+	{
+		$.get('/goods/truecollect',{goodsid},function(data)
+			{
+				if(data){
+					alert('该商品已收藏');
+				}
+			});
+	})
 </script>
 @endsection

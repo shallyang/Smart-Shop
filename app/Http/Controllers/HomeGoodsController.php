@@ -115,14 +115,31 @@ class HomeGoodsController extends Controller
                 return 1;
            }
    }
-   public function getGoodscollect($goodsid)
+   // public function getGoodscollect($goodsid)
+   // {
+   //      $userid = session('user')['userid'];
+   //      // dd($goodsid);
+   //      $arr['userid'] = $userid;
+   //      $arr['goodsid'] = $goodsid;
+   //      $res = DB::table('collect_table')->insert($arr);
+   //      if($res){
+   //      return redirect('/goods/single/'.$goodsid)->with('info','恭喜你收藏成功');
+   //      }
+   // }
+   public function getTruecollect(Request $request)
    {
+        $goodsid = $_GET['goodsid'];
         $userid = session('user')['userid'];
-        // dd($goodsid);
         $arr['userid'] = $userid;
         $arr['goodsid'] = $goodsid;
-        $res = DB::table('collect_table')->insert($arr);
-        if($res){
+        $res = DB::table('collect_table')->where('userid',$userid)->get();
+        foreach($res as $k=>$v){
+            if($v->goodsid == $goodsid){
+                return 1;
+            }           
+        }
+        $pro = DB::table('collect_table')->insert($arr);
+        if($pro){
         return redirect('/goods/single/'.$goodsid)->with('info','恭喜你收藏成功');
         }
    }
