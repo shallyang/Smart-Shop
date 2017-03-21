@@ -404,5 +404,23 @@ class HomeUserController extends Controller
        }
     }
     
+    //将用户提交的问题存入数据库
+    public function postContent(Request $request)
+    {
+        $res = $request->except('_token');
+
+        $res['time'] = time();
+        $res['status'] = 0;
+
+        //插入数据库
+        $into = DB::table('user_content')->insert($res);
+
+        // dd($into);
+        if($into){
+            return redirect('/home')->with('info','提交成功');
+       }else{
+            return back()->with('info','提交失败');
+       }
+    }
         
 }

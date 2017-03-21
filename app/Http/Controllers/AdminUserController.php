@@ -89,6 +89,7 @@ class AdminUserController extends Controller
 
     public function getContent(Request $request)
     {
+        //搜索
         $res = DB::table('user_content')->where('user_name','like','%'.$request->input('user_name').'%')->paginate($request->input('limit',10));
 
         return view('admins.user_content',['res'=>$res,'request'=>$request]);
@@ -98,6 +99,7 @@ class AdminUserController extends Controller
     public function getReplaycontent($id)
     {
         // echo $id;
+        //获取需要回复的条目
         $res = DB::table('user_content')->where('id',$id)->first();
 
         // dd($res);
@@ -109,14 +111,16 @@ class AdminUserController extends Controller
     public function postReplaycontent(Request $request)
     {
         // dd($request);
+        //回复
         $reply = $request->input('reply');
         $id = $request->input('id');
         // $email = $request->input('user_email');
 
+        //信息回复
         Mail::send('admins.email', ['id'=>$request->input('id'),'reply'=>$reply], function ($m)use($request){
-                $m->from('yxc930708@163.com', 'Smart客服部');
+                $m->from('yxc930708@163.com', 'Smarty客服部');
 
-                $m->to($request->input('user_email'), $request->input('user_name'))->subject('Smart回复');
+                $m->to($request->input('user_email'), $request->input('user_name'))->subject('Smarty回复');
             });
         $res = DB::table('user_content')->where('id',$id)->update(['status'=>1]);
 
@@ -127,5 +131,7 @@ class AdminUserController extends Controller
         }
 
     }
+
+
 }
 

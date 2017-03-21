@@ -6,10 +6,10 @@
 		<div class="contact-form-row">
 			<h3 class="w3ls-title w3ls-title1">输入您的问题</h3>  
 			<div class="col-md-7 contact-left">
-				<form action="/admin/user/replaycontent" method="get">
-					<input type="text" name="Name" placeholder="请输入您的姓名" required="">
-					<input class="email" type="text" name="Email" placeholder="请输入您的邮箱" required="">
-					<textarea placeholder="您的需求,投诉或建议" name="Message" required=""></textarea>
+				<form action="/user/content" method="post">
+					<input type="text" name="user_name" placeholder="请输入您的姓名" required="">
+					<input class="email" type="text" name="user_email" placeholder="请输入您的邮箱" required="">
+					<textarea placeholder="您的需求,投诉或建议" name="user_text" required=""></textarea>
 					{{csrf_field()}}
 					<input type="submit" value="提交">
 				</form>

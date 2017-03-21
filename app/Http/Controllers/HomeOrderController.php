@@ -83,11 +83,11 @@ class HomeOrderController extends Controller
     	return '0';
 
 	}
-//提交订单页面写在路由里面
+    //提交订单页面写在路由里面
     public function billing(Request $request)
     {
         $buylist = $request->goodsid;
-// echo '<pre>';
+        // echo '<pre>';
         foreach($buylist as $v){
 
             $goods = explode('+',$v);
