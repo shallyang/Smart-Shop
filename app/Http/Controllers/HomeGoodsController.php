@@ -38,7 +38,7 @@ class HomeGoodsController extends Controller
                     $vs->picurl = DB::table('goods_pic_table')->where('goodsid',$vs->goodsid)->value('picurl');
                 }
 
-                //吧查询出的三维数组转化形成二维数组
+                //把查询出的三维数组转化形成二维数组
                 foreach ($info as $key => $value) {
                     
                     $obj[] = $value;
@@ -47,37 +47,6 @@ class HomeGoodsController extends Controller
 
 
         }
-        // foreach($res as $k=>$v){
-        //     //获取子类的主id来获得子商品
-        //     $tid =$v->id;
-        //     $obj[] = DB::table('goods_table')->where('typeid','=',$tid)->get();
-        // }
-        //        //获取子类商品的图片信息
-        // $gobj =[];
-        // // echo'<pre>';
-        // // var_dump($obj);die;
-        // $row = [];
-        // foreach($obj as $gk => $gv){
-        //     foreach($gv as $lgk => $lgv){
-        //     $row[] = $lgv;
-        //     $gid = $lgv->goodsid;
-        //     $gobj[] = DB::table('goods_pic_table')->where('goodsid','=',$gid)->first();
-        //     }
-           
-        // }
-        // // echo'<pre>';
-        // // dd($gobj);
-        // return view('homes/product',['row'=>$row,'gobj'=>$gobj]);
-
-        //************************************************************************
-
-        //如果是第一分类.获取所有子版块,然后获取子版块下的所有商品
-
-        //如果是第二级分类.获取所有版块下的所有商品
-        // echo '<pre>';
-        // dd($obj);
-        //获取评论的内容
-
         return view('homes/product',['obj'=>$obj]);
     }
 
@@ -115,17 +84,7 @@ class HomeGoodsController extends Controller
                 return 1;
            }
    }
-   // public function getGoodscollect($goodsid)
-   // {
-   //      $userid = session('user')['userid'];
-   //      // dd($goodsid);
-   //      $arr['userid'] = $userid;
-   //      $arr['goodsid'] = $goodsid;
-   //      $res = DB::table('collect_table')->insert($arr);
-   //      if($res){
-   //      return redirect('/goods/single/'.$goodsid)->with('info','恭喜你收藏成功');
-   //      }
-   // }
+   
    public function getTruecollect(Request $request)
    {
         $goodsid = $_GET['goodsid'];

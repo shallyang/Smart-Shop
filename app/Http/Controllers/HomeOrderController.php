@@ -18,8 +18,6 @@ class HomeOrderController extends Controller
     {
     	$goodsid = $request->goodsid;
     	session()->push('cart',$goodsid);
-
-    	// echo json_encode(session('cart'));
     	$goodsname = DB::table('goods_table')->where('goodsid',$goodsid)->value('goodsname');
 
     	echo $goodsname;
@@ -35,12 +33,6 @@ class HomeOrderController extends Controller
         }
     	
 		$cart = array_count_values($cartall);
-    	// $cart = array_unique($cartall);
-
-
-    	// dd($cart);
-    	// echo '<pre>';
-    	// $carts = ['goodspic','goodsname','goodsprice','goodsnum']
     	$carts = [];
     	$cartlist = [];
     	foreach ($cart as $k =>$v) {
@@ -51,23 +43,13 @@ class HomeOrderController extends Controller
 			$carts[] = $cartlist;
 
     	}
-		
-		// echo json_encode($carts);
-		// dd($carts);
 		return view('homes.cart',['carts'=>$carts]);
 	}
 
 	public function getCartlist(Request $request)
 	{
 		$id = $request->id;
-
-		// echo '123',$id;
 		$res = \Session::get('cart');
-		// dd($res);
-    	// echo '<pre>';
-    	// var_dump($res);
-
-    	//从session中进行删除
     	foreach($res as $k => $v) {
 
     		if($v == $id) {
@@ -78,30 +60,20 @@ class HomeOrderController extends Controller
 
     		}
 
-    	}
-
+    	
     	return '0';
-
 	}
     //提交订单页面写在路由里面
     public function billing(Request $request)
     {
         $buylist = $request->goodsid;
-        // echo '<pre>';
         foreach($buylist as $v){
-
             $goods = explode('+',$v);
-
-            // var_dump($goods);
             //查询商品信息
             $goodsinfo = DB::table('goods_table')->where('goodsid',$goods[0])->first();
             $goodsinfo->pic = DB::table('goods_pic_table')->where('goodsid',$goods[0])->value('picurl');
 
             $goodsinfo->num = $goods[1];
-
-            // unset($goodsinfo->describe);
-
-
             $buyorder[] = $goodsinfo;
 
         }
@@ -109,7 +81,6 @@ class HomeOrderController extends Controller
         //用户信息 用户地址
         $userid = session('user')['userid'];
         $useraddrs = DB::table('user_address')->where('userid',$userid)->get();
-        // dd($buyorder);
         $i = 1;
         foreach($useraddrs as $k => $v){
             if ($v->status == 1) {
@@ -120,8 +91,6 @@ class HomeOrderController extends Controller
 
             $i++;
         }
-        // dd($buyorder);
-
         return view('homes.order_reply',['buyorder'=>$buyorder,'addr'=>$addr]);
 
     }
@@ -133,10 +102,8 @@ class HomeOrderController extends Controller
         $res['passstatus'] = 3;
         $res['ordertime'] = time();
         $buyGoods = $request->input('goodsid');
-        // var_dump($buyGoods);die;
         $addr = $request->input('addr');
         $res['orderprice'] = $request->input('total');
-        // dd($orderprice);
         //切割商品编号
         $goodsid = '';
         foreach ($buyGoods as $value) {
@@ -145,17 +112,12 @@ class HomeOrderController extends Controller
             $goodsid = $goodsid . ',' . $goodid;
         }
         $res['goodsid'] = substr($goodsid,1);
-
         //切割地址
-
         $res['getaddress'] = explode(' ',$addr)[1];
         $res['getphone'] = explode(' ',$addr)[2];
         $res['getman'] = explode(' ',$addr)[0];
-        // var_dump($res);die;
-
         //创建订单 , 插入数据库
         $orderid = DB::table('order_table')->insertGetId($res);
-        // dd($orderid);
 
         if ($orderid) {
 
@@ -176,27 +138,15 @@ class HomeOrderController extends Controller
 
             } else {
                 $usermoney = DB::table('user_table')->where('userid',\Session::get('user')['userid'])->value('usermoney');
-                // dd($usermoney);
-                //事务处理
-                // DB::transaction(function () {
-                //     DB::table('user_table')->update(['usermoney' => $usermoney-$request->input('total'),]);
-
-                //     DB::table('posts')->delete();
-                // });
-                // DB::beginTransaction();
                 $yue = $usermoney-$request->input('total');
                 if ( $yue >= 0) {
                     //余额足够,支付成功进入用户订单页面
                     DB::table('user_table')->where('userid',\Session::get('user')['userid'])->update(['usermoney' => $yue]);
                     $a = DB::table('order_table')->where('orderid',$orderid)->update(['passstatus' => 0]);
-                    // DB::commit();
-                    // echo $orderid;
-                    // dd($a);
                     return redirect('/user/order');
                 } else {
                     //余额不足跳转到订单页面
                     return redirect('/user/order')->with('info','抱歉!!!您的余额不足,请选择其他支付方式或充值后重试!!');
-                    // DB::rollBack();
                 }
             }
 

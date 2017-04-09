@@ -98,11 +98,8 @@ class AdminUserController extends Controller
 
     public function getReplaycontent($id)
     {
-        // echo $id;
         //获取需要回复的条目
         $res = DB::table('user_content')->where('id',$id)->first();
-
-        // dd($res);
 
         return view('admins.user_replycontent',['res'=>$res]);
 
@@ -110,7 +107,6 @@ class AdminUserController extends Controller
 
     public function postReplaycontent(Request $request)
     {
-        // dd($request);
         //回复
         $reply = $request->input('reply');
         $id = $request->input('id');

@@ -31,18 +31,12 @@ class AdminOrderController extends Controller
                 // 将获取的图片放在一个数组中
                 $goodsimgs[] = $goodsimg;
             }
-                // var_dump($goodsimgs);
-                // echo '<br>';
+            
             //获取所有的数组放在一个新的数组中方便传值
             $allgoodsimgs[] = $goodsimgs;
             $goodsimgs = null;
-            // echo '<hr>';
 
         }
-        // var_dump($allgoodsimgs);
-            // die;
-        // dd($res);
-        // dd($goodsid);
         //打开所有订单列表
         return view('admins.order',['res'=>$res, 'request'=>$request,'goodsimgs'=>$allgoodsimgs]);
     }
@@ -77,9 +71,6 @@ class AdminOrderController extends Controller
 
     public function postGoship(Request $request)
     {
-        // echo '1234';
-        // return view('admins.order_goship',[])
-        // dd($request);
         //获取订单号和快递代码.
         $orderid = $request->orderid;
         // echo $orderid;
@@ -127,17 +118,12 @@ class AdminOrderController extends Controller
         $res = $request->except('_token','orderid');
         //获取订单号
         $orderid = $request->orderid;
-        // echo $orderid;
-        // dd($res);
         //修改数据
         $res = DB::table('order_table')->where('orderid',$orderid)->update($res);
 
         if ($res) {
             return redirect('/admin/order')->with('info','修改成功!');
         } else {
-            //修改失败将id放回res并跳转到修改页面
-            // $res['orderid'] = $orderid;
-            // return redirect('/admin/order_changeget',['res'=>$res])->with('info','修改失败,请重试!');
             return redirect('/admin/order')->with('info','修改失败!');
         }
 
